@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         html.setAttribute('data-theme', 'dark');
-        toggle.textContent = '☀️'; // show sun icon in dark mode
+        toggle.textContent = '☀️';
     } else {
         html.removeAttribute('data-theme');
-        toggle.textContent = '🌙'; // show moon icon in light mode
+        toggle.textContent = '🌙';
     }
 
     // Toggle dark mode on click
@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (html.getAttribute('data-theme') === 'dark') {
             html.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
-            toggle.textContent = '🌙'; // moon icon
+            toggle.textContent = '🌙';
         } else {
             html.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
-            toggle.textContent = '☀️'; // sun icon
+            toggle.textContent = '☀️';
         }
     });
 });
