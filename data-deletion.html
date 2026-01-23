@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Deletion Request - Door Supervisor Exam Practice</title>
+    <meta name="description" content=" Request deletion of your personal data from Door Supervisor Exam Practice.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+           <div class="nav-container">
+                <div class="logo">
+                    <img src="ic_launcher.png" alt="Door Supervisor Exam Practice Logo" class="logo-img">
+                    <h1>Door Supervisor Exam Practice</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms</a></li>
+                    <li><a href="data-deletion.html" class="active">Data Deletion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container legal-content">
+            <h1>Data Deletion Request</h1>
+            
+            <section class="legal-section">
+                <div class="important-notice">
+                    <strong>Your Privacy Matters</strong><br>
+                    You have the right to request deletion of your personal data at any time.
+                </div>
+
+                <h2>What Data Will Be Deleted?</h2>
+                <p>Submitting a data deletion request will permanently remove:</p>
+                <ul>
+                    <li>Your user account and profile information</li>
+                    <li>Email address and username</li>
+                    <li>All exam progress and results</li>
+                    <li>Flagged questions and bookmarks</li>
+                    <li>Purchase history (not financial transaction records held by Google Play)</li>
+                    <li>Any other personal data associated with your account</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong><br>
+                    This action is <strong>permanent and cannot be undone</strong>. You will lose all progress and will need to purchase the app again if you wish to use it in the future.
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2>Data Retained by Third Parties</h2>
+                <p>Please note:</p>
+                <ul>
+                    <li><strong>Google Play:</strong> Payment records and transaction history are retained by Google Play in accordance with their policies and applicable laws. We cannot delete this data.</li>
+                    <li><strong>RevenueCat:</strong> Purchase validation records may be retained for fraud prevention.</li>
+                    <li><strong>Legal Requirements:</strong> Some data may be retained if required by law (e.g., tax records, fraud prevention).</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>How to Request Deletion</h2>
+                <p>You can request data deletion in two ways:</p>
+
+                <h3>Option 1: Use the Form Below</h3>
+                <p>Fill out the form below and we will process your request within 30 days.</p>
+
+                <div class="form-container">
+                    <form
+                      name="data-deletion"
+                      method="POST"
+                      data-netlify="true"
+                      data-netlify-honeypot="bot-field"
+                      data-netlify-recaptcha="true"
+                      action="/deletion-success.html"
+                      class="deletion-form"
+                    >
+                        <input type="hidden" name="form-name" value="data-deletion">
+
+                        <!-- Hidden field for bot detection -->
+                        <p class="hidden">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="email@example.com">
+                            <small>The email address associated with your account</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username (if known)</label>
+                            <input type="text" id="username" name="username" placeholder="your_username">
+                            <small>This helps us locate your account faster</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason for Deletion (optional)</label>
+                            <textarea id="reason" name="reason" rows="4" placeholder="Please let us know why you're deleting your account (optional)"></textarea>
+                            <small>This feedback helps us improve our service</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="confirmation" required>
+                                <span>I understand that this action is permanent and all my data will be deleted</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <div data-netlify-recaptcha="true"></div>
+                            <button type="submit" class="btn btn-primary">Submit Deletion Request</button>
+                        </div>
+                    </form>
+                </div>
+
+                <h3>Option 2: Email Us Directly</h3>
+                <p>Send an email to:</p>
+                <ul>
+                    <li><strong>Primary:</strong> <a href="mailto:info@doorsupervisorexam.co.uk">info@doorsupervisorexam.co.uk</a></li>
+                    <li><strong>Backup:</strong> <a href="mailto:ds.exampractice@gmail.com">ds.exampractice@gmail.com</a></li>
+                </ul>
+                <p>Subject line: "Data Deletion Request"</p>
+                
+                <p>Please include:</p>
+                <ul>
+                    <li>Your email address</li>
+                    <li>Your username (if known)</li>
+                    <li>Confirmation that you want your data deleted</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>Processing Timeline</h2>
+                <ul>
+                    <li><strong>Acknowledgment:</strong> Within 2 business days</li>
+                    <li><strong>Identity Verification:</strong> We may ask you to verify your identity</li>
+                    <li><strong>Deletion:</strong> Within 30 days of verified request</li>
+                    <li><strong>Confirmation:</strong> You will receive an email when deletion is complete</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>After Deletion</h2>
+                <p>Once your data is deleted:</p>
+                <ul>
+                    <li>You will no longer be able to log into the app</li>
+                    <li>All progress will be lost</li>
+                    <li>You can create a new account with the same email if desired</li>
+                    <li>Your previous purchase may not be restorable (you may need to purchase again)</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>Questions?</h2>
+                <p>If you have any questions about the data deletion process, please <a href="contact.html">contact us</a>.</p>
+                <p>For more information about how we handle your data, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            </section>
+
+            <div class="cta-section">
+                <p><strong>Changed your mind?</strong> You don't need to delete your account to stop using the app. Simply uninstall it from your device.</p>
+                <p><strong>Need help?</strong> <a href="contact.html">Contact our support team</a> before deleting your account.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Door Supervisor Exam Practice</h3>
+                    <p>Professional SIA exam preparation</p>
+                    <p class="company-info">© 2025 SAABB Ventures (Pvt) Ltd. All rights reserved.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="data-deletion.html">Data Deletion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="mailto:info@doorsupervisorexam.co.uk">info@doorsupervisorexam.co.uk</a></li>
+                        <li><a href="mailto:ds.exampractice@gmail.com">ds.exampractice@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <p>SAABB Ventures (Pvt) Ltd</p>
+                    <p>76 Princess Street</p>
+                    <p>Luton, Bedfordshire</p>
+                    <p>LU1 5AT, United Kingdom</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="dark-mode.js"></script>
+    <!-- Dark Mode Floating Toggle -->
+    <button class="dark-toggle" id="dark-toggle">🌙</button>
+
+</body>
+</html>
