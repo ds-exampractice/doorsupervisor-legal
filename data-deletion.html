@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Deletion Request - Door Supervisor Exam Practice</title>
+    <meta name="description" content="Request deletion of your personal data from Door Supervisor Exam Practice app. Exercise your privacy rights with our simple data deletion process.">
+    <link rel="stylesheet" href="styles-original.css">
+    <link rel="icon" type="image/png" href="ic_launcher.png">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="ic_launcher.png" alt="Door Supervisor Exam Practice Logo" class="logo-img">
+                <h1>Door Supervisor Exam Practice</h1>
+                <!-- Mobile Dropdown Button (Hidden on desktop) -->
+                <button class="mobile-dropdown-btn" id="mobileDropdownBtn">▼</button>
+            </div>
+            
+            <!-- Desktop Navigation (Hidden on mobile) -->
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions">Terms</a></li>
+                    <li><a href="/data-deletion" class="active">Data Deletion</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="legal-content">
+            <h1>Data Deletion Request</h1>
+            <p class="last-updated">Last Updated: March 9, 2026</p>
+
+            <div class="legal-section">
+                <h2>Your Right to Data Deletion</h2>
+                <p>We respect your privacy and your right to control your personal data. If you wish to delete your account and personal information from our Door Supervisor Exam Practice app, you can submit a request using the form below or by contacting us directly.</p>
+                
+                <div class="important-notice">
+                    <p><strong>Important:</strong> Once your data is deleted, this action cannot be undone. You will lose all study progress, performance history, and account information permanently.</p>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>What Data Will Be Deleted</h2>
+                <p>When you request data deletion, we will remove the following information from our systems:</p>
+                <ul>
+                    <li>Your account information (email, name, profile data)</li>
+                    <li>Study progress and performance history</li>
+                    <li>App usage statistics and analytics data</li>
+                    <li>Device and session information</li>
+                    <li>Support communications (after 30 days)</li>
+                    <li>Any other personal data associated with your account</li>
+                </ul>
+            </div>
+
+            <div class="legal-section">
+                <h2>Data That May Be Retained</h2>
+                <p>For legal, security, and business purposes, some information may be retained in anonymized form:</p>
+                <ul>
+                    <li>Aggregated usage statistics (without personal identifiers)</li>
+                    <li>Financial transaction records (as required by law)</li>
+                    <li>Security logs (for fraud prevention, anonymized after 12 months)</li>
+                    <li>Legal compliance records (if applicable)</li>
+                </ul>
+            </div>
+
+            <div class="legal-section">
+                <h2>Data Deletion Timeline</h2>
+                <p>Once we receive your deletion request:</p>
+                <ul>
+                    <li><strong>Immediate:</strong> Your account will be deactivated</li>
+                    <li><strong>Within 72 hours:</strong> Personal data removed from active systems</li>
+                    <li><strong>Within 30 days:</strong> Complete deletion from all backup systems</li>
+                    <li><strong>Confirmation:</strong> You'll receive an email confirming deletion</li>
+                </ul>
+                
+                <div class="note">
+                    <p><strong>Note:</strong> Some data may take up to 30 days to be completely removed from all systems, including backups and cached data.</p>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>Submit Data Deletion Request</h2>
+                <div class="form-container">
+                    <form class="deletion-form" id="deletionForm">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                            <small>Enter the email address associated with your app account</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason for Deletion (Optional)</label>
+                            <select id="reason" name="reason">
+                                <option value="">Select a reason</option>
+                                <option value="no-longer-need">No longer need the app</option>
+                                <option value="privacy-concerns">Privacy concerns</option>
+                                <option value="found-alternative">Found alternative solution</option>
+                                <option value="technical-issues">Technical issues</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments">Additional Comments (Optional)</label>
+                            <textarea id="comments" name="comments" rows="4" placeholder="Any additional information or feedback..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confirm" name="confirm" required>
+                                I understand that this action cannot be undone and all my data will be permanently deleted
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="acknowledge" name="acknowledge" required>
+                                I acknowledge that I have read and understand the data deletion process
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit Deletion Request</button>
+                    </form>
+
+                    <div class="success-message hidden" id="successMessage">
+                        <h3>Request Submitted Successfully</h3>
+                        <p>Your data deletion request has been received. You will receive a confirmation email within 24 hours, and your data will be deleted within 30 days as outlined above.</p>
+                        <p>If you have any questions, please <a href="/contact">contact us</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>Alternative Contact Methods</h2>
+                <p>If you prefer not to use the form above, you can also request data deletion by:</p>
+                
+                <div class="contact-box">
+                    <h3>Email Us Directly</h3>
+                    <p><strong>Primary:</strong> <a href="mailto:info@doorsupervisorexam.co.uk?subject=Data Deletion Request">info@doorsupervisorexam.co.uk</a></p>
+                    <p><strong>Alternative:</strong> <a href="mailto:ds.exampractice@gmail.com?subject=Data Deletion Request">ds.exampractice@gmail.com</a></p>
+                    <p><strong>Subject Line:</strong> "Data Deletion Request"</p>
+                    <p><strong>Include:</strong> Your account email address and confirmation that you want to delete all data</p>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <h3>Can I recover my data after deletion?</h3>
+                    <p>No, data deletion is permanent and irreversible. Once your data is deleted, it cannot be recovered. Make sure you're certain about this decision before proceeding.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Will I receive a refund if I delete my data?</h3>
+                    <p>Data deletion does not automatically entitle you to a refund. If you wish to request a refund, please do so through the Google Play Store before deleting your data.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I delete some data but keep my account?</h3>
+                    <p>Currently, we only offer complete account deletion. We cannot selectively delete specific types of data while maintaining your account.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What if I want to use the app again later?</h3>
+                    <p>If you delete your data and want to use the app again in the future, you'll need to create a new account and start over. Your previous progress and data will not be recoverable.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How will I know when my data is deleted?</h3>
+                    <p>We'll send you a confirmation email to the address associated with your account once the deletion process is complete, typically within 30 days.</p>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>Data Protection Rights</h2>
+                <p>In addition to deletion, you may have other rights regarding your personal data:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of your personal data</li>
+                    <li><strong>Rectification:</strong> Request correction of inaccurate data</li>
+                    <li><strong>Portability:</strong> Request transfer of your data</li>
+                    <li><strong>Objection:</strong> Object to processing of your data</li>
+                </ul>
+                <p>To exercise these rights, please <a href="/contact">contact us</a> or review our <a href="/privacy-policy">Privacy Policy</a> for more information.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="ic_launcher.png" alt="Logo" class="footer-logo">
+                <h4>Door Supervisor Exam Practice</h4>
+                <p>Professional SIA exam preparation</p>
+                <p class="company-info">© 2026 SAABB Ventures (Pvt) Ltd. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+                    <li><a href="/data-deletion">Data Deletion</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="mailto:info@doorsupervisorexam.co.uk">info@doorsupervisorexam.co.uk</a></li>
+                    <li><a href="mailto:ds.exampractice@gmail.com">ds.exampractice@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <p>SAABB Ventures (Pvt) Ltd</p>
+                <p>76 Princess Street</p>
+                <p>Luton, Bedfordshire</p>
+                <p>LU1 5AT, United Kingdom</p>
+                <p class="company-info">This application is an independent study tool and is not affiliated with or endorsed by the Security Industry Authority (SIA).</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Dropdown Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownBtn = document.getElementById('mobileDropdownBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            if (dropdownBtn && navLinks) {
+                dropdownBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    dropdownBtn.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking on a link
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        dropdownBtn.classList.remove('active');
+                    });
+                });
+
+                // Close dropdown when window is resized to desktop
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navLinks.classList.remove('active');
+                        dropdownBtn.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Form handling
+        document.getElementById('deletionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send this data to your server
+            // For now, we'll just show the success message
+            document.getElementById('deletionForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
