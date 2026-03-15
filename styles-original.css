@@ -71,6 +71,13 @@ a:hover {
     text-decoration: underline;
 }
 
+.hero p,
+.hero h2 {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ========== LOGO STYLING ========== */
 .logo {
     display: flex;
