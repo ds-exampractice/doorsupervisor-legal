@@ -689,3 +689,29 @@ footer {
 .mb-2 { margin-bottom: 2rem; }
 .mt-3 { margin-top: 3rem; }
 .mb-3 { margin-bottom: 3rem; }
+
+/* ========== MOBILE ========== */
+.mobile-dropdown-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+
+    .mobile-dropdown-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
