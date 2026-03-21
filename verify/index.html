@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Verified — Door Supervisor Exam Practice</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #F5F7FA;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #2C3E50;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      background: #1565C0;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+
+    .logo svg { width: 38px; height: 38px; fill: #ffffff; }
+
+    /* States — only one visible at a time */
+    .state { display: none; }
+    .state.active { display: block; }
+
+    /* ── Verifying ── */
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #E3EBF6;
+      border-top-color: #1565C0;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 24px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Success ── */
+    .icon-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .icon-circle.success { background: #E8F5E9; }
+    .icon-circle.error   { background: #FFEBEE; }
+    .icon-circle svg { width: 36px; height: 36px; }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 0.96rem;
+      color: #5A6A7A;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      display: inline-block;
+      background: #E8F0FE;
+      color: #1565C0;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      word-break: break-all;
+      margin: 8px 0 16px;
+    }
+
+    .notice {
+      margin-top: 24px;
+      background: #F0F4FF;
+      border: 1px solid #C5D5F5;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      color: #1565C0;
+      line-height: 1.55;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #EEF1F5;
+      margin: 28px 0;
+    }
+
+    .footer {
+      font-size: 0.8rem;
+      color: #9AABB8;
+    }
+
+    .error-code {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: #B0BEC5;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- App logo -->
+    <div class="logo">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/>
+      </svg>
+    </div>
+
+    <!-- ── State: Verifying ── -->
+    <div id="state-verifying" class="state active">
+      <div class="spinner"></div>
+      <h1>Verifying your email…</h1>
+      <p>Please wait a moment whilst we confirm your address.</p>
+    </div>
+
+    <!-- ── State: Success ── -->
+    <div id="state-success" class="state">
+      <div class="icon-circle success">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h1 style="color:#1B5E20;">Email Verified</h1>
+      <p>Your email address</p>
+      <span id="email-display" class="highlight"></span>
+      <p>has been successfully verified.</p>
+
+      <div class="notice">
+        You can now return to the <strong>Door Supervisor Exam Practice</strong> app
+        and tap <strong>Continue</strong> to complete your registration.
+      </div>
+
+      <hr class="divider" />
+      <p class="footer">You may close this page.</p>
+    </div>
+
+    <!-- ── State: Already used / expired ── -->
+    <div id="state-expired" class="state">
+      <div class="icon-circle error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8v4M12 16h.01"/>
+        </svg>
+      </div>
+      <h1 style="color:#B71C1C;">Link Expired</h1>
+      <p>This verification link has already been used or has expired.</p>
+      <div class="notice">
+        Please return to the <strong>Door Supervisor Exam Practice</strong> app
+        and request a new verification link.
+      </div>
+      <hr class="divider" />
+      <p class="footer">You may close this page.</p>
+    </div>
+
+    <!-- ── State: Error ── -->
+    <div id="state-error" class="state">
+      <div class="icon-circle error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M15 9l-6 6M9 9l6 6"/>
+        </svg>
+      </div>
+      <h1 style="color:#B71C1C;">Verification Failed</h1>
+      <p>Something went wrong whilst verifying your email address.</p>
+      <div class="notice">
+        Please return to the <strong>Door Supervisor Exam Practice</strong> app
+        and request a new verification link. If the problem persists, contact us at
+        <strong>info@doorsupervisorexam.co.uk</strong>.
+      </div>
+      <hr class="divider" />
+      <p id="error-detail" class="error-code"></p>
+    </div>
+
+  </div>
+
+  <!-- Firebase JS SDK (compat version — no build step required) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+  <script>
+    // ── Firebase config (web project) ──────────────────────────────────────
+    const firebaseConfig = {
+      apiKey:            "AIzaSyBM9N4cg6ZRY3nHg3KBAnwH-RzstrEsw5g",
+      authDomain:        "sia-door-supervisor-mock-amv1.firebaseapp.com",
+      projectId:         "sia-door-supervisor-mock-amv1",
+      storageBucket:     "sia-door-supervisor-mock-amv1.firebasestorage.app",
+      messagingSenderId: "863263750688",
+      appId:             "1:863263750688:web:bf7adb83ee450a40981a45"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // ── Helpers ────────────────────────────────────────────────────────────
+    function show(id) {
+      document.querySelectorAll('.state').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    // ── Main ───────────────────────────────────────────────────────────────
+    (async function () {
+      // Firebase redirects to continueUrl and appends its own query params,
+      // including the oobCode, so the full URL IS an email sign-in link.
+      const currentUrl = window.location.href;
+
+      if (!firebase.auth.EmailAuthProvider && !auth.isSignInWithEmailLink) {
+        show('state-error');
+        return;
+      }
+
+      if (!auth.isSignInWithEmailLink(currentUrl)) {
+        // No valid link params — user likely navigated here directly.
+        show('state-expired');
+        return;
+      }
+
+      // Retrieve the email we embedded in the continueUrl as ?e=...
+      const email = getParam('e') ? decodeURIComponent(getParam('e')) : null;
+
+      if (!email) {
+        show('state-error');
+        document.getElementById('error-detail').textContent = 'ERR: missing email parameter';
+        return;
+      }
+
+      try {
+        await auth.signInWithEmailLink(email, currentUrl);
+
+        // Show the email address on the success screen
+        document.getElementById('email-display').textContent = email;
+        show('state-success');
+
+        // Sign out immediately — the app will handle its own auth state.
+        await auth.signOut();
+      } catch (err) {
+        if (err.code === 'auth/invalid-action-code' ||
+            err.code === 'auth/expired-action-code') {
+          show('state-expired');
+        } else {
+          show('state-error');
+          document.getElementById('error-detail').textContent = err.code || err.message;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
