@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme', t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Door Supervisor Exam Practice — Pass Your SIA Exam with Confidence</title>
+<meta name="description" content="UK SIA-aligned Door Supervisor exam practice app. 1000+ realistic questions across all 4 modules. £17.99 lifetime access. Android only.">
+<link rel="canonical" href="https://www.doorsupervisorexam.co.uk/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.doorsupervisorexam.co.uk/">
+<meta property="og:title" content="Door Supervisor Exam Practice — Pass Your SIA Exam with Confidence">
+<meta property="og:description" content="UK SIA-aligned Door Supervisor exam practice app. 1000+ realistic questions across all 4 modules. £17.99 lifetime access.">
+<meta property="og:image" content="https://www.doorsupervisorexam.co.uk/ic_launcher.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.doorsupervisorexam.co.uk/">
+<meta name="twitter:title" content="Door Supervisor Exam Practice — Pass Your SIA Exam with Confidence">
+<meta name="twitter:description" content="UK SIA-aligned Door Supervisor exam practice app. 1000+ realistic questions across all 4 modules. £17.99 lifetime access.">
+<meta name="twitter:image" content="https://www.doorsupervisorexam.co.uk/ic_launcher.png">
+
+<link rel="icon" type="image/png" href="ic_launcher.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Page-specific augmentations */
+.hero {
+    min-height: 88vh;
+    padding: 80px 0 96px;
+    background: var(--bg-base);
+    isolation: isolate;
+}
+.hero-grid-mask {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%);
+    mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -2;
+}
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+}
+.hero-orb-1 {
+    width: 500px; height: 500px;
+    top: -120px; left: -120px;
+    background: radial-gradient(circle, rgba(21,101,192,0.45), transparent 65%);
+    animation: orb-drift 12s ease-in-out infinite alternate;
+}
+.hero-orb-2 {
+    width: 350px; height: 350px;
+    bottom: -80px; right: -80px;
+    background: radial-gradient(circle, rgba(0,172,193,0.25), transparent 65%);
+    animation: orb-drift 15s ease-in-out -4s infinite alternate-reverse;
+}
+.hero-orb-3 {
+    width: 280px; height: 280px;
+    top: 40%; right: 30%;
+    background: radial-gradient(circle, rgba(13,71,161,0.35), transparent 65%);
+    animation: orb-drift 11s ease-in-out -2s infinite alternate;
+}
+.hero-inner {
+    grid-template-columns: 55% 45%;
+    gap: 60px;
+    position: relative;
+}
+.hero-title-line-2 .word {
+    background: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.hero-title-line { display: block; }
+.hero-title-line-2 {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle { max-width: 460px; line-height: 1.7; font-size: 1.05rem; }
+.hero-trust { gap: 24px; font-size: 0.82rem; margin-top: 32px; }
+.hero-app-icon-img {
+    width: 180px; height: 180px;
+    border-radius: 36px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(21,101,192,0.4);
+    animation: float-icon 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+.hero-glow-ring-svg {
+    width: 280px; height: 280px;
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(21,101,192,0.25);
+    box-shadow: inset 0 0 60px rgba(21,101,192,0.1);
+    animation: ring-pulse 4s ease-in-out infinite;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+.hero-stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.08);
+    min-width: auto;
+    position: relative;
+    overflow: hidden;
+    animation: card-float 6s ease-in-out infinite;
+}
+@keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+.hero-stat-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg,
+        rgba(255,255,255,0.35) 0%,
+        rgba(255,255,255,0.10) 25%,
+        rgba(255,255,255,0) 50%,
+        rgba(255,255,255,0.10) 75%,
+        rgba(255,255,255,0.35) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+.hero-stat-card .stat-value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+}
+.hero-stat-card .stat-label {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+}
+[data-theme="light"] .hero-stat-card {
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(21,101,192,0.18);
+    box-shadow: 0 10px 30px rgba(13,71,161,0.10);
+}
+.hero-stat-card.card-1 { top: 10%;  right: 2%;  animation-delay: -1s; }
+.hero-stat-card.card-2 { top: 38%;  left: 8%;   animation-delay: -3s; }
+.hero-stat-card.card-3 { bottom: -8%; left: 10%; animation-delay: -2s; }
+.hero-stat-card.card-4 { bottom: 14%; right: 14%; animation-delay: -2s; }
+
+/* Pill badge in hero */
+.hero-badge {
+    background: rgba(0,188,212,0.10);
+    border-color: rgba(0,188,212,0.30);
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Stats bar */
+.stats-bar-wrap {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 28px 0;
+}
+.stats-bar-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    text-align: center;
+}
+.stats-bar-flex .stat-item {
+    border-right: 1px solid var(--border-subtle);
+    padding: 0 24px;
+    flex: 1;
+    min-width: 140px;
+}
+.stats-bar-flex .stat-item:last-child { border-right: none; }
+.stats-bar-flex .stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--text-primary);
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+    line-height: 1;
+}
+.stats-bar-flex .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+}
+
+/* Pricing badge in header */
+.lifetime-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.20);
+    color: #fff;
+    border-radius: var(--radius-pill);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.pricing-price-currency {
+    font-size: 2rem;
+    vertical-align: super;
+    font-weight: 700;
+    margin-right: 2px;
+}
+
+/* Disclaimer band */
+.disclaimer-section {
+    background: var(--bg-base);
+    padding: 40px 0;
+}
+.disclaimer-box {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    background: rgba(245,158,11,0.08);
+    border-left: 4px solid #F59E0B;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Footer overrides */
+.site-footer { background-color: #030912; padding: 64px 0 24px; }
+.site-footer .footer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+}
+.site-footer .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    margin-top: 48px;
+    color: #6B8BAA;
+    font-size: 0.82rem;
+}
+.footer-company { color: rgba(255,255,255,0.7); font-size: 0.875rem; }
+.footer-company .small { font-size: 0.85rem; color: #6B8BAA; }
+.footer-tag { color: #6B8BAA; font-size: 0.9rem; }
+
+/* Hero responsive tweaks */
+@media (max-width: 1024px) {
+    /* Pull cards onto the icon area instead of off-screen at narrow widths */
+    .hero-stat-card.card-1 { top: -2%; right: 2%; }
+    .hero-stat-card.card-2 { top: -2%; left: 2%; }
+    .hero-stat-card.card-3 { bottom: 2%; left: 2%; }
+    .hero-stat-card.card-4 { bottom: 2%; right: 2%; }
+}
+@media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { min-height: 320px; }
+    /* Hide floating cards on mobile - the stats bar below the hero already conveys this */
+    .hero-stat-card { display: none; }
+    .stats-bar-flex .stat-item {
+        border-right: none;
+        flex: 0 0 calc(50% - 12px);
+        padding: 8px;
+    }
+}
+
+/* Word-by-word blur-in for hero title */
+.hero-title .word {
+    display: inline-block;
+    margin-right: 0;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(40px);
+}
+.hero-title .word:last-child { margin-right: 0; }
+.hero-title.is-animating .word {
+    animation: word-blur-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes word-blur-in {
+    0%   { opacity: 0;   filter: blur(10px); transform: translateY(40px); }
+    50%  { opacity: 0.5; filter: blur(5px);  transform: translateY(-4px); }
+    100% { opacity: 1;   filter: blur(0);    transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-title .word,
+    .hero-title.is-animating .word {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        animation: none;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     STICKY NAV
+     ============================================================ -->
+<header class="site-header">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <img src="ic_launcher.png" alt="Door Supervisor Exam Practice">
+            <span class="nav-logo-text">
+                DOOR SUPERVISOR
+                <small>Exam Practice</small>
+            </span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-and-conditions.html">Terms</a></li>
+            <li><a href="data-deletion.html">Data Deletion</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button id="dark-toggle" class="theme-toggle" aria-label="Toggle theme">☀️</button>
+            <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice"
+               class="btn btn-secondary btn-sm" rel="noopener">Download App</a>
+            <button class="nav-mobile-btn" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+    <div class="hero-grid-mask"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="container">
+        <div class="hero-inner">
+            <div>
+                <span class="hero-badge">UK SIA Aligned Curriculum</span>
+                <h1 class="hero-title" data-blur-words>
+                    <span class="hero-title-line">
+                        <span class="word">PASS</span> <span class="word">YOUR</span> <span class="word">SIA</span> <span class="word">EXAM</span>
+                    </span>
+                    <span class="hero-title-line hero-title-line-2">
+                        <span class="word">WITH</span> <span class="word">CONFIDENCE</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    Comprehensive exam preparation for UK security professionals.
+                    1000+ realistic exam questions and 2000+ training questions across all 4 SIA Door Supervisor modules.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice"
+                       class="btn btn-primary btn-lg" rel="noopener">Download on Google Play</a>
+                    <a href="#features" class="btn btn-secondary btn-lg">View Features</a>
+                </div>
+                <div class="hero-trust">
+                    <span class="hero-trust-item">One-Time Payment</span>
+                    <span class="hero-trust-item">Offline Access</span>
+                    <span class="hero-trust-item">UK SIA Aligned</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-glow-ring-svg"></div>
+                <img src="ic_launcher.png" alt="App icon" class="hero-app-icon-img">
+                <div class="hero-stat-card card-1">
+                    <div class="stat-value">1000+</div>
+                    <div class="stat-label">Exam Questions</div>
+                </div>
+                <div class="hero-stat-card card-2">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Exam Modules</div>
+                </div>
+                <div class="hero-stat-card card-3">
+                    <div class="stat-value">£17.99</div>
+                    <div class="stat-label">Lifetime Access</div>
+                </div>
+                <div class="hero-stat-card card-4">
+                    <div class="stat-value">2000+</div>
+                    <div class="stat-label">Training Questions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<div class="stats-bar-wrap">
+    <div class="container">
+        <div class="stats-bar-flex">
+            <div class="stat-item">
+                <div class="stat-value" data-count-to="1000" data-suffix="+">1000+</div>
+                <div class="stat-label">Exam Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" data-count-to="2000" data-suffix="+">2000+</div>
+                <div class="stat-label">Training Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" data-count-to="4">4</div>
+                <div class="stat-label">Exam Modules</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">£17.99</div>
+                <div class="stat-label">Lifetime Access</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" data-count-to="100" data-suffix="%">100%</div>
+                <div class="stat-label">UK SIA Aligned</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     FEATURES
+     ============================================================ -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-head">
+            <span class="section-label">What You Get</span>
+            <h2 class="section-heading">Everything You Need to Pass First Time</h2>
+        </div>
+        <div class="features-grid">
+            <article class="feature-card">
+                <div class="feature-icon-wrap">📚</div>
+                <h3>Complete Coverage</h3>
+                <p>All 4 SIA modules: Principles of Working in the Private Security Industry, Principles of Working as a Door Supervisor, Application of Physical Intervention Skills, and Application of Conflict Management.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon-wrap">✅</div>
+                <h3>Training Questions</h3>
+                <p>Exam-style training questions with detailed answer explanations and veteran mentor tips — built to help you understand the subject, not just pass the test.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon-wrap">📊</div>
+                <h3>Progress Tracking</h3>
+                <p>Module-by-module performance dashboard. See exactly where to focus your study time.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon-wrap">💰</div>
+                <h3>One-Time Payment</h3>
+                <p>£17.99 for lifetime access. No subscriptions, no recurring charges, no surprises.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon-wrap">🎯</div>
+                <h3>Exam Simulation</h3>
+                <p>Full timed mock exams under realistic conditions. Know what to expect before you walk in.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon-wrap">📝</div>
+                <h3>Detailed Explanations</h3>
+                <p>Every training question comes with a thorough breakdown of why each answer is right or wrong — so the knowledge sticks long after the exam.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-head">
+            <span class="section-label">The Process</span>
+            <h2 class="section-heading">Three Steps to Your SIA Licence</h2>
+        </div>
+        <div class="steps-grid">
+            <article class="step-card">
+                <div class="step-number">1</div>
+                <h3>Download the App</h3>
+                <p>Purchase once on Google Play. Get instant access to all modules, questions and mock exams.</p>
+            </article>
+            <article class="step-card">
+                <div class="step-number">2</div>
+                <h3>Practice Daily</h3>
+                <p>Work through questions module by module. Review explanations, track your scores, identify weak areas.</p>
+            </article>
+            <article class="step-card">
+                <div class="step-number">3</div>
+                <h3>Pass with Confidence</h3>
+                <p>Walk into your SIA exam prepared. No guessing, no surprises.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     EXAM MODULES
+     ============================================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <span class="section-label">4 Modules Covered</span>
+            <h2 class="section-heading">The Complete SIA Door Supervisor Syllabus</h2>
+        </div>
+        <div class="modules-grid">
+            <div class="module-item">
+                <span class="module-name"><span aria-hidden="true">📋</span> &nbsp;Principles of Working in the Private Security Industry</span>
+                <span class="module-count">Included</span>
+            </div>
+            <div class="module-item">
+                <span class="module-name"><span aria-hidden="true">🚪</span> &nbsp;Principles of Working as a Door Supervisor in the Private Security Industry</span>
+                <span class="module-count">Included</span>
+            </div>
+            <div class="module-item">
+                <span class="module-name"><span aria-hidden="true">💪</span> &nbsp;Application of Physical Intervention Skills in the Private Security Industry</span>
+                <span class="module-count">Included</span>
+            </div>
+            <div class="module-item">
+                <span class="module-name"><span aria-hidden="true">🤝</span> &nbsp;Application of Conflict Management in the Private Security Industry</span>
+                <span class="module-count">Included</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-head">
+            <span class="section-label">Pricing</span>
+            <h2 class="section-heading">Simple. Honest. One-Time.</h2>
+        </div>
+        <div class="pricing-card">
+            <div class="pricing-header">
+                <span class="lifetime-badge">Lifetime Access</span>
+                <div class="pricing-price">
+                    <span class="pricing-price-currency">£</span>17.99
+                    <small>One-time payment — never pay again</small>
+                </div>
+            </div>
+            <div class="pricing-body">
+                <ul class="pricing-features">
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">All 4 SIA exam modules included</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">1000+ exam questions</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">2000+ training questions with mentor tips</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Full mock exam simulations</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Detailed answer explanations</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Progress tracking dashboard</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Dedicated training section</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Lifetime access — one payment only</span></li>
+                    <li class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Regular content updates</span></li>
+                </ul>
+                <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice"
+                   class="btn btn-primary pricing-cta" rel="noopener">Download on Google Play</a>
+                <div class="pricing-guarantee">
+                    🛡️ 30-day refund available through the Google Play Store
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     DISCLAIMER
+     ============================================================ -->
+<section class="disclaimer-section">
+    <div class="container">
+        <div class="disclaimer-box">
+            <strong>⚠️ Important:</strong> This application is an independent study tool and is not affiliated with or endorsed by the Security Industry Authority (SIA).
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <img src="ic_launcher.png" alt="" class="footer-logo">
+                <h3 style="margin-bottom:6px;">Door Supervisor Exam Practice</h3>
+                <p class="footer-tag">Professional SIA exam preparation</p>
+                <p class="company-info">© 2026 SAABB Ventures (Pvt) Ltd. All rights reserved.</p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                    <li><a href="data-deletion.html">Data Deletion</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="mailto:info@doorsupervisorexam.co.uk">info@doorsupervisorexam.co.uk</a></li>
+                    <li><a href="mailto:ds.exampractice@gmail.com">ds.exampractice@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <p class="footer-company">
+                    SAABB Ventures (Pvt) Ltd<br>
+                    76 Princess Street<br>
+                    Luton, Bedfordshire<br>
+                    LU1 5AT<br>
+                    United Kingdom
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            This application is an independent study tool and is not affiliated with or endorsed by the Security Industry Authority (SIA).
+        </div>
+    </div>
+</footer>
+
+<script src="dark-mode.js"></script>
+<script>
+// Hero title — stagger word-blur-in. Triggered on next frame so initial paint shows hidden state.
+(function () {
+    const run = () => {
+        const title = document.querySelector('.hero-title[data-blur-words]');
+        if (!title) return;
+        const words = title.querySelectorAll('.word');
+        words.forEach((w, i) => { w.style.animationDelay = (i * 110) + 'ms'; });
+        requestAnimationFrame(() => title.classList.add('is-animating'));
+    };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+    } else {
+        run();
+    }
+})();
+</script>
+
+<script>
+// Stats bar — count-up animation triggered once when bar enters viewport
+(function() {
+    var bar = document.querySelector('.stats-bar-wrap');
+    if (!bar) return;
+    var targets = bar.querySelectorAll('[data-count-to]');
+    if (!targets.length) return;
+
+    function animateCount(el) {
+        var end = parseInt(el.getAttribute('data-count-to'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        if (isNaN(end)) return;
+        var duration = 2000;
+        var start = 0;
+        var startTs = null;
+        function frame(ts) {
+            if (startTs === null) startTs = ts;
+            var elapsed = ts - startTs;
+            var t = Math.min(elapsed / duration, 1);
+            // ease-out cubic
+            var eased = 1 - Math.pow(1 - t, 3);
+            var current = Math.floor(start + (end - start) * eased);
+            el.textContent = current + suffix;
+            if (t < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                el.textContent = end + suffix;
+            }
+        }
+        requestAnimationFrame(frame);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(animateCount);
+        return;
+    }
+
+    var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                targets.forEach(animateCount);
+                io.disconnect();
+            }
+        });
+    }, { threshold: 0.2 });
+    io.observe(bar);
+})();
+</script>
+</body>
+</html>
