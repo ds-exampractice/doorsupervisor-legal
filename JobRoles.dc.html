@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="./roles-data.js"></script>
+<style>
+  html,body{margin:0;background:var(--bg);}
+  *{box-sizing:border-box;}
+</style>
+</helmet>
+
+<div style="background:var(--bg);min-height:100vh;font-family:'Hanken Grotesk',sans-serif">
+  <dc-import name="SiteNav" active="roles" hint-size="100%,68px"></dc-import>
+
+  <!-- PAGE HEADER -->
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(680px 380px at 20% 0%,#000,transparent 78%);mask-image:radial-gradient(680px 380px at 20% 0%,#000,transparent 78%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px clamp(34px,4vw,46px)">
+      <div style="display:inline-flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);border:1px solid var(--border);background:var(--panel);padding:7px 13px;border-radius:999px;margin-bottom:22px">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:block"></span>Role Familiarisation Series
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,4.6vw,50px);line-height:1.05;letter-spacing:-.025em;margin:0 0 16px;color:var(--text);max-width:760px">The foundation, then the role you'll actually work.</h1>
+      <p style="font-size:clamp(15px,1.7vw,18px);line-height:1.6;color:var(--text-mut);margin:0;max-width:620px">Read the Foundation Module once — it applies to every shift. Then open the profile for your specific environment to see how it plays out on the ground.</p>
+    </div>
+  </section>
+
+  <!-- TWO COLUMN -->
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,60px) 24px clamp(56px,7vw,90px);display:grid;grid-template-columns:{{ gridCols }};gap:clamp(32px,4vw,56px);align-items:start">
+
+    <!-- MOBILE TAB SWITCH -->
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;gap:6px;padding:5px;border:1px solid var(--border);background:var(--bg-soft);border-radius:14px;position:sticky;top:76px;z-index:20;backdrop-filter:blur(8px)">
+        <button type="button" onClick="{{ showRolesTab }}" style="{{ rolesTabStyle }}">Role Profiles</button>
+        <button type="button" onClick="{{ showFoundationTab }}" style="{{ foundationTabStyle }}">Foundation</button>
+      </div>
+    </sc-if>
+
+    <!-- LEFT: foundation module -->
+    <sc-if value="{{ showFoundation }}" hint-placeholder-val="{{ true }}">
+    <article style="min-width:0">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong)">Foundation Module</span>
+        <span style="height:1px;background:var(--border);flex:1"></span>
+      </div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-.025em;margin:0 0 6px;color:var(--text)">Core Knowledge for Every Role</h2>
+      <p style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:var(--text-dim);margin:0 0 26px">Read this once. Apply it in every role, every shift, without exception.</p>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:60px 0;text-align:center;color:var(--text-dim);font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em">Loading module…</div>
+      </sc-if>
+      <div class="ds-content" dangerouslySetInnerHTML="{{ contentHtml }}"></div>
+    </article>
+    </sc-if>
+
+    <!-- RIGHT: role cards sidebar -->
+    <sc-if value="{{ showRoles }}" hint-placeholder-val="{{ true }}">
+    <aside style="{{ asideStyle }}">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong)">The 15 Role Profiles</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-dim)">{{ roleCount }}</div>
+      </div>
+      <p style="font-size:13px;line-height:1.55;color:var(--text-mut);margin:0 0 14px">Tap a role to open its full briefing in a new tab.</p>
+
+      <div style="position:relative;margin-bottom:16px">
+        <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);width:14px;height:14px;border:1.6px solid var(--text-dim);border-radius:50%;pointer-events:none"></span>
+        <span style="position:absolute;left:23px;top:calc(50% + 6px);width:6px;height:1.6px;background:var(--text-dim);transform:rotate(45deg);transform-origin:left;pointer-events:none"></span>
+        <input type="text" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search roles — e.g. hospital, events, pub" aria-label="Search role profiles" style="width:100%;box-sizing:border-box;padding:11px 36px 11px 36px;border:1px solid var(--border);border-radius:11px;background:var(--bg-elev);color:var(--text);font-family:'Hanken Grotesk',sans-serif;font-size:13.5px;outline:none;transition:border-color .18s" style-focus="border-color:var(--accent)">
+        <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ clearSearch }}" aria-label="Clear search" style="position:absolute;right:9px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:none;background:var(--panel);border-radius:6px;color:var(--text-mut);cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0">&#10005;</button>
+        </sc-if>
+      </div>
+
+      <div style="{{ cardsStyle }}">
+        <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:34px 16px;text-align:center;border:1px dashed var(--border);border-radius:13px;background:var(--bg-soft)">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--text);margin-bottom:5px">No roles match “{{ query }}”</div>
+            <div style="font-size:12.5px;line-height:1.5;color:var(--text-mut)">Try a place, sector, or keyword — like “airport”, “retail”, or “events”.</div>
+          </div>
+        </sc-if>
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="8">
+          <a href="{{ r.href }}" target="_blank" rel="noopener" style="display:block;text-decoration:none;border:1px solid var(--border);background:var(--bg-soft);border-radius:14px;padding:15px 16px;transition:border-color .18s,transform .18s,background .18s" style-hover="border-color:var(--border-strong);transform:translateY(-2px)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px">
+              <span style="flex:none;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">{{ r.num }}</span>
+              <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--border);padding:4px 8px;border-radius:999px">{{ r.cat }}</span>
+            </div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;line-height:1.25;color:var(--text);margin-bottom:6px">{{ r.title }}</div>
+            <div style="font-size:12.5px;line-height:1.5;color:var(--text-mut);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ r.summary }}</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:11px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-strong)">Open profile<span style="font-size:13px;line-height:1">&#8599;</span></div>
+          </a>
+        </sc-for>
+      </div>
+    </aside>
+    </sc-if>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,360px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { html: '', roles: [], ready: false, narrow: false, query: '', tab: 'roles' };
+
+  componentDidMount() {
+    this._mounted = true;
+    this._tick();
+    this._onResize = () => this.setState({ narrow: window.innerWidth < 920 });
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() {
+    this._mounted = false;
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  _tick() {
+    if (!this._mounted) return;
+    const D = window.DSDATA;
+    if (D && D.renderBlocks && D.foundation) {
+      if (!document.getElementById('ds-content-css')) {
+        const st = document.createElement('style');
+        st.id = 'ds-content-css';
+        st.textContent = D.contentCSS;
+        document.head.appendChild(st);
+      }
+      const html = D.renderBlocks(D.foundation, 1);
+      const roles = D.roles.map(r => ({
+        num: r.num, title: r.title, cat: r.cat, summary: r.summary,
+        href: 'RoleDetail.dc.html?role=' + r.slug
+      }));
+      this.setState({ html, roles, ready: true });
+    } else {
+      setTimeout(() => this._tick(), 60);
+    }
+  }
+
+  renderVals() {
+    const q = this.state.query.trim().toLowerCase();
+    const all = this.state.roles;
+    const filtered = q
+      ? all.filter(r => (r.title + ' ' + r.cat + ' ' + r.summary + ' ' + r.num).toLowerCase().includes(q))
+      : all;
+    const count = q ? filtered.length : all.length;
+    const narrow = this.state.narrow;
+    const tab = this.state.tab;
+
+    const tabBase = { flex: '1', padding: '11px 12px', borderRadius: '10px', border: 'none', cursor: 'pointer', fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: '13.5px', transition: 'background .18s,color .18s' };
+    const tabOn = { ...tabBase, background: 'var(--accent)', color: '#fff', boxShadow: '0 8px 20px -10px var(--accent)' };
+    const tabOff = { ...tabBase, background: 'transparent', color: 'var(--text-mut)' };
+
+    const cardsBase = { display: 'flex', flexDirection: 'column', gap: '11px' };
+    const cardsDesktop = { ...cardsBase, maxHeight: 'calc(100vh - 210px)', overflow: 'auto', padding: '2px 4px 2px 2px', margin: '-2px -4px -2px -2px' };
+
+    return {
+      loading: !this.state.ready,
+      contentHtml: { __html: this.state.html || '' },
+      roles: filtered,
+      query: this.state.query,
+      hasQuery: q.length > 0,
+      noResults: this.state.ready && q.length > 0 && filtered.length === 0,
+      roleCount: String(count).padStart(2, '0'),
+      onSearch: (e) => this.setState({ query: e.target.value }),
+      clearSearch: () => this.setState({ query: '' }),
+      gridCols: narrow ? '1fr' : 'minmax(0,1fr) 340px',
+      narrow,
+      showFoundation: !narrow || tab === 'foundation',
+      showRoles: !narrow || tab === 'roles',
+      showRolesTab: () => this.setState({ tab: 'roles' }),
+      showFoundationTab: () => this.setState({ tab: 'foundation' }),
+      rolesTabStyle: tab === 'roles' ? tabOn : tabOff,
+      foundationTabStyle: tab === 'foundation' ? tabOn : tabOff,
+      asideStyle: narrow ? { minWidth: 0 } : { position: 'sticky', top: '84px', minWidth: 0 },
+      cardsStyle: narrow ? cardsBase : cardsDesktop
+    };
+  }
+}
+</script>
+</body>
+</html>
