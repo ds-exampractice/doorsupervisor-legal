@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+  ::selection{background:var(--accent-soft)}
+  .lc h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;color:var(--text);margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .lc h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;color:var(--text);margin:24px 0 10px}
+  .lc p{font-size:15.5px;line-height:1.75;color:var(--text-mut);margin:0 0 14px}
+  .lc ul{margin:0 0 16px;padding-left:22px}
+  .lc li{font-size:15px;line-height:1.7;color:var(--text-mut);margin-bottom:9px}
+  .lc a{color:var(--accent-strong);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent-strong) 35%,transparent)}
+  .lc strong{color:var(--text);font-weight:600}
+  .sec{margin-bottom:46px}
+</style>
+<script>
+(function(){
+  var T={
+    dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+    light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+  };
+  var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+  for(var k in v)r.style.setProperty(k,v[k]);
+  r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+})();
+</script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <dc-import name="SiteNav" active="terms" hint-size="100%,68px"></dc-import>
+
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(620px 360px at 20% 0%,#000,transparent 75%);mask-image:radial-gradient(620px 360px at 20% 0%,#000,transparent 75%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(52px,7vw,84px) 24px clamp(36px,5vw,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:18px">Legal · Terms</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,5vw,52px);letter-spacing:-.025em;line-height:1.05;margin:0 0 16px;color:var(--text)">Terms &amp; Conditions</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--text-dim);margin:0">Last updated · 9 March 2026</p>
+    </div>
+  </section>
+
+  <div class="lc" style="max-width:1200px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px">
+
+    <div class="sec">
+      <h2>1. Acceptance of Terms</h2>
+      <p>By downloading, installing, or using the Door Supervisor Exam Practice mobile application (the "App"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use the App.</p>
+    </div>
+
+    <div class="sec">
+      <h2>2. Description of Service</h2>
+      <p>Door Supervisor Exam Practice is a mobile application developed by SAABB Ventures (Pvt) Ltd that provides exam preparation materials for SIA Door Supervisor certification. The App includes:</p>
+      <ul>
+        <li>Practice questions and mock exams</li>
+        <li>Study materials and progress tracking</li>
+        <li>Performance analytics and feedback</li>
+        <li>Offline access to downloaded content</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>3. License to Use</h2>
+      <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to use the App for your personal, non-commercial use.</p>
+      <h3>You May:</h3>
+      <ul>
+        <li>Download and install the App on your personal devices</li>
+        <li>Use the App for exam preparation purposes</li>
+        <li>Access and download content for offline use</li>
+      </ul>
+      <h3>You May Not:</h3>
+      <ul>
+        <li>Share your account credentials with others</li>
+        <li>Reverse engineer, decompile, or disassemble the App</li>
+        <li>Remove or modify any copyright notices or proprietary markings</li>
+        <li>Use the App for commercial purposes without permission</li>
+        <li>Share or distribute app content outside the App</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>4. User Accounts</h2>
+      <p>To access certain features of the App, you may need to create an account. You are responsible for:</p>
+      <ul>
+        <li>Providing accurate and complete information</li>
+        <li>Maintaining the security of your account credentials</li>
+        <li>All activities that occur under your account</li>
+        <li>Notifying us immediately of any unauthorised access</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>5. Payments and Subscriptions</h2>
+      <p>The App offers a one-time purchase for lifetime access. By making a purchase, you agree to:</p>
+      <ul>
+        <li>Pay all fees associated with your purchase</li>
+        <li>Provide accurate payment information</li>
+        <li>Comply with the payment processor's terms</li>
+      </ul>
+      <h3>Refund Policy</h3>
+      <p>Refunds are handled according to the Google Play Store's refund policy. We do not process refunds directly.</p>
+      <div style="background:var(--accent-soft);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:18px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:8px">Important</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--text)">All purchases are processed through the Google Play Store. Please review Google's terms of service for additional payment terms.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>6. Intellectual Property</h2>
+      <p>The App and all content, including but not limited to text, graphics, logos, images, software, and exam questions, are the property of SAABB Ventures (Pvt) Ltd or our licensors and are protected by copyright, trademark, and other intellectual property laws.</p>
+      <h3>User-Generated Content</h3>
+      <p>Any feedback, suggestions, or other content you provide to us may be used by us without restriction or compensation to you.</p>
+    </div>
+
+    <div class="sec">
+      <h2>7. Prohibited Uses</h2>
+      <p>You agree not to use the App for any of the following purposes:</p>
+      <ul>
+        <li>Any unlawful purpose or activity</li>
+        <li>Impersonating another person or entity</li>
+        <li>Interfering with the App's functionality</li>
+        <li>Attempting to gain unauthorised access to our systems</li>
+        <li>Uploading viruses or malicious code</li>
+        <li>Harvesting user information</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>8. Disclaimer of Educational Outcomes</h2>
+      <div style="background:rgba(199,154,62,0.1);border:1px solid color-mix(in srgb,#c79a3e 30%,transparent);border-left:3px solid #c79a3e;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:14px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#c79a3e;margin-bottom:8px">Important Disclaimer</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--text)">While our App is designed to help you prepare for the SIA Door Supervisor exam, we cannot guarantee that using our App will result in passing the exam. Success depends on many factors including your study habits, prior knowledge, and exam performance.</p>
+      </div>
+      <p>The App is an independent study tool and is not affiliated with, endorsed by, or officially connected to the Security Industry Authority (SIA).</p>
+    </div>
+
+    <div class="sec">
+      <h2>9. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by applicable law, SAABB Ventures (Pvt) Ltd shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App, including but not limited to:</p>
+      <ul>
+        <li>Loss of profits, data, or use</li>
+        <li>Interruption of business</li>
+        <li>Failure to pass examinations</li>
+        <li>Device damage or data loss</li>
+      </ul>
+      <p>Our total liability to you for any claims arising from these Terms or your use of the App shall not exceed the amount you paid for the App.</p>
+    </div>
+
+    <div class="sec">
+      <h2>10. App Availability and Updates</h2>
+      <p>We strive to keep the App available at all times, but we do not guarantee uninterrupted access. We may:</p>
+      <ul>
+        <li>Temporarily suspend the App for maintenance</li>
+        <li>Update the App to improve functionality</li>
+        <li>Modify or discontinue features with notice</li>
+        <li>Require you to update to continue using the App</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>11. Privacy</h2>
+      <p>Your privacy is important to us. Please review our <a href="privacy-policy.html">Privacy Policy</a> to understand how we collect, use, and protect your information.</p>
+    </div>
+
+    <div class="sec">
+      <h2>12. Termination</h2>
+      <p>We may terminate or suspend your access to the App at any time, with or without notice, for any reason, including violation of these Terms.</p>
+      <p>Upon termination:</p>
+      <ul>
+        <li>Your right to use the App will cease immediately</li>
+        <li>You must delete all copies of the App from your devices</li>
+        <li>Certain provisions of these Terms will survive termination</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>13. Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of England and Wales. Any disputes arising from these Terms or your use of the App will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+    </div>
+
+    <div class="sec">
+      <h2>14. Changes to Terms</h2>
+      <p>We may modify these Terms at any time by posting the updated Terms in the App or on our website. Your continued use of the App after any such changes constitutes your acceptance of the new Terms.</p>
+    </div>
+
+    <div class="sec">
+      <h2>15. Contact Information</h2>
+      <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:24px">
+        <p style="margin:0 0 12px">If you have any questions about these Terms and Conditions, please contact us:</p>
+        <p style="margin:0 0 6px"><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#244d4a424b64404b4b565751544156524d574b56415c45490a474b0a514f"><span class="__cf_email__" data-cfemail="cfa6a1a9a08faba0a0bdbcbabfaabdb9a6bca0bdaab7aea2e1aca0e1baa4">[email&#160;protected]</span></a></p>
+        <p style="margin:0 0 12px"><strong>Alternative Email:</strong> <a href="/cdn-cgi/l/email-protection#d6b2a5f8b3aeb7bba6a4b7b5a2bfb5b396b1bbb7bfbaf8b5b9bb"><span class="__cf_email__" data-cfemail="0e6a7d206b766f637e7c6f6d7a676d6b4e69636f6762206d6163">[email&#160;protected]</span></a></p>
+        <p style="margin:0;color:var(--text-mut)"><strong>Address:</strong><br>SAABB Ventures (Pvt) Ltd<br>76 Princess Street<br>Luton, Bedfordshire<br>LU1 5AT, United Kingdom</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(165deg,var(--accent-soft),transparent);border:1px solid var(--border);border-radius:18px;padding:36px;text-align:center;margin-top:20px">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;margin:0 0 10px;color:var(--text)">Ready to start your SIA exam preparation?</h3>
+      <p style="font-size:15px;color:var(--text-mut);margin:0 0 22px">Download our app and begin your journey to becoming a certified Door Supervisor.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" style="display:inline-flex;align-items:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;box-shadow:0 14px 30px -12px var(--accent)">Download on Google Play</a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,360px"></dc-import>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>
