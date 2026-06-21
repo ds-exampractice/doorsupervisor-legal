@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;overflow-x:hidden}
+  body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+  ::selection{background:var(--accent-soft)}
+  .lc h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;color:var(--text);margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .lc h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;color:var(--text);margin:24px 0 10px}
+  .lc p{font-size:15.5px;line-height:1.75;color:var(--text-mut);margin:0 0 14px}
+  .lc ul{margin:0 0 16px;padding-left:22px}
+  .lc li{font-size:15px;line-height:1.7;color:var(--text-mut);margin-bottom:9px}
+  .lc a{color:var(--accent-strong);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent-strong) 35%,transparent)}
+  .lc strong{color:var(--text);font-weight:600}
+  .sec{margin-bottom:46px}
+</style>
+<script>
+(function(){
+  var T={
+    dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+    light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+  };
+  var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+  for(var k in v)r.style.setProperty(k,v[k]);
+  r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+})();
+</script>
+<script src="sitenav.js"></script>
+<script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="contact"></site-nav>
+
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(620px 360px at 20% 0%,#000,transparent 75%);mask-image:radial-gradient(620px 360px at 20% 0%,#000,transparent 75%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(52px,7vw,84px) 24px clamp(36px,5vw,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:18px">Support · Contact</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,5vw,52px);letter-spacing:-.025em;line-height:1.05;margin:0 0 16px;color:var(--text)">Contact Us</h1>
+      <p style="font-size:17px;line-height:1.6;color:var(--text-mut);margin:0;max-width:560px">We're here to help with any questions, concerns, or feedback about the Door Supervisor Exam Practice app.</p>
+    </div>
+  </section>
+
+  <div class="lc" style="max-width:1200px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px">
+
+    <div class="sec">
+      <h2>Contact Information</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px">
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:24px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px">Primary Contact</div>
+          <a href="/cdn-cgi/l/email-protection#d1b8bfb7be91b5bebea3a2a4a1b4a3a7b8a2bea3b4a9b0bcffb2beffa4ba" style="font-size:16px;font-weight:600;color:var(--text);text-decoration:none;border:none;word-break:break-all"><span class="__cf_email__" data-cfemail="b5dcdbd3daf5d1dadac7c6c0c5d0c7c3dcc6dac7d0cdd4d89bd6da9bc0de">[email&#160;protected]</span></a>
+          <p style="margin:12px 0 0;font-size:14px">Our main support email. We typically respond within 24 hours during business days.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:24px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px">Alternative Contact</div>
+          <a href="/cdn-cgi/l/email-protection#c6a2b5e8a3bea7abb6b4a7a5b2afa5a386a1aba7afaae8a5a9ab" style="font-size:16px;font-weight:600;color:var(--text);text-decoration:none;border:none;word-break:break-all"><span class="__cf_email__" data-cfemail="4327306d263b222e33312220372a202603242e222a2f6d202c2e">[email&#160;protected]</span></a>
+          <p style="margin:12px 0 0;font-size:14px">Use this if you don't hear back from our primary contact within 48 hours.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:24px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px">Postal Address</div>
+          <p style="margin:0;font-size:14.5px;color:var(--text);line-height:1.65"><strong style="font-weight:600">SAABB Ventures (Pvt) Ltd</strong><br>76 Princess Street<br>Luton, Bedfordshire<br>LU1 5AT, United Kingdom</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>What We Can Help With</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px">
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <h3 style="margin:0 0 8px">Technical Support</h3>
+          <p style="margin:0;font-size:14px">App crashes, login issues, payment problems, syncing difficulties, and other technical matters.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <h3 style="margin:0 0 8px">Content Questions</h3>
+          <p style="margin:0;font-size:14px">Questions about exam content, study materials, answer explanations, and practice test accuracy.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <h3 style="margin:0 0 8px">Account Management</h3>
+          <p style="margin:0;font-size:14px">Account recovery, password resets, subscription status, and profile updates.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <h3 style="margin:0 0 8px">Billing &amp; Refunds</h3>
+          <p style="margin:0;font-size:14px">Purchase confirmations, refund requests, billing inquiries, and subscription management.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <h3 style="margin:0 0 8px">Privacy &amp; Data</h3>
+          <p style="margin:0;font-size:14px">Data deletion requests, privacy concerns, and information about how we handle your data.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <h3 style="margin:0 0 8px">Feature Requests</h3>
+          <p style="margin:0;font-size:14px">Suggestions for app improvements, new features, or enhanced functionality.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Before You Contact Us</h2>
+      <p>To help us provide faster and more effective support, please:</p>
+      <ul>
+        <li><strong>Include your device information:</strong> operating system version, app version, device model</li>
+        <li><strong>Describe the issue clearly:</strong> what happened, when it occurred, and any error messages</li>
+        <li><strong>Mention your account email:</strong> the email address associated with your app account</li>
+        <li><strong>Check our FAQ:</strong> your question might already be answered below</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>Frequently Asked Questions</h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:20px 22px">
+          <h3 style="margin:0 0 8px">How do I reset my password?</h3>
+          <p style="margin:0">Use the "Forgot Password" option on the login screen. You'll receive a reset link via email. If you don't receive it within 10 minutes, check your spam folder.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:20px 22px">
+          <h3 style="margin:0 0 8px">Can I use the app offline?</h3>
+          <p style="margin:0">Not at the moment — the app currently requires an internet connection to access practice questions and study materials. Offline access is something we're considering for a future update.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:20px 22px">
+          <h3 style="margin:0 0 8px">How do I request a refund?</h3>
+          <p style="margin:0">Refunds are processed through the Google Play Store. Visit your Google Play purchase history and request a refund directly from Google. We cannot process refunds directly.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:20px 22px">
+          <h3 style="margin:0 0 8px">Is this app officially endorsed by the SIA?</h3>
+          <p style="margin:0">No. Our app is an independent study tool and is not affiliated with or endorsed by the Security Industry Authority (SIA). We provide practice materials to help you prepare for the official SIA exam.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:20px 22px">
+          <h3 style="margin:0 0 8px">How often is content updated?</h3>
+          <p style="margin:0">We regularly review and update our practice questions and study materials to keep them current with SIA exam requirements. Major updates are released quarterly.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:20px 22px">
+          <h3 style="margin:0 0 8px">Can I use one account on multiple devices?</h3>
+          <p style="margin:0">Yes. You can log into your account on multiple devices, and your progress and settings will sync across all of them when connected to the internet.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Response Times</h2>
+      <ul>
+        <li><strong>General inquiries:</strong> response within 24 hours (business days)</li>
+        <li><strong>Technical issues:</strong> response within 12 hours (business days)</li>
+        <li><strong>Urgent matters:</strong> same-day response when possible</li>
+        <li><strong>Weekends &amp; holidays:</strong> responses may be delayed</li>
+      </ul>
+      <div style="background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--text-dim);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:8px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Note</div>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-mut)">Our business hours are Monday to Friday, 9 AM to 5 PM GMT. While we may respond outside these hours, please allow longer response times during weekends and UK public holidays.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Data Protection &amp; Privacy</h2>
+      <p>When you contact us, we may collect and store your email address and any information you provide in your message. This information is used solely to respond to your inquiry and provide support.</p>
+      <p>For more information about how we handle your data, please review our <a href="privacy_policy.html">Privacy Policy</a>. If you need to delete your account or personal data, please use our <a href="data_deletion.html">Data Deletion Request form</a>.</p>
+    </div>
+
+    <div style="background:linear-gradient(165deg,var(--accent-soft),transparent);border:1px solid var(--border);border-radius:18px;padding:36px;text-align:center">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;margin:0 0 10px;color:var(--text)">Ready to start your SIA exam preparation?</h3>
+      <p style="font-size:15px;color:var(--text-mut);margin:0 0 22px">Download our app and begin your journey to becoming a certified Door Supervisor.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" style="display:inline-flex;align-items:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;box-shadow:0 14px 30px -12px var(--accent)">Download on Google Play</a>
+    </div>
+  </div>
+
+  <site-footer></site-footer>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>
