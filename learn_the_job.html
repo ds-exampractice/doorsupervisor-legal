@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="./roles-data.js"></script>
+  <style>
+    html,body{margin:0;padding:0}
+    body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    *{box-sizing:border-box}
+  </style>
+  <script>
+  (function(){
+    var T={
+      dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+      light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+    };
+    var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+    for(var k in v)r.style.setProperty(k,v[k]);
+    r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+  })();
+  </script>
+  <script src="sitenav.js"></script>
+  <script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="roles"></site-nav>
+
+  <!-- ── HERO ── -->
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(780px 420px at 18% 0%,#000,transparent 76%);mask-image:radial-gradient(780px 420px at 18% 0%,#000,transparent 76%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(52px,8vw,88px) 24px clamp(44px,6vw,64px)">
+
+      <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);border:1px solid var(--border);background:var(--panel);padding:7px 14px;border-radius:999px;margin-bottom:24px">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;flex:none"></span>
+        Role Familiarisation Series
+      </div>
+
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0 0 20px;color:var(--text);">Real scenarios for every door supervisor job</h1>
+      <p style="font-size:clamp(15px,1.8vw,18px);line-height:1.7;color:var(--text-mut);margin:0 0 24px;">Passing the SIA exam tells you the law. It doesn't tell you what to do when a stadium crowd surges toward one exit, or how a Friday night in a nightclub is a completely different job from a quiet shift on a retail park. Fifteen role-specific guides, built on a shared Foundation Module, based on the real pressures door supervisors actually work in across England, Wales, Scotland and Northern Ireland.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-bottom:36px">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--text-dim)"><strong style="color:var(--text);font-size:14px">16</strong> modules</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:var(--border-strong);flex:none"></span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--text-dim)">Free</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:var(--border-strong);flex:none"></span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--text-dim)">No account needed</span>
+      </div>
+
+      <!-- Foundation Module CTA card -->
+      <button onClick="{{ openFoundation }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;max-width:620px;text-align:left;padding:22px 24px;border-radius:16px;background:var(--accent-soft);border:1px solid rgba(92,143,214,0.3);cursor:pointer;color:var(--text);transition:border-color .2s,transform .18s" style-hover="border-color:var(--accent);transform:translateY(-2px)">
+        <div style="min-width:0">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);display:block;margin-bottom:8px">Start here</span>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:0 0 8px;color:var(--text)">Foundation Module</h3>
+          <p style="font-size:14px;line-height:1.6;color:var(--text-mut);margin:0">The operational habits and judgement calls that apply across every door supervisor job, before you specialise in one environment.</p>
+        </div>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--accent-strong);white-space:nowrap;flex:none">Read it first →</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── EDITORIAL ── -->
+  <section style="border-bottom:1px solid var(--border)">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,72px) 24px">
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">Why the exam syllabus isn't the whole job</h2>
+        <p style="font-size:16px;line-height:1.75;color:var(--text-mut);margin:0 0 16px">Every SIA-licensed door supervisor studies the same core syllabus: conflict management, physical intervention, the law, search powers, fire safety. That's correct and necessary — but it's identical whether you end up on a nightclub door, in a hospital security team, or patrolling a car park. The actual day-to-day reality of those jobs is nothing alike. A hospital security operative deals with distressed families and clinical environments. A festival steward manages tens of thousands of people across an open site with no fixed walls. A concierge security role is as much about discretion and customer service as it is about conflict.</p>
+        <p style="font-size:16px;line-height:1.75;color:var(--text-mut);margin:0 0 40px">Generic exam prep won't tell you any of that. This series will.</p>
+
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;margin:0 0 16px;color:var(--text)">How it works</h2>
+        <p style="font-size:16px;line-height:1.75;color:var(--text-mut);margin:0 0 16px">Every role guide in the series builds on the shared Foundation Module — the operational habits and judgement calls that apply across every door supervisor job, regardless of setting. From there, each guide goes deep on one specific working environment: the kind of incidents that actually happen there, the decisions that get tested, and the professional instincts that are tempting but wrong.</p>
+        <p style="font-size:16px;line-height:1.75;color:var(--text-mut);margin:0">These aren't rewritten exam questions. They're built the way real shifts unfold.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOUNDATION MODULE (expandable) ── -->
+  <section id="foundation-section" style="border-bottom:1px solid var(--border)">
+    <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+      <!-- Toggle header -->
+      <button onClick="{{ toggleFoundation }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;background:none;border:none;cursor:pointer;color:var(--text);text-align:left">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);background:var(--accent-soft);border:1px solid rgba(92,143,214,0.25);padding:5px 12px;border-radius:999px">Foundation Module</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--text)">{{ foundationToggleLabel }}</span>
+        </div>
+        <span style="{{ chevronStyle }}">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+
+      <!-- Expanded content -->
+      <sc-if value="{{ foundationOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="padding-bottom:52px">
+          <sc-if value="{{ foundationLoading }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:48px 0;text-align:center;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--text-dim)">Loading module…</div>
+          </sc-if>
+          <div class="ds-content" dangerouslySetInnerHTML="{{ foundationHtml }}"></div>
+
+          <!-- App promo within foundation -->
+          <div style="margin-top:36px;padding:20px 24px;border-radius:14px;background:var(--accent-soft);border:1px solid rgba(92,143,214,0.28);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--text);margin-bottom:4px">Put this into practice</div>
+              <div style="font-size:13px;color:var(--text-mut);line-height:1.5">Test your knowledge with 700+ exam-style questions on the app.</div>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;padding:11px 20px;border-radius:11px;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(92,143,214,0.5);flex:none">Download on Google Play</a>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ── BROWSE BY ROLE ── -->
+  <section>
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,72px) 24px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">Browse by role</h2>
+      <p style="font-size:16px;line-height:1.6;color:var(--text-mut);margin:0 0 clamp(36px,5vw,52px);max-width:60ch">Fifteen environments, grouped by the kind of work they actually involve.</p>
+
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
+        <div style="margin-bottom:clamp(40px,5vw,56px)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(17px,2.2vw,20px);letter-spacing:-.015em;margin:0;color:var(--text)">{{ cat.name }}</h3>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);flex:none">{{ cat.countLabel }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px">
+            <sc-for list="{{ cat.roles }}" as="role" hint-placeholder-count="3">
+              <a href="{{ role.href }}" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;border:1px solid var(--border);background:var(--bg-soft);border-radius:14px;padding:20px 20px 16px;transition:border-color .18s,transform .18s;color:var(--text)" style-hover="border-color:var(--border-strong);transform:translateY(-2px)">
+                <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;margin:0;line-height:1.3;color:var(--text)">{{ role.title }}</h4>
+                <p style="font-size:13px;line-height:1.6;color:var(--text-mut);margin:0;flex:1">{{ role.desc }}</p>
+                <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--accent-strong);letter-spacing:.01em">Open profile →</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ── WHO THIS IS FOR ── -->
+  <section style="border-top:1px solid var(--border)">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,64px) 24px">
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;margin:0 0 20px;color:var(--text)">Who this is for</h2>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="flex:none;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Mono',monospace;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px">1</span>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-mut)"><strong style="color:var(--text)">New badge holders</strong> deciding what kind of door supervisor work to go for, or preparing for their first shift in an unfamiliar setting.</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="flex:none;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Mono',monospace;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px">2</span>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-mut)"><strong style="color:var(--text)">Existing badge holders</strong> moving into a new environment and wanting to know what's actually different about it.</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="flex:none;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Mono',monospace;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px">3</span>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-mut)"><strong style="color:var(--text)">Employers and training providers</strong> who want their teams thinking beyond the exam syllabus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section style="border-top:1px solid var(--border)">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,64px) 24px">
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;margin:0 0 28px;color:var(--text)">Frequently asked questions</h2>
+        <sc-for list="{{ faqItems }}" as="faq" hint-placeholder-count="4">
+          <div style="border-top:1px solid var(--border)">
+            <button onClick="{{ faq.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;color:var(--text)">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;line-height:1.4;color:var(--text)">{{ faq.q }}</span>
+              <span style="{{ faq.iconStyle }}">{{ faq.indicator }}</span>
+            </button>
+            <sc-if value="{{ faq.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding-bottom:18px">
+                <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-mut)">{{ faq.a }}</p>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div style="border-top:1px solid var(--border)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section style="border-top:1px solid var(--border)">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,56px) 24px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:28px 32px;border-radius:18px;background:var(--accent-soft);border:1px solid rgba(92,143,214,0.28)">
+        <div style="min-width:0">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(18px,2.5vw,22px);letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">Ready to test what you've learned?</h2>
+          <p style="font-size:15px;line-height:1.6;color:var(--text-mut);margin:0">Try our free SIA Door Supervisor practice questions on the Android app.</p>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;padding:13px 24px;border-radius:12px;white-space:nowrap;box-shadow:0 8px 24px -12px rgba(92,143,214,0.5);flex:none">Download on Google Play</a>
+      </div>
+    </div>
+  </section>
+
+  <site-footer></site-footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+
+  CATEGORIES = [
+    { name: 'Nightlife & Hospitality', countLabel: '3 roles', roles: [
+      { title: 'Nightclub Door Supervisor', desc: 'High-volume entry control, intoxication judgement calls, and managing conflict in a loud, fast-moving environment.', slug: 'nightclub-door-supervisor' },
+      { title: 'Pub & Bar Door Supervisor', desc: 'The most common door supervisor role, and the one with the widest range of situations on any given night.', slug: 'pub-bar-door-supervisor' },
+      { title: 'Restaurant & Bar Security', desc: 'Smaller venues, closer customer relationships, and conflict that escalates fast in tight spaces.', slug: 'restaurant-bar-security' }
+    ]},
+    { name: 'Retail & Public Venues', countLabel: '3 roles', roles: [
+      { title: 'Shopping Mall Security', desc: 'Long shifts, retail crime, lost children, and managing the public across a large open site.', slug: 'shopping-mall-security' },
+      { title: 'Retail Park & Supermarket Security', desc: 'Theft, anti-social behaviour, and managing a constant flow of the public.', slug: 'retail-park-supermarket-security' },
+      { title: 'Car Park Security', desc: 'An overlooked role with its own specific risks, from vehicle crime to lone working.', slug: 'car-park-security' }
+    ]},
+    { name: 'Events & Crowds', countLabel: '2 roles', roles: [
+      { title: 'Festival Security', desc: 'Crowd dynamics at scale, medical escalation, and working as part of a much bigger security operation.', slug: 'festival-security' },
+      { title: 'Stadium Door Supervisor', desc: 'Crowd control at scale, segregation, and incident response when thousands of people are involved.', slug: 'stadium-security' }
+    ]},
+    { name: 'Transport', countLabel: '2 roles', roles: [
+      { title: 'Airport Security', desc: 'Strict procedural environments, counter-terrorism awareness in practice, and zero tolerance for error.', slug: 'airport-security' },
+      { title: 'Transport Hub Security', desc: 'High footfall, time pressure, and incidents that need fast, correct decisions.', slug: 'transport-hub-security' }
+    ]},
+    { name: 'Corporate & Residential', countLabel: '2 roles', roles: [
+      { title: 'Corporate Office Security', desc: 'Access control, visitor management, and the quieter judgement calls of a professional environment.', slug: 'corporate-office-security' },
+      { title: 'Concierge & Residential Security', desc: 'Discretion, customer service, and security work that looks nothing like a typical door job.', slug: 'concierge-residential-security' }
+    ]},
+    { name: 'Public Sector & Healthcare', countLabel: '3 roles', roles: [
+      { title: 'Council Property Security', desc: 'Public buildings, vulnerable visitors, and the realities of working in a civic environment.', slug: 'council-property-security' },
+      { title: 'Hospital & NHS Security', desc: 'Distressed patients and families, clinical environments, and a very different risk profile to a typical door job.', slug: 'hospital-nhs-security' },
+      { title: 'Asylum Accommodation Security', desc: 'A uniquely sensitive setting requiring judgement, restraint, and welfare awareness above all else.', slug: 'asylum-accommodation-security' }
+    ]}
+  ];
+
+  FAQ_DATA = [
+    { q: 'Is the Role Familiarisation Series free?', a: 'Yes. All fifteen role guides and the Foundation Module are free to read, no account or app download required.' },
+    { q: 'Do I need an app to use this?', a: "No. The guides are web-based and accessible to anyone. If you want to test your knowledge against exam-style mock questions, our practice exam tool is available separately." },
+    { q: 'Is this the same as the SIA exam syllabus?', a: "No. This series doesn't replace your SIA-approved training or exam preparation — it sits alongside it, focused on the practical reality of specific roles rather than exam content itself." },
+    { q: 'Does this cover Scotland and Northern Ireland?', a: 'Yes. The legal and procedural differences across England, Wales, Scotland and Northern Ireland are reflected throughout the series where relevant.' }
+  ];
+
+  state = {
+    foundationOpen: false,
+    foundationHtml: null,
+    foundationReady: false,
+    openFaq: -1
+  };
+
+  componentDidMount() {
+    this._mounted = true;
+    this._loadFoundation();
+  }
+  componentWillUnmount() {
+    this._mounted = false;
+  }
+
+  _loadFoundation() {
+    if (!this._mounted) return;
+    const D = window.DSDATA;
+    if (D && D.renderBlocks && D.foundation) {
+      if (!document.getElementById('ds-content-css')) {
+        const st = document.createElement('style');
+        st.id = 'ds-content-css';
+        st.textContent = D.contentCSS;
+        document.head.appendChild(st);
+      }
+      const html = D.renderBlocks(D.foundation, 1);
+      this.setState({ foundationHtml: html, foundationReady: true });
+    } else {
+      setTimeout(() => this._loadFoundation(), 60);
+    }
+  }
+
+  openFoundation() {
+    this.setState({ foundationOpen: true }, () => {
+      const el = document.getElementById('foundation-section');
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  }
+
+  toggleFoundation() {
+    this.setState(s => ({ foundationOpen: !s.foundationOpen }));
+  }
+
+  renderVals() {
+    const { foundationOpen, foundationHtml, foundationReady, openFaq } = this.state;
+
+    const categories = this.CATEGORIES.map(cat => ({
+      ...cat,
+      roles: cat.roles.map(r => ({
+        ...r,
+        href: 'role_detail.html?role=' + r.slug
+      }))
+    }));
+
+    const faqItems = this.FAQ_DATA.map((item, i) => ({
+      q: item.q,
+      a: item.a,
+      open: openFaq === i,
+      indicator: openFaq === i ? '−' : '+',
+      iconStyle: {
+        fontFamily: "'Space Mono', monospace", fontSize: '20px', fontWeight: '700',
+        color: openFaq === i ? 'var(--accent-strong)' : 'var(--text-dim)',
+        width: '28px', textAlign: 'center', flexShrink: 0, lineHeight: '1'
+      },
+      toggle: () => this.setState({ openFaq: openFaq === i ? -1 : i })
+    }));
+
+    return {
+      categories,
+      faqItems,
+      foundationOpen,
+      foundationLoading: !foundationReady,
+      foundationHtml: { __html: foundationHtml || '' },
+      foundationToggleLabel: foundationOpen ? 'Hide Foundation Module' : 'Read the Foundation Module',
+      chevronStyle: {
+        color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        flexShrink: 0,
+        transform: foundationOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+        transition: 'transform .25s'
+      },
+      openFoundation: () => this.openFoundation(),
+      toggleFoundation: () => this.toggleFoundation()
+    };
+  }
+}
+
+</script>
+</body>
+</html>

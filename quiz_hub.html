@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0}
+    body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+    *{box-sizing:border-box}
+  </style>
+  <script>
+  (function(){
+    var T={
+      dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+      light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+    };
+    var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+    for(var k in v)r.style.setProperty(k,v[k]);
+    r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+  })();
+  </script>
+  <script src="sitenav.js"></script>
+  <script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="quiz"></site-nav>
+
+  <!-- Hero -->
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(700px 360px at 15% 0%,#000,transparent 75%);mask-image:radial-gradient(700px 360px at 15% 0%,#000,transparent 75%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(48px,7vw,80px) 24px clamp(40px,5vw,56px)">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);background:var(--accent-soft);border:1px solid rgba(92,143,214,0.25);padding:6px 14px;border-radius:999px;margin-bottom:18px">
+        <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;display:block"></span>
+        SIA Door Supervisor
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,4.5vw,44px);letter-spacing:-.03em;margin:0 0 14px;line-height:1.08;color:var(--text)">Training Quizzes</h1>
+      <p style="font-size:clamp(15px,1.8vw,17px);line-height:1.7;color:var(--text-mut);margin:0;">Exam-style questions built from the training collection. Choose a module, pick a Learning Outcome, and test your knowledge — one question at a time, with explanations and veteran tips after every answer.</p>
+    </div>
+  </section>
+
+  <!-- Available modules -->
+  <section style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,60px) 24px 0">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(17px,2.2vw,20px);letter-spacing:-.015em;margin:0 0 20px;color:var(--text)">Available now</h2>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:48px">
+
+      <!-- Module 1 -->
+      <a href="quiz_module1.html" style="text-decoration:none;display:block;border:1px solid var(--border);border-radius:16px;background:var(--bg-soft);overflow:hidden;transition:border-color .18s,transform .18s;box-shadow:var(--shadow)" style-hover="border-color:var(--border-strong);transform:translateY(-2px)">
+        <div style="display:flex;gap:0;flex-wrap:wrap">
+          <!-- Left: header -->
+          <div style="flex:0 0 220px;padding:22px 20px 22px 24px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-width:200px">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
+                <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--accent-strong);background:var(--accent-soft);padding:4px 10px;border-radius:6px">MODULE 1</span>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim)">30 Qs &middot; 6 LOs</span>
+              </div>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text)">Principles of Working in the PSI</h3>
+              <p style="font-size:13px;line-height:1.5;color:var(--text-dim);margin:0">PWPSI</p>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;align-self:flex-start">Start quiz &#8594;</div>
+          </div>
+          <!-- Right: LO grid -->
+          <div style="flex:1;min-width:200px;padding:20px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;align-content:start;align-content:start">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 1 &mdash; The Industry, Its Regulator &amp; Its People</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 2 &mdash; Awareness of the Law</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 3 &mdash; Security Operations</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 4 &mdash; Safe Working Practices</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 5 &mdash; Fire Procedures in the Workplace</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 11 &mdash; Post-Incident Management</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Module 2 -->
+      <a href="quiz_module2.html" style="text-decoration:none;display:block;border:1px solid var(--border);border-radius:16px;background:var(--bg-soft);overflow:hidden;transition:border-color .18s,transform .18s;box-shadow:var(--shadow)" style-hover="border-color:var(--border-strong);transform:translateY(-2px)">
+        <div style="display:flex;gap:0;flex-wrap:wrap">
+          <div style="flex:0 0 220px;padding:22px 20px 22px 24px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-width:200px">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
+                <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--accent-strong);background:var(--accent-soft);padding:4px 10px;border-radius:6px">MODULE 2</span>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim)">35 Qs &middot; 7 LOs</span>
+              </div>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text)">Principles of Working as a Door Supervisor</h3>
+              <p style="font-size:13px;line-height:1.5;color:var(--text-dim);margin:0">PWDSPSI</p>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;align-self:flex-start">Start quiz &#8594;</div>
+          </div>
+          <div style="flex:1;min-width:200px;padding:20px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;align-content:start;align-content:start">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 1 &mdash; Violence, Weapons &amp; Property Crimes</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 2 &mdash; Conducting Effective Search Procedures</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 3 &mdash; Drug-Misuse Legislation &amp; Procedures</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 4 &mdash; Preservation of Evidence &amp; Incident Reporting</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 5 &mdash; Licensing Law Relevant to Door Supervisors</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 6 &mdash; Queue Management &amp; Venue Capacity</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 7 &mdash; Using Equipment Relevant to a Door Supervisor</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Module 3 -->
+      <a href="quiz_module3.html" style="text-decoration:none;display:block;border:1px solid var(--border);border-radius:16px;background:var(--bg-soft);overflow:hidden;transition:border-color .18s,transform .18s;box-shadow:var(--shadow)" style-hover="border-color:var(--border-strong);transform:translateY(-2px)">
+        <div style="display:flex;gap:0;flex-wrap:wrap">
+          <div style="flex:0 0 220px;padding:22px 20px 22px 24px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-width:200px">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
+                <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--accent-strong);background:var(--accent-soft);padding:4px 10px;border-radius:6px">MODULE 3</span>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim)">20 Qs &middot; 4 LOs</span>
+              </div>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text)">Application of Conflict Management in the PSI</h3>
+              <p style="font-size:13px;line-height:1.5;color:var(--text-dim);margin:0">ACMIPSI</p>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;align-self:flex-start">Start quiz &#8594;</div>
+          </div>
+          <div style="flex:1;min-width:200px;padding:20px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;align-content:start;align-content:start">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 1 &mdash; Principles of Conflict Management</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 2 &mdash; Recognising, Assessing and Reducing Risk</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 3 &mdash; Problem-Solving Techniques</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 4 &mdash; Communication to De-Escalate Conflict</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+      <!-- Module 4 -->
+      <a href="quiz_module4.html" style="text-decoration:none;display:block;border:1px solid var(--border);border-radius:16px;background:var(--bg-soft);overflow:hidden;transition:border-color .18s,transform .18s;box-shadow:var(--shadow)" style-hover="border-color:var(--border-strong);transform:translateY(-2px)">
+        <div style="display:flex;gap:0;flex-wrap:wrap">
+          <div style="flex:0 0 220px;padding:22px 20px 22px 24px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-width:200px">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
+                <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--accent-strong);background:var(--accent-soft);padding:4px 10px;border-radius:6px">MODULE 4</span>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim)">15 Qs &middot; 3 LOs</span>
+              </div>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px;color:var(--text)">Award for Physical Intervention Skills in the PSI</h3>
+              <p style="font-size:13px;line-height:1.5;color:var(--text-dim);margin:0">APISPSI</p>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--accent-soft);color:var(--accent-strong);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;align-self:flex-start">Start quiz &#8594;</div>
+          </div>
+          <div style="flex:1;min-width:200px;padding:20px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;align-content:start;align-content:start">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 1 &mdash; Legal Framework &amp; Professional Practice</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 2 &mdash; Risks Associated with Physical Intervention</div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-dim);line-height:1.4"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:5px"></span>LO 3 &mdash; Reducing the Risks of Physical Intervention</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="padding-bottom:80px"></div>
+
+  </section>
+
+  <site-footer></site-footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

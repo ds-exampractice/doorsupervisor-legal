@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;overflow-x:hidden}
+  body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+  ::selection{background:var(--accent-soft)}
+  .lc h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;color:var(--text);margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .lc h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;color:var(--text);margin:24px 0 10px}
+  .lc p{font-size:15.5px;line-height:1.75;color:var(--text-mut);margin:0 0 14px}
+  .lc ul{margin:0 0 16px;padding-left:22px}
+  .lc li{font-size:15px;line-height:1.7;color:var(--text-mut);margin-bottom:9px}
+  .lc a{color:var(--accent-strong);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent-strong) 35%,transparent)}
+  .lc strong{color:var(--text);font-weight:600}
+  .sec{margin-bottom:46px}
+</style>
+<script>
+(function(){
+  var T={
+    dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+    light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+  };
+  var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+  for(var k in v)r.style.setProperty(k,v[k]);
+  r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+})();
+</script>
+<script src="sitenav.js"></script>
+<script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="deletion"></site-nav>
+
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background:radial-gradient(620px 360px at 50% 0%,var(--accent-soft),transparent 72%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,92px) 24px;text-align:center">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--accent);margin:0 auto 24px;position:relative;box-shadow:0 16px 36px -14px var(--accent)">
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-58%,-62%) rotate(45deg);width:15px;height:28px;border-right:5px solid #fff;border-bottom:5px solid #fff;border-radius:2px"></span>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:16px">Request Received</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,4.6vw,48px);letter-spacing:-.025em;line-height:1.08;margin:0 0 14px;color:var(--text)">Request Submitted Successfully</h1>
+      <p style="font-size:17px;line-height:1.6;color:var(--text-mut);margin:0 auto;max-width:560px">Thank you for submitting your data deletion request. We have received it and will begin processing it immediately.</p>
+    </div>
+  </section>
+
+  <div class="lc" style="max-width:1200px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px">
+
+    <div class="sec">
+      <h2>What Happens Next</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px">
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:10px">Within 24 hours</div>
+          <h3 style="margin:0 0 6px">Email Confirmation</h3>
+          <p style="margin:0;font-size:14px">You'll receive a confirmation email at the address you provided.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:10px">Immediate</div>
+          <h3 style="margin:0 0 6px">Account Deactivation</h3>
+          <p style="margin:0;font-size:14px">Your account is now deactivated and you can no longer log in.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:10px">Within 72 hours</div>
+          <h3 style="margin:0 0 6px">Data Removal</h3>
+          <p style="margin:0;font-size:14px">Your personal data is removed from our active systems.</p>
+        </div>
+        <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:22px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:10px">Within 30 days</div>
+          <h3 style="margin:0 0 6px">Complete Deletion</h3>
+          <p style="margin:0;font-size:14px">All data, including backups, is permanently deleted.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Important Reminders</h2>
+      <div style="background:rgba(199,154,62,0.1);border:1px solid color-mix(in srgb,#c79a3e 30%,transparent);border-left:3px solid #c79a3e;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:16px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#c79a3e;margin-bottom:8px">Permanent Action</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--text)">This action is permanent and cannot be undone. Once your data is deleted, we cannot recover your account, study progress, or any other information.</p>
+      </div>
+      <ul>
+        <li>Your account is now deactivated</li>
+        <li>All study progress and performance data will be deleted</li>
+        <li>You will receive a final confirmation email when deletion is complete</li>
+        <li>If you want to use the app again in the future, you'll need to create a new account</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>Questions or Concerns?</h2>
+      <p>If you have any questions about the deletion process or submitted this request in error, please contact us immediately:</p>
+      <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:24px">
+        <p style="margin:0 0 6px"><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#dab3b4bcb59abeb5b5a8a9afaabfa8acb3a9b5a8bfa2bbb7f4b9b5f4afb1"><span class="__cf_email__" data-cfemail="5f363139301f3b30302d2c2a2f3a2d29362c302d3a273e32713c30712a34">[email&#160;protected]</span></a></p>
+        <p style="margin:0 0 6px"><strong>Subject:</strong> "Data Deletion Request — Urgent"</p>
+        <p style="margin:0"><strong>Note:</strong> Include the email address you used for the deletion request.</p>
+      </div>
+      <div style="background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--text-dim);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:14px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Time Sensitive</div>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-mut)">If you submitted this request by mistake, contact us within 24 hours. After that, the deletion process may be irreversible.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Thank You</h2>
+      <p>We're sorry to see you go, and we appreciate the time you spent using Door Supervisor Exam Practice. If you have feedback about why you're leaving, we'd love to hear it to help us improve for future users.</p>
+      <p>We wish you the very best of luck with your SIA Door Supervisor exam and career.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:8px">
+      <a href="index.html" style="display:inline-flex;align-items:center;background:var(--bg-elev);color:var(--text);text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;border:1px solid var(--border)" style-hover="border-color:var(--border-strong)">Return to Home</a>
+    </div>
+  </div>
+
+  <site-footer></site-footer>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0}
+    body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+    *{box-sizing:border-box}
+  </style>
+  <script>
+  (function(){
+    var T={
+      dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+      light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+    };
+    var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+    for(var k in v)r.style.setProperty(k,v[k]);
+    r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+  })();
+  </script>
+  <script src="sitenav.js"></script>
+  <script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="quiz"></site-nav>
+
+  <!-- Full-width hero -->
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(700px 360px at 15% 0%,#000,transparent 75%);mask-image:radial-gradient(700px 360px at 15% 0%,#000,transparent 75%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(36px,6vw,64px) 24px clamp(28px,4vw,48px)">
+      <a href="quiz_hub.html" style="display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--text-dim);text-decoration:none;margin-bottom:16px">&#8592; Training Quizzes</a>
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);background:var(--accent-soft);border:1px solid rgba(92,143,214,0.25);padding:6px 14px;border-radius:999px;margin-bottom:14px">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;display:block"></span>
+          Module 1 &middot; PWPSI
+        </div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,4.5vw,44px);letter-spacing:-.03em;margin:0 0 8px;line-height:1.08;color:var(--text)">Training Quizzes</h1>
+        <p style="font-size:clamp(14px,1.8vw,16px);color:var(--text-dim);margin:0;line-height:1.6">{{ pageSubtitle }}</p>
+      </div>
+    </div>
+  </section>
+
+  <main style="max-width:1100px;margin:0 auto;padding:clamp(28px,4vw,48px) 24px 96px">
+
+    <!-- ══ SELECT SCREEN ══ -->
+    <sc-if value="{{ isSelectScreen }}" hint-placeholder-val="{{ true }}">
+
+      <sc-if value="{{ hasProgress }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--border);margin-bottom:20px;flex-wrap:wrap">
+          <span style="font-size:14px;font-weight:500;color:var(--text-mut)">{{ progressText }}</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--accent-strong)">{{ totalScore }}<span style="font-size:13px;font-weight:500;color:var(--text-dim)">/30</span></span>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px">
+        <sc-for list="{{ loCards }}" as="card" hint-placeholder-count="6">
+          <div style="{{ card.cardStyle }}">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px">
+              <span style="{{ card.badgeStyle }}">{{ card.label }}</span>
+              <sc-if value="{{ card.hasScore }}" hint-placeholder-val="{{ false }}">
+                <span style="{{ card.scoreStyle }}">{{ card.scoreText }}</span>
+              </sc-if>
+            </div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;line-height:1.35;color:var(--text);margin-bottom:4px">{{ card.fullTitle }}</div>
+            <div style="font-size:12px;color:var(--text-dim);margin-bottom:auto;padding-bottom:16px">5 questions</div>
+            <button style="{{ card.btnStyle }}" onClick="{{ card.startHandler }}">{{ card.btnLabel }}</button>
+          </div>
+        </sc-for>
+      </div>
+
+    </sc-if>
+
+    <!-- ══ QUIZ SCREEN ══ -->
+    <sc-if value="{{ isQuizScreen }}" hint-placeholder-val="{{ false }}">
+
+      <!-- Back + counter -->
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px">
+        <button onClick="{{ backToSelect }}" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--bg-elev);border:1px solid var(--border);border-radius:8px;color:var(--text-mut);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;cursor:pointer">&#8592; All Quizzes</button>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:.04em">Q{{ qNum }} of 5</span>
+      </div>
+
+      <!-- LO context bar -->
+      <div style="padding:13px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--border);margin-bottom:18px">
+        <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px">{{ activeLoLabel }}</div>
+        <div style="font-size:14px;font-weight:600;color:var(--text)">{{ activeLoFullTitle }}</div>
+      </div>
+
+      <!-- Progress dots -->
+      <div style="display:flex;align-items:center;margin-bottom:22px">
+        <sc-for list="{{ qDots }}" as="dot" hint-placeholder-count="5">
+          <div style="{{ dot.wrapperStyle }}">
+            <div style="{{ dot.circleStyle }}"><span style="{{ dot.numStyle }}">{{ dot.num }}</span></div>
+            <sc-if value="{{ dot.notLast }}" hint-placeholder-val="{{ true }}">
+              <div style="{{ dot.lineStyle }}"></div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- Question card -->
+      <div style="border:1px solid var(--border);border-radius:16px;background:var(--bg-soft);overflow:hidden;box-shadow:var(--shadow)">
+
+        <!-- Badges row -->
+        <div style="padding:14px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+          <span style="background:var(--accent-soft);color:var(--accent-strong);padding:3px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em">{{ activeSection }}</span>
+          <sc-if value="{{ isFoundational }}" hint-placeholder-val="{{ true }}">
+            <span style="background:rgba(100,116,139,0.12);color:var(--text-dim);padding:3px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em">FOUNDATIONAL</span>
+          </sc-if>
+          <sc-if value="{{ isScenario }}" hint-placeholder-val="{{ false }}">
+            <span style="background:rgba(168,85,247,0.12);color:#a855f7;padding:3px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em">SCENARIO</span>
+          </sc-if>
+        </div>
+
+        <!-- Topic + context -->
+        <div style="padding:18px 22px;border-bottom:1px solid var(--border);background:var(--panel)">
+          <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px">Topic</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text-mut)">{{ activeTopic }}</div>
+          <sc-if value="{{ isScenario }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px;padding:14px 16px;background:rgba(92,143,214,0.06);border:1px solid rgba(92,143,214,0.18);border-left:3px solid var(--accent);border-radius:10px">
+              <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:7px">&#128205; Scenario</div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-mut)">{{ activeContext }}</p>
+            </div>
+          </sc-if>
+        </div>
+
+        <!-- Question text -->
+        <div style="padding:22px 22px 18px">
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,2.5vw,19px);font-weight:600;line-height:1.45;color:var(--text)">{{ activeQuestion }}</p>
+        </div>
+
+        <!-- Answer options -->
+        <div style="padding:0 22px 22px;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ options }}" as="opt" hint-placeholder-count="3">
+            <button style="{{ opt.btnStyle }}" onClick="{{ opt.handler }}">
+              <span style="{{ opt.labelStyle }}">{{ opt.label }}</span>
+              <span>{{ opt.prefix }}{{ opt.text }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <!-- Feedback -->
+        <sc-if value="{{ isRevealed }}" hint-placeholder-val="{{ false }}">
+          <div style="margin:0 22px 22px;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <div style="{{ feedbackBannerStyle }}">
+              <div style="{{ feedbackIconStyle }}">{{ feedbackIconText }}</div>
+              <div style="flex:1;min-width:0">
+                <div style="{{ feedbackTitleStyle }}">{{ feedbackTitle }}</div>
+                <div style="font-size:13px;line-height:1.5;margin-top:3px;opacity:.88">{{ feedbackSubtitle }}</div>
+              </div>
+            </div>
+            <div style="padding:16px 20px;background:var(--bg-elev);border-top:1px solid var(--border)">
+              <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Why this is right</div>
+              <p style="margin:0;font-size:14px;line-height:1.7;color:var(--text-mut)">{{ activeExplanation }}</p>
+            </div>
+            <div style="padding:13px 20px;background:var(--accent-soft);border-top:1px solid rgba(92,143,214,0.18)">
+              <p style="margin:0;font-size:14px;line-height:1.55;color:var(--text)"><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--accent-strong)">&#128161; VETERAN TIP &nbsp;</span>{{ activeTip }}</p>
+            </div>
+          </div>
+          <div style="padding:0 22px 26px">
+            <button style="{{ nextBtnStyle }}" onClick="{{ nextHandler }}">{{ nextBtnLabel }}</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </sc-if>
+
+    <!-- ══ RESULT SCREEN ══ -->
+    <sc-if value="{{ isResultScreen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:24px 0 12px;text-align:center">
+
+        <div style="{{ scoreRingStyle }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1;color:var(--text)">{{ activeScore }}</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-top:5px">out of 5</div>
+        </div>
+
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(20px,3.5vw,26px);font-weight:600;letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">{{ resultHeading }}</h2>
+        <p style="font-size:15px;color:var(--text-dim);margin:0 0 32px;max-width:360px;line-height:1.6">{{ resultSubheading }}</p>
+
+        <div style="width:100%;text-align:left;display:flex;flex-direction:column;gap:8px;margin-bottom:28px">
+          <sc-for list="{{ resultRows }}" as="r" hint-placeholder-count="5">
+            <div style="{{ r.rowStyle }}">
+              <div style="{{ r.iconStyle }}">{{ r.icon }}</div>
+              <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);flex:none">Q{{ r.num }}</span>
+              <span style="font-size:13px;font-weight:500;color:var(--text-mut);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.topic }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <button onClick="{{ retryHandler }}" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;background:var(--accent);color:#fff;border:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer">&#8635; Retry this LO</button>
+          <button onClick="{{ backToSelectFromResult }}" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;background:var(--bg-elev);color:var(--text);border:1px solid var(--border-strong);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer">&#8592; All Quizzes</button>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+  <site-footer></site-footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+
+  LO_DATA = [
+    {
+      label: 'LO 1', shortTitle: 'Industry & People',
+      fullTitle: 'The Industry, Its Regulator & Its People',
+      questions: [
+        { section: '1A', type: 'FOUNDATIONAL', topic: 'SIA Authority and Purpose', context: null,
+          question: "What is the SIA's primary mission?",
+          options: ['Set national training standards for security courses', 'Protect the public through licensing and regulation', 'Investigate complaints about security companies'],
+          correct: 1,
+          explanation: "The SIA's mission is to protect the public by regulating the private security industry through individual and company licensing. It removes criminality, raises standards, recognises quality, and monitors the industry on an ongoing basis.",
+          tip: 'SIA exists to protect the public FROM bad security. Be good security.' },
+        { section: '1A', type: 'FOUNDATIONAL', topic: 'Fit and Proper Person', context: null,
+          question: "When does 'fit and proper person' status apply to an SIA licensee?",
+          options: ['At all times — on and off duty, including personal conduct', 'During all working hours and while on any licensed premises', 'Only when in uniform or actively carrying out licensed duties'],
+          correct: 0,
+          explanation: 'Fit and proper status applies continuously — not just on shift. Off-duty arrests, cautions, or convictions must be reported to the SIA. Failure to disclose is a licence breach, often treated more seriously than the incident itself.',
+          tip: 'Your badge never clocks off. One off-duty arrest can end your career.' },
+        { section: '1A', type: 'SCENARIO', topic: 'Working Without a Licence',
+          context: 'Your SIA application was submitted three weeks ago and you hold a confirmation email. A security company now offers you a shift tonight at a shopping centre.',
+          question: 'Can you legally accept the shift?',
+          options: ['Yes — the application receipt serves as temporary authorisation', 'Yes — the employer assumes liability during the processing period', 'No — a valid licence must be held before any shift begins'],
+          correct: 2,
+          explanation: 'An application acknowledgement is not a licence. The Private Security Industry Act 2001 requires a valid SIA licence before any shift begins. Working without one is a criminal offence regardless of any pending application or employer assurances.',
+          tip: 'Application receipt means nothing on shift. No badge, no start.' },
+        { section: '1B', type: 'FOUNDATIONAL', topic: 'CCTV — Prohibited Areas', context: null,
+          question: 'Where must CCTV never be installed regardless of circumstances?',
+          options: ['In areas where people may be in a state of undress', 'In areas where high-value goods are stored temporarily', 'In staff-only areas where the public never have access'],
+          correct: 0,
+          explanation: 'CCTV must never be installed where people are likely to be in a state of undress — such as toilet cubicles or changing rooms. No security justification overrides this prohibition. Installing cameras in such areas is illegal and constitutes a serious criminal privacy violation.',
+          tip: 'Toilets and changing rooms. Absolute prohibition. No exceptions, ever.' },
+        { section: '1B', type: 'SCENARIO', topic: 'CCTV — Misuse',
+          context: 'Working in the security control room, you notice a colleague repeatedly zooming in and following a specific female customer around the venue on CCTV, with no apparent security justification.',
+          question: 'What is your professional and legal duty?',
+          options: ['Warn your colleague informally and monitor the situation', 'Ignore it — personal camera use is a disciplinary matter only', 'Report it to your supervisor immediately as CCTV misuse'],
+          correct: 2,
+          explanation: 'Using CCTV to monitor individuals for personal or unauthorised reasons is misuse of equipment and is illegal in many cases. It constitutes a data protection breach and a serious conduct violation. Report it immediately. Staying silent makes you complicit.',
+          tip: 'Unauthorised monitoring is illegal. You saw it — that means you must report it.' }
+      ]
+    },
+    {
+      label: 'LO 2', shortTitle: 'The Law',
+      fullTitle: 'Awareness of the Law',
+      questions: [
+        { section: '2A', type: 'FOUNDATIONAL', topic: 'Criminal Law — Standard of Proof', context: null,
+          question: 'What standard of proof do criminal courts require?',
+          options: ['Balance of probabilities — more likely than not', 'Beyond reasonable doubt in all criminal cases', 'Proof on the balance of probabilities, as in all UK courts'],
+          correct: 1,
+          explanation: 'Criminal courts require proof beyond reasonable doubt because liberty is at stake. Civil courts apply the lower standard of balance of probabilities, reflecting the different consequences of each verdict.',
+          tip: 'Criminal = near certainty required. One genuine doubt and the case fails.' },
+        { section: '2B', type: 'SCENARIO', topic: 'REACT — Application',
+          context: 'A customer at a licensed bar becomes verbally abusive and refuses to leave when asked.',
+          question: 'Can you physically remove them without completing REACT steps?',
+          options: ['Yes — aggression justifies skipping to immediate removal', 'Yes, if you announce clearly that you are ejecting them', 'No — REACT must be followed; force is always a last resort'],
+          correct: 2,
+          explanation: 'REACT applies when someone refuses to leave but has not used physical force against you. You must complete all steps before physical removal. Skipping straight to force risks constituting assault, regardless of verbal aggression.',
+          tip: 'Patience saves lawsuits. Complete REACT and let CCTV prove you followed the process.' },
+        { section: '2C', type: 'FOUNDATIONAL', topic: 'Private Security Industry Act 2001 — Purpose', context: null,
+          question: 'What was the main purpose of the Private Security Industry Act 2001?',
+          options: ['To regulate the security industry and raise standards', 'To establish a national framework for security training qualifications', 'To give security operatives expanded powers of arrest'],
+          correct: 0,
+          explanation: 'The Private Security Industry Act 2001 was created specifically to regulate the UK security industry and raise standards of both individuals and companies. Its core aim was to increase public confidence and public safety.',
+          tip: 'The Act professionalised security. Before it, anyone could call themselves a door supervisor.' },
+        { section: '2D', type: 'FOUNDATIONAL', topic: 'Equality Act 2010 — Purpose', context: null,
+          question: 'What was the main purpose of the Equality Act 2010?',
+          options: ['A legal framework to protect rights and advance equality for all', 'To replace criminal law covering hate crimes with civil remedies', 'To set out criminal penalties for acts of discrimination at work'],
+          correct: 0,
+          explanation: 'The Equality Act 2010 provides a legislative framework protecting the rights of individuals and advancing equality and opportunity for all. It consolidated nine separate pieces of discrimination legislation into a single statute.',
+          tip: 'The Act simplified nine separate discrimination laws into one clear statute.' },
+        { section: '2E', type: 'SCENARIO', topic: 'Personal Data — Social Media',
+          context: "You post on your personal social media account describing a banned customer's appearance and the venue where they were banned.",
+          question: 'Does UK GDPR apply to this post?',
+          options: ['Yes — a description with venue location identifies an individual', 'No — it is a personal account and you are not currently on shift', 'Only if you directly named the individual in the post itself'],
+          correct: 0,
+          explanation: 'UK GDPR requires appropriate protection for all personal data. A description of a person combined with venue location is sufficient to identify them. Off-duty status and posting on a personal account provide no exemption from this obligation.',
+          tip: 'Description + location = personal data. Off-duty status means nothing under GDPR.' }
+      ]
+    },
+    {
+      label: 'LO 3', shortTitle: 'Security Ops',
+      fullTitle: 'Security Operations',
+      questions: [
+        { section: '3A', type: 'FOUNDATIONAL', topic: 'Run Hide Tell — Overview', context: null,
+          question: 'What is the official UK guidance for responding to an active weapon attack?',
+          options: ['Run if safe, Hide if escape fails, Tell police when safe', 'Drop, Cover and Hold — stay still until police confirm clear', 'Stay, Protect and Respond — evacuate only on police order'],
+          correct: 0,
+          explanation: 'Run Hide Tell is the official UK Counter Terrorism Policing guidance. Run if an escape route exists. Hide and barricade if running is impossible. Tell police with precise details once safe. That sequence saves lives.',
+          tip: 'Run. Hide. Tell. That order, every time, with no exceptions whatsoever.' },
+        { section: '3A', type: 'FOUNDATIONAL', topic: 'Suspicious Behaviour — Behaviour Not Appearance', context: null,
+          question: 'What is the fundamental principle of suspicious behaviour recognition?',
+          options: ['Appearance and behaviour together reveal the most reliable threats', 'Prior criminal history makes someone more suspicious at any venue', 'Suspicion is behaviour-based — never on appearance or identity'],
+          correct: 2,
+          explanation: 'Suspicion is behaviour-based. Race, religion, ethnicity, nationality, and dress are never valid grounds. Professional judgement determines whether behaviour is unusual or benign. Appearance-based profiling is unlawful and operationally ineffective.',
+          tip: 'Behaviour reveals intent. Appearance never does. This principle also protects you legally.' },
+        { section: '3A', type: 'SCENARIO', topic: 'Suspicious Item — HOT Assessment',
+          context: 'You are on patrol and assess an unattended item against HOT criteria — all three indicators are met.',
+          question: 'What is the correct immediate response?',
+          options: ['Carefully move it to a secure area outside pedestrian zones', 'Do not touch it — move people away and inform the control room', 'Photograph it for evidence, tape it off, and monitor from a distance'],
+          correct: 1,
+          explanation: 'Do not touch the suspicious item. Move people away immediately. Inform the control room and follow lockdown or evacuation procedures. Call emergency services when appropriate. Touching a suspected device can trigger detonation — distance is your only protection.',
+          tip: 'Never touch it. Distance is your protection. Control room first, then emergency services.' },
+        { section: '3B', type: 'FOUNDATIONAL', topic: 'Initial Actions — First Priority', context: null,
+          question: 'What is your absolute first priority when any security incident begins?',
+          options: ['Preserving the scene and evidence before anyone can disturb it', 'Alert your supervisor immediately so they can coordinate the response', 'Protecting life — your own and the lives of everyone around you'],
+          correct: 2,
+          explanation: 'Your first priority during any security incident is protecting life — your own and others. Evidence, property, and reports are all secondary. Stay calm, assess, raise the alarm, and prevent people entering danger areas.',
+          tip: 'Life first. Everything else is secondary. Never, ever lose sight of that one priority.' },
+        { section: '3B', type: 'SCENARIO', topic: 'Vehicle as a Weapon — Crowd Response',
+          context: 'A van accelerates from 80 metres directly toward a dense crowd at the entrance of an outdoor event in a pedestrian zone.',
+          question: 'What is your most effective immediate response to protect the crowd?',
+          options: ['Create a barrier with venue equipment to channel the van away', 'Call 999 immediately before taking any other action at the scene', 'Shout to scatter the crowd — dispersed people are harder targets'],
+          correct: 2,
+          explanation: "A dense crowd maximises a VAW attack's effectiveness. Your immediate task is to destroy that density. Shout clearly in all directions: 'Scatter! Vehicle! Run!' Dispersed individuals are harder to hit. Physical obstruction of a vehicle at speed achieves nothing.",
+          tip: 'Dense crowd makes the weapon work. Scatter them immediately and you reduce casualties.' }
+      ]
+    },
+    {
+      label: 'LO 4', shortTitle: 'Safe Working',
+      fullTitle: 'Safe Working Practices',
+      questions: [
+        { section: '4A', type: 'FOUNDATIONAL', topic: 'HASAWA 1974 — Maximum Penalties', context: null,
+          question: 'What is the maximum penalty for a serious breach of health and safety legislation?',
+          options: ['A written warning and a fixed fine capped at five thousand pounds', 'A formal improvement plan — no criminal liability at all', 'Up to two years in prison and/or unlimited financial fines'],
+          correct: 2,
+          explanation: "Serious health and safety breaches can result in up to two years' imprisonment and unlimited fines. Businesses can also be closed entirely. These penalties reflect that safety failures can permanently injure or kill people.",
+          tip: 'Two years prison and unlimited fines — safety is never optional.' },
+        { section: '4A', type: 'FOUNDATIONAL', topic: 'Risk Assessment — Five Steps in Order', context: null,
+          question: 'What is the correct order of the five steps of a risk assessment?',
+          options: ['Record first, then evaluate, identify, control, and review later', 'Evaluate, identify hazards, who is harmed, control, then record', 'Identify hazards, who may be harmed, evaluate, record, review'],
+          correct: 2,
+          explanation: 'The five steps are: identify hazards; identify who may be harmed; evaluate and introduce controls; record and implement; review and update. Each step must follow the previous — the sequence is mandatory.',
+          tip: 'Five steps in order — missing or reversing any one means the assessment fails.' },
+        { section: '4A', type: 'FOUNDATIONAL', topic: 'Hierarchy of Control — Correct Order', context: null,
+          question: 'Arrange the hierarchy of control from most to least effective.',
+          options: ['PPE, training, safe system, isolate, substitute, then eliminate', 'Training, safe system, PPE, substitute, isolate, then eliminate', 'Eliminate, substitute, isolate, safe system, training, then PPE'],
+          correct: 2,
+          explanation: 'The hierarchy asks: can the hazard be eliminated, substituted, or isolated? Would a safe system, training, or PPE help? Elimination is most effective — it removes the hazard for everyone. PPE only protects the wearer and can fail.',
+          tip: 'Eliminate first, protect people last — PPE is the last resort not the first answer.' },
+        { section: '4B', type: 'SCENARIO', topic: 'RIDDOR — Legal Duty Cannot Be Overridden',
+          context: 'A confirmed wrist fracture has occurred on site and the manager is instructing the responsible person not to report it to HSE to protect the contract.',
+          question: 'What is the correct professional action when a manager instructs you not to report?',
+          options: ['Defer to management — they hold overall site responsibility', 'Report it — RIDDOR is a legal duty management cannot override', 'Wait to see if the worker takes seven or more days off first'],
+          correct: 1,
+          explanation: 'RIDDOR 2013 creates a legal duty that management cannot override. A confirmed fracture is a Specified Injury requiring same-day reporting. Following an instruction not to report constitutes a RIDDOR breach by every person complicit, regardless of who gave the order.',
+          tip: 'RIDDOR is a legal duty — no management instruction can ever override the law.' },
+        { section: '4B', type: 'SCENARIO', topic: 'Accident Book — GDPR and Secure Storage',
+          context: 'The accident book has been left open on the reception counter all shift, giving visitors, contractors, and staff unrestricted access to every entry.',
+          question: 'Why is this a serious breach requiring immediate corrective action?',
+          options: ['Open access risks false or exaggerated claims being added later', 'Accident books contain sensitive personal data protected by GDPR', 'Leaving it accessible slows down legitimate access for authorised staff'],
+          correct: 1,
+          explanation: 'Accident books contain sensitive medical and personal data explicitly protected under GDPR. Leaving the book accessible to unauthorised people constitutes a data breach with serious legal consequences for the employer and every person whose information is exposed.',
+          tip: 'Accident book contains medical data — GDPR demands locked and secure storage.' }
+      ]
+    },
+    {
+      label: 'LO 5', shortTitle: 'Fire Safety',
+      fullTitle: 'Fire Procedures in the Workplace',
+      questions: [
+        { section: '5A', type: 'FOUNDATIONAL', topic: 'The Fire Triangle', context: null,
+          question: 'What three elements must be present simultaneously for fire to exist?',
+          options: ['Heat, fuel, and oxygen present', 'Fuel, oxygen, and water vapour', 'Heat, smoke, and carbon dioxide'],
+          correct: 0,
+          explanation: 'Fire needs three elements — heat, fuel, and oxygen — all present at the same time. Remove any one and the fire triangle breaks. Every extinguishing method works by eliminating at least one of these three elements.',
+          tip: 'Heat plus fuel plus oxygen equals fire. Remove any one element and it dies.' },
+        { section: '5A', type: 'FOUNDATIONAL', topic: 'Electrical Fires — Classification', context: null,
+          question: 'What is the correct classification for fires involving live electrical equipment?',
+          options: ['No class letter — fires involving electricity have no class', 'Class E — a designated electrical fire class in the UK system', 'Class C — electricity flows like pressured gas'],
+          correct: 0,
+          explanation: 'Fires involving electricity have no class letter in the UK system. CO2 is safe on live electrical equipment because it is non-conductive. Once power is isolated, the underlying fire class of the burning material can then be identified and addressed.',
+          tip: 'No Class E exists. Electrical fires: use CO2 on live equipment. Isolate power first if safe.' },
+        { section: '5B', type: 'FOUNDATIONAL', topic: 'FIRE Protocol — Full Acronym', context: null,
+          question: 'What does the FIRE acronym stand for in fire emergency response?',
+          options: ['Fight, Isolate, Run, Exit the building', 'Find, Inform, Restrict, Evacuate or Extinguish', 'Fire location, Report to supervisor, Escape route'],
+          correct: 1,
+          explanation: 'FIRE is the systematic response protocol — Find the fire, Inform by raising the alarm, Restrict access to the area, then Evacuate or Extinguish if safe. Following this sequence ensures no critical step is missed under pressure.',
+          tip: 'Find it. Inform via alarm. Restrict access. Evacuate — or extinguish only if safe.' },
+        { section: '5B', type: 'SCENARIO', topic: 'Evacuation — No Belongings',
+          context: 'During a nightclub evacuation, customers are queuing at the cloakroom attempting to retrieve coats and mobile phones.',
+          question: 'What must you do?',
+          options: ['Allow quick retrieval of small valuables and redirect from coats', 'Help customers find belongings quickly to cut the delay', 'Direct everyone out immediately; no belongings during evacuation'],
+          correct: 2,
+          explanation: 'During a fire evacuation, everyone must leave immediately without any belongings. Stopping for property causes crowd congestion, blocks evacuation routes, and results in preventable deaths. Lives are infinitely more valuable than property.',
+          tip: 'Lives over property. No belongings. Direct everyone out immediately every single time.' },
+        { section: '5B', type: 'SCENARIO', topic: 'Manual Call Point — Immediate Action',
+          context: 'In a multi-floor office, smoke is detected coming from a first-floor storeroom but no fire alarm has yet sounded.',
+          question: 'What is the immediate correct action?',
+          options: ['Operate the nearest manual call point immediately', 'Call 999 first; await fire brigade guidance before raising the alarm', 'Search the storeroom to confirm a fire before raising the alarm'],
+          correct: 0,
+          explanation: 'On discovering a possible fire, operate the nearest manual call point immediately. Raising the alarm first protects everyone in the building. Typical follow-up actions are calling 999, evacuating the area, and restricting access — but warning others is always the first priority.',
+          tip: 'Manual call point first. Pull it the moment smoke is detected. Call 999. Then investigate safely.' }
+      ]
+    },
+    {
+      label: 'LO 11', shortTitle: 'Post-Incident',
+      fullTitle: 'Post-Incident Management',
+      questions: [
+        { section: '11A', type: 'FOUNDATIONAL', topic: 'Three Categories of Trauma Symptoms', context: null,
+          question: 'What are the three categories of trauma symptoms after workplace violence?',
+          options: ['Short-term, medium-term, and long-term categories', 'Medical, psychological, and occupational categories', 'Physical, emotional, and behavioural categories'],
+          correct: 2,
+          explanation: 'Trauma symptoms fall into three categories: physical (sickness, insomnia), emotional (anxiety, fear, depression), and behavioural (withdrawal, intolerance). PTSD is the most serious outcome. Identifying the category determines the most appropriate support.',
+          tip: 'Trauma hits body, feelings, and behaviour. Watch all three simultaneously.' },
+        { section: '11A', type: 'FOUNDATIONAL', topic: 'PTSD — What It Is', context: null,
+          question: 'What is Post-Traumatic Stress Disorder (PTSD)?',
+          options: ['A serious condition following exposure to traumatic events', 'Brief tiredness lasting a few days after a difficult shift', 'Normal workplace stress that clears with a weekend off'],
+          correct: 0,
+          explanation: 'PTSD is a serious condition that can develop following traumatic events, including workplace violence. It goes well beyond tiredness or short-term stress and can persist for months or years without professional intervention.',
+          tip: 'PTSD is a serious condition, not an excuse. It needs professional treatment.' },
+        { section: '11A', type: 'SCENARIO', topic: 'Behavioural Trauma — Intolerance',
+          context: 'An operative who was previously calm and professional now snaps at customers and argues with teammates daily.',
+          question: 'What trauma symptom does this behaviour represent?',
+          options: ['Physical exhaustion from working too many consecutive shifts', 'A poor attitude requiring formal disciplinary action', 'Intolerance — a recognised behavioural trauma symptom'],
+          correct: 2,
+          explanation: 'Intolerance is a recognised behavioural trauma symptom. A previously patient operative becoming irritable and argumentative shows a behavioural change consistent with trauma, not a character flaw. They need a supportive conversation, not a disciplinary warning.',
+          tip: 'Patient person turns snappy after an incident. That is trauma talking, not character.' },
+        { section: '11B', type: 'FOUNDATIONAL', topic: 'Purpose of Debriefing', context: null,
+          question: 'What is the primary purpose of debriefing after a security incident?',
+          options: ['To learn from what happened and improve responses', 'To identify which team member is responsible for the error', 'To complete insurance and legal paperwork accurately'],
+          correct: 0,
+          explanation: 'Debriefing exists to understand what happened and improve future responses — it is a learning process, not a blame exercise. Effective debriefs produce better procedures and reduce incident rates. Assigning blame shuts down honest discussion and defeats the purpose entirely.',
+          tip: 'Debrief is a learning session. Not a trial. Leave blame at the door.' },
+        { section: '11B', type: 'SCENARIO', topic: 'Blame Culture in Debriefing',
+          context: 'During a post-incident debrief, the manager opens with "Right — whose fault was this?" and the whole team falls silent, sharing nothing.',
+          question: 'What has gone wrong with this debrief?',
+          options: ['The team is being unprofessional — open discussion is required', 'A blame-focused opening prevents honest, useful sharing', 'This is normal debrief practice — discipline must follow incidents'],
+          correct: 1,
+          explanation: 'Debriefing exists to learn and improve, not to punish. When people fear consequences they protect themselves, hiding information and sharing nothing useful. A blame-focused debrief produces silence and an incomplete picture. Effective learning requires psychological safety.',
+          tip: 'Blame culture means people hide the truth. No truth means no learning.' }
+      ]
+    }
+  ];
+
+  state = {
+    screen: 'select',
+    activeLo: 0,
+    qIdx: 0,
+    answers: Array(6).fill(null).map(() => Array(5).fill(null)),
+    revealed: Array(6).fill(null).map(() => Array(5).fill(false))
+  };
+
+  startLo(idx) {
+    this.setState({ screen: 'quiz', activeLo: idx, qIdx: 0 });
+  }
+
+  retryLo(idx) {
+    const answers = this.state.answers.map(a => [...a]);
+    const revealed = this.state.revealed.map(r => [...r]);
+    answers[idx] = Array(5).fill(null);
+    revealed[idx] = Array(5).fill(false);
+    this.setState({ screen: 'quiz', activeLo: idx, qIdx: 0, answers, revealed });
+  }
+
+  select(optIdx) {
+    const { activeLo, qIdx, revealed } = this.state;
+    if (revealed[activeLo][qIdx]) return;
+    const answers = this.state.answers.map(a => [...a]);
+    const rev = this.state.revealed.map(r => [...r]);
+    answers[activeLo][qIdx] = optIdx;
+    rev[activeLo][qIdx] = true;
+    this.setState({ answers, revealed: rev });
+  }
+
+  goNext() {
+    const { activeLo, qIdx } = this.state;
+    if (qIdx < 4) { this.setState({ qIdx: qIdx + 1 }); }
+    else { this.setState({ screen: 'result' }); }
+  }
+
+  renderVals() {
+    const { screen, activeLo, qIdx, answers, revealed } = this.state;
+    const GREEN = '#22c55e';
+    const RED = '#ef4444';
+    const LABELS = ['A', 'B', 'C'];
+
+    const loScores = this.LO_DATA.map((lo, li) =>
+      lo.questions.reduce((s, qq, qi) => s + (answers[li][qi] === qq.correct ? 1 : 0), 0));
+    const losDone = this.LO_DATA.map((_, li) => revealed[li].every(r => r));
+    const completedCount = losDone.filter(Boolean).length;
+    const totalScore = loScores.reduce((a, b) => a + b, 0);
+
+    let pageSubtitle;
+    if (screen === 'select') pageSubtitle = 'Module 1 \u00b7 ' + (completedCount > 0 ? completedCount + ' of 6 completed' : '6 Learning Outcomes');
+    else if (screen === 'quiz') pageSubtitle = this.LO_DATA[activeLo].label + ' \u00b7 Q' + (qIdx + 1) + ' of 5';
+    else pageSubtitle = this.LO_DATA[activeLo].label + ' \u00b7 Results';
+
+    // ── LO selection cards ──
+    const loCards = this.LO_DATA.map((lo, li) => {
+      const isDone = losDone[li];
+      const hasStarted = revealed[li].some(r => r);
+      const score = loScores[li];
+      const pct = score / 5;
+      let cardBg, cardBorder, badgeColor, badgeBg, scoreCol;
+      if (isDone) {
+        if (pct >= 0.8) { cardBg = 'rgba(34,197,94,0.07)'; cardBorder = 'rgba(34,197,94,0.3)'; badgeColor = GREEN; badgeBg = 'rgba(34,197,94,0.15)'; scoreCol = GREEN; }
+        else if (pct >= 0.6) { cardBg = 'var(--accent-soft)'; cardBorder = 'rgba(92,143,214,0.35)'; badgeColor = 'var(--accent-strong)'; badgeBg = 'var(--accent-soft)'; scoreCol = 'var(--accent-strong)'; }
+        else { cardBg = 'rgba(239,68,68,0.07)'; cardBorder = 'rgba(239,68,68,0.28)'; badgeColor = RED; badgeBg = 'rgba(239,68,68,0.15)'; scoreCol = RED; }
+      } else if (hasStarted) {
+        cardBg = 'var(--bg-soft)'; cardBorder = 'var(--border-strong)'; badgeColor = 'var(--accent-strong)'; badgeBg = 'var(--accent-soft)'; scoreCol = 'var(--text-dim)';
+      } else {
+        cardBg = 'var(--bg-soft)'; cardBorder = 'var(--border)'; badgeColor = 'var(--accent-strong)'; badgeBg = 'var(--accent-soft)'; scoreCol = 'var(--text-dim)';
+      }
+      return {
+        label: lo.label, fullTitle: lo.fullTitle,
+        isDone, hasScore: isDone,
+        scoreText: score + '/5',
+        cardStyle: { padding: '20px', borderRadius: '14px', background: cardBg, border: '1px solid ' + cardBorder, display: 'flex', flexDirection: 'column', height: '200px', overflow: 'hidden', transition: 'border-color .18s', width: '280px', flexShrink: 0 },
+        badgeStyle: { fontFamily: "'Space Mono', monospace", fontSize: '10px', fontWeight: '700', letterSpacing: '.12em', color: badgeColor, background: badgeBg, padding: '4px 10px', borderRadius: '6px', flexShrink: 0 },
+        scoreStyle: { fontFamily: "'Space Grotesk', sans-serif", fontSize: '20px', fontWeight: '700', color: scoreCol, letterSpacing: '-.01em' },
+        btnStyle: { marginTop: '16px', padding: '10px 16px', borderRadius: '8px', background: isDone ? 'var(--bg-elev)' : 'var(--accent)', color: isDone ? 'var(--text)' : '#fff', border: isDone ? '1px solid var(--border-strong)' : 'none', fontFamily: "'Space Grotesk', sans-serif", fontWeight: '600', fontSize: '13.5px', cursor: 'pointer', letterSpacing: '.01em', alignSelf: 'flex-start' },
+        btnLabel: isDone ? '\u21ba Retry' : hasStarted ? 'Continue \u2192' : 'Start \u2192',
+        startHandler: isDone ? () => this.retryLo(li) : () => this.startLo(li)
+      };
+    });
+
+    // ── Active LO question data ──
+    const lo = this.LO_DATA[activeLo];
+    const q = lo.questions[qIdx];
+    const isRevealed = revealed[activeLo][qIdx];
+    const selectedAnswer = answers[activeLo][qIdx];
+    const userCorrect = selectedAnswer === q.correct;
+
+    const qDots = Array(5).fill(null).map((_, i) => {
+      const isAnswered = revealed[activeLo][i];
+      const wasCorrect = isAnswered && answers[activeLo][i] === lo.questions[i].correct;
+      const isCurrent = i === qIdx;
+      let circleBg, circleBorder, numColor;
+      if (isCurrent) { circleBg = 'var(--accent)'; circleBorder = 'var(--accent)'; numColor = '#ffffff'; }
+      else if (isAnswered && wasCorrect) { circleBg = 'rgba(34,197,94,0.15)'; circleBorder = GREEN; numColor = GREEN; }
+      else if (isAnswered) { circleBg = 'rgba(239,68,68,0.13)'; circleBorder = RED; numColor = RED; }
+      else { circleBg = 'transparent'; circleBorder = 'var(--border-strong)'; numColor = 'var(--text-dim)'; }
+      return {
+        num: i + 1, notLast: i < 4,
+        wrapperStyle: { display: 'flex', alignItems: 'center', flex: i < 4 ? '1 1 0' : '0 0 auto' },
+        circleStyle: { width: '30px', height: '30px', minWidth: '30px', borderRadius: '50%', background: circleBg, border: '1.5px solid ' + circleBorder, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .3s', flexShrink: 0 },
+        numStyle: { fontFamily: "'Space Mono', monospace", fontSize: '10px', fontWeight: '700', color: numColor },
+        lineStyle: { flex: '1', height: '2px', minWidth: '8px', background: isAnswered ? (wasCorrect ? 'rgba(34,197,94,0.4)' : 'rgba(239,68,68,0.4)') : 'var(--border)', transition: 'background .3s' }
+      };
+    });
+
+    const options = q.options.map((text, i) => {
+      const isCorrectOpt = i === q.correct;
+      const isSelectedOpt = i === selectedAnswer;
+      let bg, borderCol, color, prefix = '';
+      if (!isRevealed) { bg = 'var(--bg-elev)'; borderCol = 'var(--border)'; color = 'var(--text)'; }
+      else if (isCorrectOpt) { bg = 'rgba(34,197,94,0.09)'; borderCol = 'rgba(34,197,94,0.45)'; color = GREEN; prefix = '\u2713 '; }
+      else if (isSelectedOpt) { bg = 'rgba(239,68,68,0.09)'; borderCol = 'rgba(239,68,68,0.4)'; color = RED; prefix = '\u2717 '; }
+      else { bg = 'var(--bg-elev)'; borderCol = 'var(--border)'; color = 'var(--text-dim)'; }
+      const dimmed = isRevealed && !isCorrectOpt && !isSelectedOpt;
+      return {
+        text, label: LABELS[i], prefix,
+        btnStyle: { width: '100%', display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '13px 18px', borderRadius: '10px', border: '1px solid ' + borderCol, background: bg, color, cursor: isRevealed ? 'default' : 'pointer', textAlign: 'left', fontFamily: "'Hanken Grotesk', sans-serif", fontSize: '15px', lineHeight: '1.5', fontWeight: (isCorrectOpt || isSelectedOpt) && isRevealed ? '600' : '400', transition: 'border-color .15s, background .15s', outline: 'none', appearance: 'none', opacity: dimmed ? 0.45 : 1 },
+        labelStyle: { fontFamily: "'Space Mono', monospace", fontSize: '12px', fontWeight: '700', color: isRevealed ? (isCorrectOpt ? GREEN : isSelectedOpt ? RED : 'var(--text-dim)') : 'var(--accent-strong)', flexShrink: 0, marginTop: '2px', minWidth: '16px' },
+        handler: isRevealed ? () => {} : () => this.select(i)
+      };
+    });
+
+    const feedbackBannerStyle = { padding: '15px 20px', display: 'flex', alignItems: 'flex-start', gap: '14px', background: userCorrect ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.09)', color: userCorrect ? GREEN : RED };
+    const feedbackIconStyle = { width: '36px', height: '36px', minWidth: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', fontWeight: '700', flexShrink: 0, background: userCorrect ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)', color: userCorrect ? GREEN : RED };
+    const feedbackTitleStyle = { fontSize: '15px', fontWeight: '700', lineHeight: '1.2', fontFamily: "'Space Grotesk', sans-serif" };
+    const nextBtnStyle = { width: '100%', padding: '14px 20px', borderRadius: '10px', background: 'var(--accent)', color: '#ffffff', border: 'none', fontFamily: "'Space Grotesk', sans-serif", fontSize: '15px', fontWeight: '600', cursor: 'pointer', letterSpacing: '.01em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' };
+
+    // ── Result screen ──
+    const activeScore = loScores[activeLo];
+    const asp = activeScore / 5;
+    const scoreRingStyle = { width: '120px', height: '120px', borderRadius: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '3px solid ' + (asp >= 0.8 ? GREEN : asp >= 0.6 ? 'var(--accent)' : RED), background: asp >= 0.8 ? 'rgba(34,197,94,0.08)' : asp >= 0.6 ? 'var(--accent-soft)' : 'rgba(239,68,68,0.08)', marginBottom: '24px' };
+    const rH = ['Keep Going', 'Nearly There', 'Getting There', 'Good Work', 'Strong Result', 'Perfect!'];
+    const rS = ['Work through each explanation and try again.', 'Review the question you missed and retry.', 'Half-way there — check the explanations carefully.', 'Two more correct and you are solid.', 'One question from a perfect score.', 'Full marks. This LO is locked in.'];
+    const resultRows = lo.questions.map((qq, i) => {
+      const correct = answers[activeLo][i] === qq.correct;
+      return {
+        num: i + 1, topic: qq.topic, icon: correct ? '\u2713' : '\u2717',
+        rowStyle: { padding: '12px 16px', borderRadius: '10px', background: correct ? 'rgba(34,197,94,0.07)' : 'rgba(239,68,68,0.07)', border: '1px solid ' + (correct ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.2)'), display: 'flex', alignItems: 'center', gap: '12px' },
+        iconStyle: { width: '28px', height: '28px', minWidth: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: '700', background: correct ? 'rgba(34,197,94,0.18)' : 'rgba(239,68,68,0.18)', color: correct ? GREEN : RED, flexShrink: 0 }
+      };
+    });
+
+    return {
+      isSelectScreen: screen === 'select',
+      isQuizScreen: screen === 'quiz',
+      isResultScreen: screen === 'result',
+      pageSubtitle,
+      loCards,
+      completedCount,
+      totalScore,
+      hasProgress: completedCount > 0,
+      progressText: completedCount + ' of 6 completed',
+
+      activeLoLabel: lo.label,
+      activeLoFullTitle: lo.fullTitle,
+      activeSection: q.section,
+      activeTopic: q.topic,
+      activeContext: q.context || '',
+      activeQuestion: q.question,
+      activeExplanation: q.explanation,
+      activeTip: q.tip,
+      isFoundational: q.type === 'FOUNDATIONAL',
+      isScenario: q.type === 'SCENARIO',
+      isRevealed,
+      qNum: qIdx + 1,
+      qDots, options,
+      feedbackBannerStyle, feedbackIconStyle, feedbackTitleStyle,
+      feedbackIconText: userCorrect ? '\u2713' : '\u2717',
+      feedbackTitle: userCorrect ? 'Correct!' : 'Incorrect',
+      feedbackSubtitle: userCorrect ? 'Well done \u2014 that is the right answer.' : 'The correct answer was ' + LABELS[q.correct] + ': ' + q.options[q.correct],
+      nextBtnStyle,
+      nextBtnLabel: qIdx < 4 ? 'Next Question \u2192' : 'See Results \u2192',
+      nextHandler: () => this.goNext(),
+      backToSelect: () => this.setState({ screen: 'select' }),
+
+      activeScore,
+      scoreRingStyle,
+      resultHeading: rH[activeScore] || rH[0],
+      resultSubheading: rS[activeScore] || rS[0],
+      resultRows,
+      retryHandler: () => this.retryLo(activeLo),
+      backToSelectFromResult: () => this.setState({ screen: 'select' })
+    };
+  }
+}
+</script>
+</body>
+</html>
