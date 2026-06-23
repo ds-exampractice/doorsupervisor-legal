@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+  ::selection{background:var(--accent-soft)}
+  .lc h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;color:var(--text);margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .lc h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;color:var(--text);margin:24px 0 10px}
+  .lc p{font-size:15.5px;line-height:1.75;color:var(--text-mut);margin:0 0 14px}
+  .lc ul{margin:0 0 16px;padding-left:22px}
+  .lc li{font-size:15px;line-height:1.7;color:var(--text-mut);margin-bottom:9px}
+  .lc a{color:var(--accent-strong);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent-strong) 35%,transparent)}
+  .lc strong{color:var(--text);font-weight:600}
+  .sec{margin-bottom:46px}
+</style>
+<script>
+(function(){
+  var T={
+    dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#66708a','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)','--grid':'rgba(255,255,255,0.045)'},
+    light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#51607a','--text-dim':'#8893a8','--accent':'#2f5fa3','--accent-strong':'#234d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)','--grid':'rgba(16,24,40,0.05)'}
+  };
+  var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+  for(var k in v)r.style.setProperty(k,v[k]);
+  r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+})();
+</script>
+<script src="sitenav.js"></script>
+<script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="privacy"></site-nav>
+
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(620px 360px at 20% 0%,#000,transparent 75%);mask-image:radial-gradient(620px 360px at 20% 0%,#000,transparent 75%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(52px,7vw,84px) 24px clamp(36px,5vw,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:18px">Legal · Privacy</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(32px,5vw,52px);letter-spacing:-.025em;line-height:1.05;margin:0 0 16px;color:var(--text)">Privacy Policy</h1>
+      <p style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--text-dim);margin:0">Last updated · 9 March 2026</p>
+    </div>
+  </section>
+
+  <div class="lc" style="max-width:1200px;margin:0 auto;padding:clamp(44px,6vw,72px) 24px">
+
+    <div class="sec">
+      <h2>1. Introduction</h2>
+      <p>SAABB Ventures (Pvt) Ltd ("we", "our", or "us") operates the Door Supervisor Exam Practice mobile application (the "Service").</p>
+      <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+    </div>
+
+    <div class="sec">
+      <h2>2. Information We Collect</h2>
+      <h3>Personal Information</h3>
+      <p>When you create an account or use our Service, we may collect the following personal information:</p>
+      <ul>
+        <li>Email address (for account creation and support)</li>
+        <li>Name (optional, for personalisation)</li>
+        <li>Study progress and performance data</li>
+        <li>Device information (device type, operating system version)</li>
+      </ul>
+      <h3>Usage Information</h3>
+      <p>We automatically collect certain information when you use our Service:</p>
+      <ul>
+        <li>App usage statistics (sessions, features used, time spent)</li>
+        <li>Performance data (crash reports, error logs)</li>
+        <li>Analytics data (anonymised usage patterns)</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>3. How We Use Your Information</h2>
+      <p>We use the collected information for the following purposes:</p>
+      <ul>
+        <li>Provide and maintain our Service</li>
+        <li>Track your study progress and performance</li>
+        <li>Improve app functionality and user experience</li>
+        <li>Send important service notifications</li>
+        <li>Provide customer support</li>
+        <li>Analyse usage patterns to enhance our Service</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>4. Data Sharing and Disclosure</h2>
+      <p>We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:</p>
+      <h3>Service Providers</h3>
+      <p>We may share your information with trusted third-party service providers who assist us in operating our app:</p>
+      <ul>
+        <li>Firebase (Google) — for app backend services and analytics</li>
+        <li>RevenueCat — for subscription and payment processing</li>
+        <li>Google Play Console — for app distribution and crash reporting</li>
+      </ul>
+      <h3>Legal Requirements</h3>
+      <p>We may disclose your information if required to do so by law or in response to valid legal requests.</p>
+    </div>
+
+    <div class="sec">
+      <h2>5. Data Security</h2>
+      <p>We implement appropriate security measures to protect your personal information:</p>
+      <ul>
+        <li>Data encryption in transit and at rest</li>
+        <li>Secure authentication protocols</li>
+        <li>Regular security assessments</li>
+        <li>Limited access to personal data on a need-to-know basis</li>
+      </ul>
+      <div style="background:var(--accent-soft);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:18px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:8px">Important</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--text)">While we strive to protect your personal information, no method of transmission over the internet or electronic storage is 100% secure.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>6. Your Rights</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request copies of your personal data</li>
+        <li><strong>Rectification:</strong> Request correction of inaccurate personal data</li>
+        <li><strong>Erasure:</strong> Request deletion of your personal data</li>
+        <li><strong>Portability:</strong> Request transfer of your data to another service</li>
+        <li><strong>Objection:</strong> Object to processing of your personal data</li>
+      </ul>
+      <p>To exercise these rights, please contact us using the information below or use our <a href="data_deletion.html">Data Deletion Request form</a>.</p>
+    </div>
+
+    <div class="sec">
+      <h2>7. Data Retention</h2>
+      <p>We retain your personal information only for as long as necessary to provide our Service and fulfil the purposes outlined in this Privacy Policy:</p>
+      <ul>
+        <li>Account data: retained while your account is active</li>
+        <li>Study progress: retained to maintain your learning history</li>
+        <li>Usage analytics: aggregated data may be retained indefinitely</li>
+        <li>Support communications: retained for 2 years after resolution</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>8. Children's Privacy</h2>
+      <p>Our Service is intended for users aged 18 and above. We do not knowingly collect personal information from children under 18. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.</p>
+    </div>
+
+    <div class="sec">
+      <h2>9. International Data Transfers</h2>
+      <p>Your information may be transferred to and processed in countries other than your own. We ensure that any such transfers comply with applicable data protection laws and that appropriate safeguards are in place.</p>
+    </div>
+
+    <div class="sec">
+      <h2>10. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by:</p>
+      <ul>
+        <li>Posting the new Privacy Policy on this page</li>
+        <li>Updating the "Last Updated" date</li>
+        <li>Sending you a notification through the app (for significant changes)</li>
+      </ul>
+      <p>You are advised to review this Privacy Policy periodically for any changes.</p>
+    </div>
+
+    <div class="sec">
+      <h2>11. Contact Us</h2>
+      <div style="background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:24px">
+        <p style="margin:0 0 12px">If you have any questions about this Privacy Policy, please contact us:</p>
+        <p style="margin:0 0 6px"><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#2f464149406f4b40405d5c5a5f4a5d59465c405d4a574e42014c40015a44"><span class="__cf_email__" data-cfemail="bed7d0d8d1fedad1d1cccdcbcedbccc8d7cdd1ccdbc6dfd390ddd190cbd5">[email&#160;protected]</span></a></p>
+        <p style="margin:0 0 12px"><strong>Alternative Email:</strong> <a href="/cdn-cgi/l/email-protection#6c081f4209140d011c1e0d0f18050f092c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="a8ccdb86cdd0c9c5d8dac9cbdcc1cbcde8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></a></p>
+        <p style="margin:0;color:var(--text-mut)"><strong>Address:</strong><br>SAABB Ventures (Pvt) Ltd<br>76 Princess Street<br>Luton, Bedfordshire<br>LU1 5AT, United Kingdom</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(165deg,var(--accent-soft),transparent);border:1px solid var(--border);border-radius:18px;padding:36px;text-align:center;margin-top:20px">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;margin:0 0 10px;color:var(--text)">Ready to start your SIA exam preparation?</h3>
+      <p style="font-size:15px;color:var(--text-mut);margin:0 0 22px">Download our app and begin your journey to becoming a certified Door Supervisor.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" style="display:inline-flex;align-items:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:12px;box-shadow:0 14px 30px -12px var(--accent)">Download on Google Play</a>
+    </div>
+  </div>
+
+  <site-footer></site-footer>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>
