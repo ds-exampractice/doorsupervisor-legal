@@ -41,7 +41,8 @@
                 <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px">Support</div>
                 <div style="display:flex;flex-direction:column;gap:11px">
                   <a href="contact.html">Contact Us</a>
-                  <a href="mailto:info@doorsupervisorexam.co.uk" style="word-break:break-all">info@doorsupervisorexam.co.uk</a>
+                  <a href="mailto:info@doorsupervisorexam.co.uk" style="color:var(--text-mut);text-decoration:none;font-size:14px;word-break:break-all" style-hover="color:var(--text)">info@doorsupervisorexam.co.uk</a>
+                  <a href="mailto:ds.exampractice@gmail.com" style="color:var(--text-mut);text-decoration:none;font-size:14px;word-break:break-all" style-hover="color:var(--text)">ds.exampractice@gmail.com</a>
                 </div>
               </div>
 
