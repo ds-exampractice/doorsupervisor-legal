@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0}
+    body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+    *{box-sizing:border-box}
+  </style>
+  <script>
+  (function(){
+    var T={
+      dark:{'--bg':'#0a0e1a','--bg-soft':'#0e1322','--bg-elev':'#131a2c','--panel':'rgba(255,255,255,0.03)','--border':'rgba(255,255,255,0.09)','--border-strong':'rgba(255,255,255,0.17)','--text':'#eef1f7','--text-mut':'#9aa4ba','--text-dim':'#7a859c','--accent':'#5c8fd6','--accent-strong':'#79a6e6','--accent-soft':'rgba(92,143,214,0.13)','--shadow':'0 24px 60px -28px rgba(0,0,0,0.75)'},
+      light:{'--bg':'#f5f6f9','--bg-soft':'#ffffff','--bg-elev':'#ffffff','--panel':'rgba(16,24,40,0.015)','--border':'rgba(16,24,40,0.10)','--border-strong':'rgba(16,24,40,0.20)','--text':'#111726','--text-mut':'#3d4d66','--text-dim':'#5e6b82','--accent':'#2f5fa3','--accent-strong':'#1e4d8a','--accent-soft':'rgba(47,95,163,0.07)','--shadow':'0 20px 44px -26px rgba(16,24,40,0.32)'}
+    };
+    var t=localStorage.getItem('ds-theme')||'dark';var v=T[t]||T.dark;var r=document.documentElement;
+    for(var k in v)r.style.setProperty(k,v[k]);
+    r.style.colorScheme=t==='light'?'light':'dark';r.style.background=v['--bg'];
+  })();
+  </script>
+  <script src="sitenav.js"></script>
+  <script src="sitefooter.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+  <site-nav active="quiz"></site-nav>
+
+  <!-- Full-width hero -->
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(700px 360px at 15% 0%,#000,transparent 75%);mask-image:radial-gradient(700px 360px at 15% 0%,#000,transparent 75%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(36px,6vw,64px) 24px clamp(28px,4vw,48px)">
+      <a href="quiz_hub.html" style="display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--text-dim);text-decoration:none;margin-bottom:16px">&#8592; Training Quizzes</a>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);background:var(--accent-soft);border:1px solid rgba(92,143,214,0.25);padding:6px 14px;border-radius:999px;margin-bottom:14px">
+            <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;display:block"></span>
+            Module 4 &middot; APISPSI
+          </div>
+          <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,4.5vw,44px);letter-spacing:-.03em;margin:0 0 8px;line-height:1.08;color:var(--text)">Training Quizzes</h1>
+          <p style="font-size:clamp(14px,1.8vw,16px);color:var(--text-dim);margin:0;line-height:1.6">{{ pageSubtitle }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main style="max-width:1100px;margin:0 auto;padding:clamp(28px,4vw,48px) 24px 96px">
+
+    <!-- SELECT SCREEN -->
+    <sc-if value="{{ isSelectScreen }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ hasProgress }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--border);margin-bottom:20px;flex-wrap:wrap">
+          <span style="font-size:14px;font-weight:500;color:var(--text-mut)">{{ progressText }}</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--accent-strong)">{{ totalScore }}<span style="font-size:13px;font-weight:500;color:var(--text-dim)">/15</span></span>
+        </div>
+      </sc-if>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px">
+        <sc-for list="{{ loCards }}" as="card" hint-placeholder-count="3">
+          <div style="{{ card.cardStyle }}">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px">
+              <span style="{{ card.badgeStyle }}">{{ card.label }}</span>
+              <sc-if value="{{ card.hasScore }}" hint-placeholder-val="{{ false }}">
+                <span style="{{ card.scoreStyle }}">{{ card.scoreText }}</span>
+              </sc-if>
+            </div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;line-height:1.35;color:var(--text);margin-bottom:4px">{{ card.fullTitle }}</div>
+            <div style="font-size:12px;color:var(--text-dim);margin-bottom:auto;padding-bottom:16px">5 questions</div>
+            <button style="{{ card.btnStyle }}" onClick="{{ card.startHandler }}">{{ card.btnLabel }}</button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <!-- QUIZ SCREEN -->
+    <sc-if value="{{ isQuizScreen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px">
+        <button onClick="{{ backToSelect }}" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--bg-elev);border:1px solid var(--border);border-radius:8px;color:var(--text-mut);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;cursor:pointer">&#8592; All Quizzes</button>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:.04em">Q{{ qNum }} of 5</span>
+      </div>
+      <div style="padding:13px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--border);margin-bottom:18px">
+        <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px">{{ activeLoLabel }}</div>
+        <div style="font-size:14px;font-weight:600;color:var(--text)">{{ activeLoFullTitle }}</div>
+      </div>
+      <div style="display:flex;align-items:center;margin-bottom:22px">
+        <sc-for list="{{ qDots }}" as="dot" hint-placeholder-count="5">
+          <div style="{{ dot.wrapperStyle }}">
+            <div style="{{ dot.circleStyle }}"><span style="{{ dot.numStyle }}">{{ dot.num }}</span></div>
+            <sc-if value="{{ dot.notLast }}" hint-placeholder-val="{{ true }}">
+              <div style="{{ dot.lineStyle }}"></div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:16px;background:var(--bg-soft);overflow:hidden;box-shadow:var(--shadow)">
+        <div style="padding:14px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+          <span style="background:var(--accent-soft);color:var(--accent-strong);padding:3px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em">{{ activeSection }}</span>
+          <sc-if value="{{ isFoundational }}" hint-placeholder-val="{{ true }}">
+            <span style="background:rgba(100,116,139,0.12);color:var(--text-dim);padding:3px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em">FOUNDATIONAL</span>
+          </sc-if>
+          <sc-if value="{{ isScenario }}" hint-placeholder-val="{{ false }}">
+            <span style="background:rgba(168,85,247,0.12);color:#a855f7;padding:3px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em">SCENARIO</span>
+          </sc-if>
+        </div>
+        <div style="padding:18px 22px;border-bottom:1px solid var(--border);background:var(--panel)">
+          <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:4px">Topic</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text-mut)">{{ activeTopic }}</div>
+          <sc-if value="{{ isScenario }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px;padding:14px 16px;background:rgba(92,143,214,0.06);border:1px solid rgba(92,143,214,0.18);border-left:3px solid var(--accent);border-radius:10px">
+              <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:7px">&#128205; Scenario</div>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-mut)">{{ activeContext }}</p>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding:22px 22px 18px">
+          <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,2.5vw,19px);font-weight:600;line-height:1.45;color:var(--text)">{{ activeQuestion }}</p>
+        </div>
+        <div style="padding:0 22px 22px;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ options }}" as="opt" hint-placeholder-count="3">
+            <button style="{{ opt.btnStyle }}" onClick="{{ opt.handler }}">
+              <span style="{{ opt.labelStyle }}">{{ opt.label }}</span>
+              <span>{{ opt.prefix }}{{ opt.text }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ isRevealed }}" hint-placeholder-val="{{ false }}">
+          <div style="margin:0 22px 22px;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <div style="{{ feedbackBannerStyle }}">
+              <div style="{{ feedbackIconStyle }}">{{ feedbackIconText }}</div>
+              <div style="flex:1;min-width:0">
+                <div style="{{ feedbackTitleStyle }}">{{ feedbackTitle }}</div>
+                <div style="font-size:13px;line-height:1.5;margin-top:3px;opacity:.88">{{ feedbackSubtitle }}</div>
+              </div>
+            </div>
+            <div style="padding:16px 20px;background:var(--bg-elev);border-top:1px solid var(--border)">
+              <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Why this is right</div>
+              <p style="margin:0;font-size:14px;line-height:1.7;color:var(--text-mut)">{{ activeExplanation }}</p>
+            </div>
+            <div style="padding:13px 20px;background:var(--accent-soft);border-top:1px solid rgba(92,143,214,0.18)">
+              <p style="margin:0;font-size:14px;line-height:1.55;color:var(--text)"><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--accent-strong)">&#128161; VETERAN TIP &nbsp;</span>{{ activeTip }}</p>
+            </div>
+          </div>
+          <div style="padding:0 22px 26px">
+            <button style="{{ nextBtnStyle }}" onClick="{{ nextHandler }}">{{ nextBtnLabel }}</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <!-- RESULT SCREEN -->
+    <sc-if value="{{ isResultScreen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:24px 0 12px;text-align:center">
+        <div style="{{ scoreRingStyle }}">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1;color:var(--text)">{{ activeScore }}</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-top:5px">out of 5</div>
+        </div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(20px,3.5vw,26px);font-weight:600;letter-spacing:-.02em;margin:0 0 8px;color:var(--text)">{{ resultHeading }}</h2>
+        <p style="font-size:15px;color:var(--text-dim);margin:0 0 32px;max-width:360px;line-height:1.6">{{ resultSubheading }}</p>
+        <div style="width:100%;text-align:left;display:flex;flex-direction:column;gap:8px;margin-bottom:28px">
+          <sc-for list="{{ resultRows }}" as="r" hint-placeholder-count="5">
+            <div style="{{ r.rowStyle }}">
+              <div style="{{ r.iconStyle }}">{{ r.icon }}</div>
+              <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);flex:none">Q{{ r.num }}</span>
+              <span style="font-size:13px;font-weight:500;color:var(--text-mut);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.topic }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <button onClick="{{ retryHandler }}" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;background:var(--accent);color:#fff;border:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer">&#8635; Retry this LO</button>
+          <button onClick="{{ backToSelectFromResult }}" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;background:var(--bg-elev);color:var(--text);border:1px solid var(--border-strong);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer">&#8592; All Quizzes</button>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+  <site-footer></site-footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+
+  LO_DATA = [
+    {
+      label: 'LO 1', shortTitle: 'Legal Framework',
+      fullTitle: 'Legal Framework & Professional Practice',
+      questions: [
+        { section:'1A', type:'FOUNDATIONAL', topic:'Lawful Conditions for Physical Intervention', context:null,
+          question:'A door supervisor may lawfully use physical intervention when...',
+          options:['A person is being verbally abusive to several other customers','A group of customers is deliberately blocking the entrance','All other options have failed and imminent harm exists'],
+          correct:2,
+          explanation:'Physical intervention is only lawful when all other options have failed or are likely to fail, withdrawal is not appropriate, or someone faces immediate harm. Verbal disruption and obstruction alone do not reach this threshold.',
+          tip:'PI is always the last resort — never the first response.' },
+        { section:'1A', type:'FOUNDATIONAL', topic:'Common Law Self-Defence — Conditions', context:null,
+          question:'Under the common law rules of self-defence, force may be used when...',
+          options:['A person believes force may be needed at some point in a shift','A person honestly believes they face imminent danger of attack','A person wishes to take pre-emptive steps to avoid all conflict'],
+          correct:1,
+          explanation:'Common law self-defence requires an honestly held belief that you or another faces imminent danger. The force must be reasonable and necessary. A generalised expectation of future trouble does not meet this test.',
+          tip:'Two key words — "honestly held belief" and "imminent danger."' },
+        { section:'1A', type:'SCENARIO', topic:'Verbal Abuse — Force Threshold Not Met',
+          context:'A customer is shouting insults but has made no physical move towards you.',
+          question:'What does the law require as the most appropriate response?',
+          options:['Use a firm hold to remove him before the situation escalates','Call police immediately — he is committing an assault on you','Do not use force — verbal abuse alone does not justify this'],
+          correct:2,
+          explanation:'Physical force requires a real possibility of physical harm. Verbal abuse, however offensive, does not meet that threshold. Using force here would expose you to an assault charge and is both unlawful and disproportionate.',
+          tip:'Offensive words are not a physical threat. No threat, no force.' },
+        { section:'1B', type:'FOUNDATIONAL', topic:'Duty of Care During Restraint', context:null,
+          question:'During a physical intervention, what is a door supervisor\'s primary duty of care?',
+          options:['Complete the restraint as quickly as possible to minimise contact','Notify management and then await their direction to proceed','Talk to and listen to the person restrained; monitor safety'],
+          correct:2,
+          explanation:'Your duty of care during any physical intervention requires you to talk to and listen to the person being restrained and to continuously monitor their safety — specifically, ensuring nothing impedes circulation or breathing.',
+          tip:'Talk, listen, monitor — throughout the entire restraint, not just at the start.' },
+        { section:'1B', type:'SCENARIO', topic:'Cyanosis — Recognising Asphyxia',
+          context:'A restrained person shows blueness around their lips, face, and nails.',
+          question:'What does this indicate?',
+          options:['Hyperventilating due to panic — they will recover without help','Signs of asphyxia — a life-threatening medical emergency','A routine physical response to the exertion of a struggle'],
+          correct:1,
+          explanation:'Blueness around the lips, face, or nails (cyanosis) indicates oxygen deprivation — a sign of asphyxia. This is a life-threatening emergency. Release the restraint immediately and call emergency services. It is not a normal exertion response.',
+          tip:'Blue lips, face, or nails equals asphyxia. Release immediately, call 999.' }
+      ]
+    },
+    {
+      label: 'LO 2', shortTitle: 'Risks & Assessment',
+      fullTitle: 'Risks Associated with Physical Intervention',
+      questions: [
+        { section:'2A', type:'FOUNDATIONAL', topic:'ABD — Definition', context:null,
+          question:'What does ABD stand for in a physical intervention context?',
+          options:['Acute Behavioural Disturbance — a medical emergency','Aggressive Behaviour Disorder — a psychiatric diagnosis','Active Biological Defence — a measured survival response'],
+          correct:0,
+          explanation:'ABD stands for Acute Behavioural Disturbance. It is not a psychiatric label or a security term — it is a medical emergency caused by physical and physiological factors that create extreme danger during restraint.',
+          tip:'ABD is a medical term, not a security one. Acute, Behavioural, Disturbance.' },
+        { section:'2A', type:'FOUNDATIONAL', topic:'Environmental Hazards — Stairs', context:null,
+          question:'Why are stairs considered the most dangerous environmental hazard?',
+          options:['They carry immediate death risk if a fall occurs mid-struggle','They are typically poorly lit and difficult to monitor at night','People are more likely to trip going up than going down stairs'],
+          correct:0,
+          explanation:'Stairs create an immediate fall risk during any physical struggle. A fall on a staircase can cause death. The SEW environment assessment identifies this hazard — clear the area before any intervention.',
+          tip:'Stairs plus restraint equals a death combination. Clear them first, always.' },
+        { section:'2A', type:'SCENARIO', topic:'Environmental Hazards — Rain and Ice',
+          context:'A large, drunk, and aggressive man is standing in a wet outdoor smoking area with rain falling and ice on the ground underfoot.',
+          question:'What is your FIRST safety action before any physical intervention?',
+          options:['Immediate physical intervention where he stands for control','Move him indoors away from the ice and wet ground first','Wait for the rain to ease before attempting any action'],
+          correct:1,
+          explanation:'Environmental hazards — including rain and ice on external surfaces — are a named situational factor. Acting on hazardous ground multiplies injury risk for both subject and staff. Relocating before intervening is the correct SEW-informed approach.',
+          tip:'Hazardous environment means move first, intervene second. Location always matters.' },
+        { section:'2B', type:'FOUNDATIONAL', topic:'Positional Asphyxia — Mechanism', context:null,
+          question:'What causes positional asphyxia during a physical restraint?',
+          options:['An allergic reaction to substances inhaled during the incident','Breathing restriction from body position or weight on the torso','An airway obstruction from a foreign object blocking the throat'],
+          correct:1,
+          explanation:'Positional asphyxia occurs when body position restricts the mechanical function of breathing — typically through weight or pressure on the torso. No external obstruction is needed. The restraint position itself is the cause.',
+          tip:'Positional asphyxia means body position restricts breathing. It is slow suffocation.' },
+        { section:'2B', type:'SCENARIO', topic:'ABD Recognition in the Field',
+          context:'A 25-year-old man on the main dance floor has skin hot to the touch, is sweating profusely, displaying bizarre behaviour, and showing abnormal strength.',
+          question:'What medical condition do these signs suggest?',
+          options:['Normal excited behaviour from the atmosphere and activity','Acute Behavioural Disturbance — this is a medical emergency','Simple alcohol intoxication with no additional medical concerns'],
+          correct:1,
+          explanation:'Hot skin, profuse sweating, bizarre behaviour, and abnormal strength are the cluster of ABD signs. When these appear together, ABD is the clinical concern. The response is minimal physical contact and an immediate ambulance call.',
+          tip:'Hot, sweating, bizarre, abnormal strength — that is ABD. Call the ambulance now.' }
+      ]
+    },
+    {
+      label: 'LO 3', shortTitle: 'Reducing Risks',
+      fullTitle: 'Reducing the Risks of Physical Intervention',
+      questions: [
+        { section:'3A', type:'FOUNDATIONAL', topic:'Ground Restraint — First Action', context:null,
+          question:'What is the FIRST action when a restraint goes to the ground?',
+          options:['Get the person up or into the recovery position at once','Call for supervisor approval before repositioning anyone','Complete the initial incident log entry before moving'],
+          correct:0,
+          explanation:'Once on the ground, the priority is immediate repositioning. Getting the person upright or into recovery position reduces positional asphyxia exposure. Delay increases risk — every second in a compromised position matters.',
+          tip:'Ground equals emergency mode — breathing position first, always.' },
+        { section:'3A', type:'FOUNDATIONAL', topic:'Ground Restraint — Critical Monitoring Focus', context:null,
+          question:'What is the CRITICAL monitoring focus during ground restraint?',
+          options:['Breathing pattern and effort at all times continuously','Time on a stopwatch to log the restraint duration','What the subject is saying verbally throughout'],
+          correct:0,
+          explanation:'Breathing is the primary life indicator during ground restraint. Positional asphyxia can progress silently and rapidly. Continuous monitoring of breathing pattern, effort, and skin colour is your early warning system.',
+          tip:'Watch breathing first — everything else is secondary on the ground.' },
+        { section:'3A', type:'SCENARIO', topic:'Red Flag Emergency Response',
+          context:'Outside the venue, a restrained person is saying they cannot breathe and their face is turning blue.',
+          question:'What is the CORRECT response sequence?',
+          options:['Tell them to calm down, keep restraint, call the supervisor','Check with the team leader before changing anything at all','Release, check airway, recovery position, call ambulance'],
+          correct:2,
+          explanation:'Blue discolouration is a confirmed sign of asphyxia. The correct sequence is immediate — release the restraint, check and open the airway, place in recovery position, and call emergency services. Any delay significantly increases the risk of death.',
+          tip:'Blue face plus breathing complaint equals full emergency response — no half measures.' },
+        { section:'3B', type:'FOUNDATIONAL', topic:'ABC Check Sequence', context:null,
+          question:'What is the CORRECT ABC check sequence?',
+          options:['Circulation, Breathing, Airway — in that specific order','Breathing, Circulation, Airway — in that specific order','Airway, Breathing, Circulation — in that specific order'],
+          correct:2,
+          explanation:'The order is Airway, Breathing, Circulation — deliberate and non-negotiable. Without a clear airway, assessing breathing is pointless. Without breathing, circulation changes in significance. Never reverse the sequence.',
+          tip:'ABC order is Airway, Breathing, Circulation — that sequence saves lives.' },
+        { section:'3B', type:'SCENARIO', topic:'Challenging Excessive Force',
+          context:'A colleague has their knee on the subject\'s back during a ground restraint, and the subject is saying they cannot breathe.',
+          question:'What is your IMMEDIATE required action?',
+          options:['Report the incident to a supervisor once it has ended','Support your colleague\'s technique decision in the moment','Physically intervene and remove the colleague\'s knee now'],
+          correct:2,
+          explanation:'A knee on the back with a breathing complaint is an immediate life threat. The duty to challenge excessive force applies now, not in a report. Physical intervention to protect the subject\'s life overrides team loyalty.',
+          tip:'Physical intervention to save a life is your duty — act now, not after.' }
+      ]
+    }
+  ];
+
+  state = {
+    screen: 'select', activeLo: 0, qIdx: 0,
+    answers: Array(3).fill(null).map(() => Array(5).fill(null)),
+    revealed: Array(3).fill(null).map(() => Array(5).fill(false))
+  };
+
+  startLo(idx) { this.setState({ screen:'quiz', activeLo:idx, qIdx:0 }); }
+  retryLo(idx) {
+    const answers = this.state.answers.map(a => [...a]);
+    const revealed = this.state.revealed.map(r => [...r]);
+    answers[idx] = Array(5).fill(null);
+    revealed[idx] = Array(5).fill(false);
+    this.setState({ screen:'quiz', activeLo:idx, qIdx:0, answers, revealed });
+  }
+  select(optIdx) {
+    const { activeLo, qIdx, revealed } = this.state;
+    if (revealed[activeLo][qIdx]) return;
+    const answers = this.state.answers.map(a => [...a]);
+    const rev = this.state.revealed.map(r => [...r]);
+    answers[activeLo][qIdx] = optIdx;
+    rev[activeLo][qIdx] = true;
+    this.setState({ answers, revealed: rev });
+  }
+  goNext() {
+    const { activeLo, qIdx } = this.state;
+    if (qIdx < 4) { this.setState({ qIdx: qIdx + 1 }); }
+    else { this.setState({ screen:'result' }); }
+  }
+
+  renderVals() {
+    const { screen, activeLo, qIdx, answers, revealed } = this.state;
+    const GREEN = '#22c55e', RED = '#ef4444', LABELS = ['A','B','C'];
+    const loScores = this.LO_DATA.map((lo, li) => lo.questions.reduce((s, qq, qi) => s + (answers[li][qi] === qq.correct ? 1 : 0), 0));
+    const losDone = this.LO_DATA.map((_, li) => revealed[li].every(r => r));
+    const completedCount = losDone.filter(Boolean).length;
+    const totalScore = loScores.reduce((a, b) => a + b, 0);
+
+    let pageSubtitle;
+    if (screen === 'select') pageSubtitle = 'Module 4 \u00b7 ' + (completedCount > 0 ? completedCount + ' of 3 completed' : '3 Learning Outcomes');
+    else if (screen === 'quiz') pageSubtitle = this.LO_DATA[activeLo].label + ' \u00b7 Q' + (qIdx + 1) + ' of 5';
+    else pageSubtitle = this.LO_DATA[activeLo].label + ' \u00b7 Results';
+
+    const loCards = this.LO_DATA.map((lo, li) => {
+      const isDone = losDone[li], hasStarted = revealed[li].some(r => r), score = loScores[li], pct = score / 5;
+      let cardBg, cardBorder, badgeColor, badgeBg;
+      if (isDone) {
+        if (pct >= 0.8) { cardBg='rgba(34,197,94,0.07)'; cardBorder='rgba(34,197,94,0.3)'; badgeColor=GREEN; badgeBg='rgba(34,197,94,0.15)'; }
+        else if (pct >= 0.6) { cardBg='var(--accent-soft)'; cardBorder='rgba(92,143,214,0.35)'; badgeColor='var(--accent-strong)'; badgeBg='var(--accent-soft)'; }
+        else { cardBg='rgba(239,68,68,0.07)'; cardBorder='rgba(239,68,68,0.28)'; badgeColor=RED; badgeBg='rgba(239,68,68,0.15)'; }
+      } else if (hasStarted) {
+        cardBg='var(--bg-soft)'; cardBorder='var(--border-strong)'; badgeColor='var(--accent-strong)'; badgeBg='var(--accent-soft)';
+      } else {
+        cardBg='var(--bg-soft)'; cardBorder='var(--border)'; badgeColor='var(--accent-strong)'; badgeBg='var(--accent-soft)';
+      }
+      const scoreCol = isDone ? (pct >= 0.8 ? GREEN : pct >= 0.6 ? 'var(--accent-strong)' : RED) : 'var(--text-dim)';
+      return {
+        label:lo.label, fullTitle:lo.fullTitle, isDone, hasScore:isDone, scoreText:score+'/5',
+        cardStyle:{ padding:'20px', borderRadius:'14px', background:cardBg, border:'1px solid '+cardBorder, display:'flex', flexDirection:'column', height:'200px', overflow:'hidden', transition:'border-color .18s', width:'clamp(240px,calc(50% - 12px),300px)', flexShrink:0 },
+        badgeStyle:{ fontFamily:"'Space Mono', monospace", fontSize:'10px', fontWeight:'700', letterSpacing:'.12em', color:badgeColor, background:badgeBg, padding:'4px 10px', borderRadius:'6px', flexShrink:0 },
+        scoreStyle:{ fontFamily:"'Space Grotesk', sans-serif", fontSize:'20px', fontWeight:'700', color:scoreCol },
+        btnStyle:{ marginTop:'16px', padding:'10px 16px', borderRadius:'8px', background:isDone?'var(--bg-elev)':'var(--accent)', color:isDone?'var(--text)':'#fff', border:isDone?'1px solid var(--border-strong)':'none', fontFamily:"'Space Grotesk', sans-serif", fontWeight:'600', fontSize:'13.5px', cursor:'pointer', letterSpacing:'.01em', alignSelf:'flex-start' },
+        btnLabel: isDone ? '\u21ba Retry' : hasStarted ? 'Continue \u2192' : 'Start \u2192',
+        startHandler: isDone ? () => this.retryLo(li) : () => this.startLo(li)
+      };
+    });
+
+    const lo = this.LO_DATA[activeLo];
+    const q = lo.questions[qIdx];
+    const isRevealed = revealed[activeLo][qIdx];
+    const selectedAnswer = answers[activeLo][qIdx];
+    const userCorrect = selectedAnswer === q.correct;
+
+    const qDots = Array(5).fill(null).map((_, i) => {
+      const isAnswered = revealed[activeLo][i], wasCorrect = isAnswered && answers[activeLo][i] === lo.questions[i].correct, isCurrent = i === qIdx;
+      let circleBg, circleBorder, numColor;
+      if (isCurrent) { circleBg='var(--accent)'; circleBorder='var(--accent)'; numColor='#ffffff'; }
+      else if (isAnswered && wasCorrect) { circleBg='rgba(34,197,94,0.15)'; circleBorder=GREEN; numColor=GREEN; }
+      else if (isAnswered) { circleBg='rgba(239,68,68,0.13)'; circleBorder=RED; numColor=RED; }
+      else { circleBg='transparent'; circleBorder='var(--border-strong)'; numColor='var(--text-dim)'; }
+      return {
+        num:i+1, notLast:i<4,
+        wrapperStyle:{ display:'flex', alignItems:'center', flex:i<4?'1 1 0':'0 0 auto' },
+        circleStyle:{ width:'30px', height:'30px', minWidth:'30px', borderRadius:'50%', background:circleBg, border:'1.5px solid '+circleBorder, display:'flex', alignItems:'center', justifyContent:'center', transition:'all .3s', flexShrink:0 },
+        numStyle:{ fontFamily:"'Space Mono', monospace", fontSize:'10px', fontWeight:'700', color:numColor },
+        lineStyle:{ flex:'1', height:'2px', minWidth:'8px', background:isAnswered?(wasCorrect?'rgba(34,197,94,0.4)':'rgba(239,68,68,0.4)'):'var(--border)', transition:'background .3s' }
+      };
+    });
+
+    const options = q.options.map((text, i) => {
+      const isCorrectOpt = i === q.correct, isSelectedOpt = i === selectedAnswer;
+      let bg, borderCol, color, prefix = '';
+      if (!isRevealed) { bg='var(--bg-elev)'; borderCol='var(--border)'; color='var(--text)'; }
+      else if (isCorrectOpt) { bg='rgba(34,197,94,0.09)'; borderCol='rgba(34,197,94,0.45)'; color=GREEN; prefix='\u2713 '; }
+      else if (isSelectedOpt) { bg='rgba(239,68,68,0.09)'; borderCol='rgba(239,68,68,0.4)'; color=RED; prefix='\u2717 '; }
+      else { bg='var(--bg-elev)'; borderCol='var(--border)'; color='var(--text-dim)'; }
+      const dimmed = isRevealed && !isCorrectOpt && !isSelectedOpt;
+      return {
+        text, label:LABELS[i], prefix,
+        btnStyle:{ width:'100%', display:'flex', alignItems:'flex-start', gap:'12px', padding:'13px 18px', borderRadius:'10px', border:'1px solid '+borderCol, background:bg, color, cursor:isRevealed?'default':'pointer', textAlign:'left', fontFamily:"'Hanken Grotesk', sans-serif", fontSize:'15px', lineHeight:'1.5', fontWeight:(isCorrectOpt||isSelectedOpt)&&isRevealed?'600':'400', transition:'border-color .15s, background .15s', outline:'none', appearance:'none', opacity:dimmed?0.45:1 },
+        labelStyle:{ fontFamily:"'Space Mono', monospace", fontSize:'12px', fontWeight:'700', color:isRevealed?(isCorrectOpt?GREEN:isSelectedOpt?RED:'var(--text-dim)'):'var(--accent-strong)', flexShrink:0, marginTop:'2px', minWidth:'16px' },
+        handler: isRevealed ? () => {} : () => this.select(i)
+      };
+    });
+
+    const feedbackBannerStyle = { padding:'15px 20px', display:'flex', alignItems:'flex-start', gap:'14px', background:userCorrect?'rgba(34,197,94,0.1)':'rgba(239,68,68,0.09)', color:userCorrect?GREEN:RED };
+    const feedbackIconStyle = { width:'36px', height:'36px', minWidth:'36px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'15px', fontWeight:'700', flexShrink:0, background:userCorrect?'rgba(34,197,94,0.2)':'rgba(239,68,68,0.2)', color:userCorrect?GREEN:RED };
+    const feedbackTitleStyle = { fontSize:'15px', fontWeight:'700', lineHeight:'1.2', fontFamily:"'Space Grotesk', sans-serif" };
+    const nextBtnStyle = { width:'100%', padding:'14px 20px', borderRadius:'10px', background:'var(--accent)', color:'#ffffff', border:'none', fontFamily:"'Space Grotesk', sans-serif", fontSize:'15px', fontWeight:'600', cursor:'pointer', letterSpacing:'.01em', display:'flex', alignItems:'center', justifyContent:'center', gap:'8px' };
+
+    const activeScore = loScores[activeLo], asp = activeScore/5;
+    const scoreRingStyle = { width:'120px', height:'120px', borderRadius:'50%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', border:'3px solid '+(asp>=0.8?GREEN:asp>=0.6?'var(--accent)':RED), background:asp>=0.8?'rgba(34,197,94,0.08)':asp>=0.6?'var(--accent-soft)':'rgba(239,68,68,0.08)', marginBottom:'24px' };
+    const rH = ['Keep Going','Nearly There','Getting There','Good Work','Strong Result','Perfect!'];
+    const rS = ['Work through each explanation and try again.','Review the question you missed and retry.','Half-way there — check the explanations carefully.','Two more correct and you are solid.','One question from a perfect score.','Full marks. This LO is locked in.'];
+    const resultRows = lo.questions.map((qq, i) => {
+      const correct = answers[activeLo][i] === qq.correct;
+      return { num:i+1, topic:qq.topic, icon:correct?'\u2713':'\u2717',
+        rowStyle:{ padding:'12px 16px', borderRadius:'10px', background:correct?'rgba(34,197,94,0.07)':'rgba(239,68,68,0.07)', border:'1px solid '+(correct?'rgba(34,197,94,0.25)':'rgba(239,68,68,0.2)'), display:'flex', alignItems:'center', gap:'12px' },
+        iconStyle:{ width:'28px', height:'28px', minWidth:'28px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'12px', fontWeight:'700', background:correct?'rgba(34,197,94,0.18)':'rgba(239,68,68,0.18)', color:correct?GREEN:RED, flexShrink:0 }
+      };
+    });
+
+    return {
+      isSelectScreen:screen==='select', isQuizScreen:screen==='quiz', isResultScreen:screen==='result',
+      pageSubtitle, loCards, completedCount, totalScore, hasProgress:completedCount>0,
+      progressText:completedCount+' of 3 completed',
+      activeLoLabel:lo.label, activeLoFullTitle:lo.fullTitle,
+      activeSection:q.section, activeTopic:q.topic, activeContext:q.context||'', activeQuestion:q.question,
+      activeExplanation:q.explanation, activeTip:q.tip,
+      isFoundational:q.type==='FOUNDATIONAL', isScenario:q.type==='SCENARIO',
+      isRevealed, qNum:qIdx+1, qDots, options,
+      feedbackBannerStyle, feedbackIconStyle, feedbackTitleStyle,
+      feedbackIconText:userCorrect?'\u2713':'\u2717',
+      feedbackTitle:userCorrect?'Correct!':'Incorrect',
+      feedbackSubtitle:userCorrect?'Well done \u2014 that is the right answer.':'The correct answer was '+LABELS[q.correct]+': '+q.options[q.correct],
+      nextBtnStyle,
+      nextBtnLabel:qIdx<4?'Next Question \u2192':'See Results \u2192',
+      nextHandler:() => this.goNext(),
+      backToSelect:() => this.setState({ screen:'select' }),
+      activeScore, scoreRingStyle,
+      resultHeading:rH[activeScore]||rH[0], resultSubheading:rS[activeScore]||rS[0],
+      resultRows,
+      retryHandler:() => this.retryLo(activeLo),
+      backToSelectFromResult:() => this.setState({ screen:'select' })
+    };
+  }
+}
+</script>
+</body>
+</html>
