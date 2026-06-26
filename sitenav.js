@@ -92,9 +92,9 @@
       const drawer = this._menuOpen ? `
         <div style="border-top:1px solid var(--border);background:var(--bg-soft);padding:8px 24px 20px">
           ${mobLinks}
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:12px">
-            ${themeBtn('sn-t2')}
-            <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" rel="noopener" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;font-size:14px;padding:13px 18px;border-radius:10px;box-shadow:0 8px 22px -10px var(--accent)">Get the App</a>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:stretch;gap:12px">
+            <button id="sn-t2" class="sn-ibtn" aria-label="Toggle theme" style="width:50px;min-width:50px;flex:none;border-radius:10px;border:1px solid var(--border);background:var(--bg-elev);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">${icon}</button>
+            <a href="https://play.google.com/store/apps/details?id=com.saabbventures.dsexampractice" target="_blank" rel="noopener" style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;font-size:15px;padding:14px 18px;border-radius:10px;box-shadow:0 8px 22px -10px var(--accent)">Get the App</a>
           </div>
         </div>` : '';
 
@@ -111,7 +111,7 @@
             </a>
             ${!n ? `<nav style="display:flex;align-items:center;gap:30px">${inlineLinks}</nav>` : ''}
             <div style="display:flex;align-items:center;gap:10px;flex:none">
-              ${!n ? themeBtn('sn-t1') + ctaLink : `<button id="sn-menu" aria-label="${this._menuOpen?'Close':'Open'} menu" style="width:44px;height:44px;border-radius:10px;border:1px solid var(--border);background:var(--bg-elev);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0"><span style="width:16px;height:1.5px;background:var(--text);display:block"></span><span style="width:16px;height:1.5px;background:var(--text);display:block"></span><span style="width:16px;height:1.5px;background:var(--text);display:block"></span></button>`}
+              ${!n ? themeBtn('sn-t1') + ctaLink : `<button id="sn-menu" aria-label="${this._menuOpen?'Close':'Open'} menu" style="width:44px;height:44px;border-radius:10px;border:1px solid var(--border);background:var(--bg-elev);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;flex:none"><span style="width:18px;height:2px;background:var(--text);display:block;border-radius:2px;flex:none"></span><span style="width:18px;height:2px;background:var(--text);display:block;border-radius:2px;flex:none"></span><span style="width:18px;height:2px;background:var(--text);display:block;border-radius:2px;flex:none"></span></button>`}
             </div>
           </div>
           ${drawer}
