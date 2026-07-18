@@ -281,46 +281,35 @@ class Component extends DCLogic {
                 var formElement = document.getElementById('deletion-form');
                 if (!formElement) return;
 
-                // Converts fields to application/x-www-form-urlencoded to clear CORS firewalls
-                var searchParams = new URLSearchParams();
-                for (var pair of new FormData(formElement)) {
-                    searchParams.append(pair[0], pair[1]);
-                }
-
                 var btn = document.getElementById('submit-btn');
                 if(btn) {
                     btn.disabled = true;
                     btn.innerText = 'Sending...';
                 }
 
-                fetch('https://formspree.io', {
-                    method: 'POST',
-                    body: searchParams,
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        this.setState({ submitted: true });
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        response.json().then(data => {
-                            if (Object.hasOwn(data, 'errors')) {
-                                alert(data["errors"].map(error => error["message"]).join(", "));
-                            } else {
-                                alert("Submission error. Please ensure your form token is active.");
-                            }
-                        });
-                    }
-                }).catch(error => {
-                    alert("Network connection error. Ensure the site is running live via its public URL.");
-                }).finally(() => {
-                    if(btn) {
-                        btn.disabled = false;
-                        btn.innerText = 'Submit Deletion Request';
-                    }
-                });
+                // 🛠️ FIX: Create an isolated, standard native form to clear framework sandbox restrictions
+                var hiddenForm = document.createElement('form');
+                hiddenForm.method = 'POST';
+                hiddenForm.action = 'https://formspree.io';
+                hiddenForm.style.display = 'none';
+
+                // Map your framework data into standard DOM fields
+                for (var pair of new FormData(formElement)) {
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = pair[0];
+                    hiddenInput.value = pair[1];
+                    hiddenForm.appendChild(hiddenInput);
+                }
+
+                // Append and run native browser submit mechanism
+                document.body.appendChild(hiddenForm);
+                
+                // Toggle view components right before executing the native post
+                this.setState({ submitted: true });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                hiddenForm.submit();
             }
         };
     }
