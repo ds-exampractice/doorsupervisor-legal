@@ -209,14 +209,9 @@
                 <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
                     <div style="background:var(--accent-soft);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center">
                         <div style="width:54px;height:54px;border-radius:50%;background:var(--accent);margin:0 auto 18px;position:relative">
-                            <span style="position:absolute;top:50%;left:50%;transform:translate(-58%,-62%) rotate(45deg);width:13px;height:24px;border-right:4px solid #fff;border-bottom:4px solid #fff;border-radius:2px"></span>
-                        </div>
-
 ---
 
 ### Section 3: Footer and App Controller Script
-*Copy and paste this final section directly below Section 2:*
-
 ```html
             <div class="sec">
                 <h2>Alternative Contact Methods</h2>
@@ -286,7 +281,11 @@ class Component extends DCLogic {
                 var formElement = document.getElementById('deletion-form');
                 if (!formElement) return;
 
-                var formData = new FormData(formElement);
+                // Converts fields to application/x-www-form-urlencoded to clear CORS firewalls
+                var searchParams = new URLSearchParams();
+                for (var pair of new FormData(formElement)) {
+                    searchParams.append(pair[0], pair[1]);
+                }
 
                 var btn = document.getElementById('submit-btn');
                 if(btn) {
@@ -296,8 +295,9 @@ class Component extends DCLogic {
 
                 fetch('https://formspree.io', {
                     method: 'POST',
-                    body: formData,
+                    body: searchParams,
                     headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
                         'Accept': 'application/json'
                     }
                 }).then(response => {
@@ -314,7 +314,7 @@ class Component extends DCLogic {
                         });
                     }
                 }).catch(error => {
-                    alert("A connection roadblock happened. If testing on your desktop local drive, upload the file to your live HTTPS link on Fasthosts to run it safely.");
+                    alert("Network connection error. Ensure the site is running live via its public URL.");
                 }).finally(() => {
                     if(btn) {
                         btn.disabled = false;
