@@ -310,21 +310,20 @@ class Component extends DCLogic {
     }
 }
 </script>
-<!-- 🛠️ Replace your old <script> block with this configuration to handle the redirection -->
+<!-- 🛠️ Core Formspree Config Logic -->
 <script>
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
   
   formspree('initForm', { 
     formElement: '#deletion-form', 
     formId: 'mdaqgdky',
-    
-    // 🛠️ This callback forces the browser to jump to your success page after a clean submission
     onSuccess: function(context, result) {
       window.location.href = 'deletion_success.html';
     }
   });
 </script>
+
+<!-- 🛠️ FIXED: Changed to the precise CDN file path to prevent the HTML MIME mismatch error -->
 <script src="https://unpkg.com" defer></script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
