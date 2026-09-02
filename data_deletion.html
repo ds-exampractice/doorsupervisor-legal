@@ -176,8 +176,13 @@
             <div class="sec">
                 <h2>Submit Data Deletion Request</h2>
                 <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
-                    <!-- 🛠️ Form endpoint added, method set, and onSubmit event handled safely -->
-                    <form id="deletion-form" action="https://formspree.io/f/mdaqgdky" method="POST" onSubmit="{{ onSubmit }}" style="background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:28px">
+                    
+                    <!-- 🛠️ Elements to display global Formspree errors or success states -->
+                    <div data-fs-success></div>
+                    <div data-fs-error></div>
+            
+                    <!-- 🛠️ Main Form: Targeted by id="deletion-form" matching the initialization script -->
+                    <form id="deletion-form" style="background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:28px">
             
                         <div style="margin-bottom:20px">
                             <label for="email" style="display:block;font-weight:600;font-size:14px;color:var(--text);margin-bottom:8px">Email Address *</label>
@@ -205,7 +210,6 @@
                             <span data-fs-error="comments" style="color:#ff6b6b;font-size:13px;display:block;margin-top:6px"></span>
                         </div>
                         
-                        <!-- 🛠️ Added data-fs-field to checkboxes so Formspree's JavaScript SDK tracks them -->
                         <label style="display:flex;align-items:flex-start;gap:11px;cursor:pointer;margin-bottom:16px">
                             <input type="checkbox" name="agreement_permanent_deletion" value="agreed" data-fs-field required style="width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex:none">
                             <span style="font-size:14px;color:var(--text-mut);line-height:1.55">I understand that this action cannot be undone and all my data will be permanently deleted.</span>
@@ -306,5 +310,13 @@ class Component extends DCLogic {
     }
 }
 </script>
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { 
+    formElement: '#deletion-form', 
+    formId: 'mdaqgdky' 
+  });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
