@@ -1,257 +1,286 @@
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="./support.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent-soft);
+        }
+
+        .lc h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: clamp(20px, 2.6vw, 26px);
+            letter-spacing: -.02em;
+            color: var(--text);
+            margin: 0 0 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lc h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 16.5px;
+            color: var(--text);
+            margin: 24px 0 10px;
+        }
+
+        .lc p {
+            font-size: 15.5px;
+            line-height: 1.75;
+            color: var(--text-mut);
+            margin: 0 0 14px;
+        }
+
+        .lc ul {
+            margin: 0 0 16px;
+            padding-left: 22px;
+        }
+
+        .lc li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-mut);
+            margin-bottom: 9px;
+        }
+
+        .lc a {
+            color: var(--accent-strong);
+            text-decoration: none;
+            border-bottom: 1px solid color-mix(
+                in srgb,
+                var(--accent-strong) 35%,
+                transparent
+            );
+        }
+
+        .lc strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .sec {
+            margin-bottom: 46px;
+        }
+
+        .fld {
+            width: 100%;
+            padding: 13px 14px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Hanken Grotesk', sans-serif;
+            color: var(--text);
+            transition: border-color .2s;
+        }
+
+        .fld:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .fld::placeholder {
+            color: var(--text-dim);
+        }
+
+        /* Formspree success message */
+        [data-fs-success] {
+            display: none;
+            margin-bottom: 20px;
+            padding: 18px 22px;
+            background: rgba(92, 143, 214, 0.10);
+            border: 1px solid rgba(92, 143, 214, 0.30);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            color: var(--text);
+            font-size: 14.5px;
+            line-height: 1.65;
+        }
+
+        /* Formspree general error */
+        [data-fs-error] {
+            color: #d66a6a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Field error */
+        .field-error {
+            display: block;
+            margin-top: 6px;
+            color: #d66a6a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Invalid field */
+        [data-fs-field][aria-invalid="true"] {
+            border-color: #d66a6a;
+        }
+
+        /* Disabled submit button */
+        button[data-fs-submit-btn]:disabled {
+            opacity: .65;
+            cursor: not-allowed;
+        }
+    </style>
+
+    <!-- Theme -->
+    <script>
+        (function () {
+
+            var T = {
+
+                dark: {
+                    '--bg': '#0a0e1a',
+                    '--bg-soft': '#0e1322',
+                    '--bg-elev': '#131a2c',
+                    '--panel': 'rgba(255,255,255,0.03)',
+                    '--border': 'rgba(255,255,255,0.09)',
+                    '--border-strong': 'rgba(255,255,255,0.17)',
+                    '--text': '#eef1f7',
+                    '--text-mut': '#9aa4ba',
+                    '--text-dim': '#66708a',
+                    '--accent': '#5c8fd6',
+                    '--accent-strong': '#79a6e6',
+                    '--accent-soft': 'rgba(92,143,214,0.13)',
+                    '--shadow': '0 24px 60px -28px rgba(0,0,0,0.75)',
+                    '--grid': 'rgba(255,255,255,0.045)'
+                },
+
+                light: {
+                    '--bg': '#f5f6f9',
+                    '--bg-soft': '#ffffff',
+                    '--bg-elev': '#ffffff',
+                    '--panel': 'rgba(16,24,40,0.015)',
+                    '--border': 'rgba(16,24,40,0.10)',
+                    '--border-strong': 'rgba(16,24,40,0.20)',
+                    '--text': '#111726',
+                    '--text-mut': '#51607a',
+                    '--text-dim': '#8893a8',
+                    '--accent': '#2f5fa3',
+                    '--accent-strong': '#234d8a',
+                    '--accent-soft': 'rgba(47,95,163,0.07)',
+                    '--shadow': '0 20px 44px -26px rgba(16,24,40,0.32)',
+                    '--grid': 'rgba(16,24,40,0.05)'
+                }
+
+            };
+
+            var t = localStorage.getItem('ds-theme') || 'dark';
+            var v = T[t] || T.dark;
+            var r = document.documentElement;
+
+            for (var k in v) {
+                r.style.setProperty(k, v[k]);
+            }
+
+            r.style.colorScheme = t === 'light' ? 'light' : 'dark';
+            r.style.background = v['--bg'];
+
+        })();
+    </script>
+
+    <!-- Site navigation/footer -->
+    <script src="sitenav.js"></script>
+    <script src="sitefooter.js"></script>
+
+    <!-- Formspree AJAX -->
+    <script>
+        window.formspree = window.formspree || function () {
+            (formspree.q = formspree.q || []).push(arguments);
+        };
+
+        formspree('initForm', {
+            formElement: '#deletion-form',
+            formId: 'mdaqgdky'
+        });
+    </script>
+
+    <script
+        src="https://unpkg.com/@formspree/ajax@1"
+        defer
+    ></script>
+
 </head>
+
 
 <body>
 
 <x-dc>
 
-    <helmet>
-
-        <link rel="preconnect" href="https://googleapis.com">
-        <link rel="preconnect" href="https://gstatic.com" crossorigin>
-
-        <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-        <style>
-
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            body {
-                font-family: 'Hanken Grotesk', sans-serif;
-                background: var(--bg);
-                color: var(--text);
-                -webkit-font-smoothing: antialiased;
-            }
-
-            * {
-                box-sizing: border-box;
-            }
-
-            ::selection {
-                background: var(--accent-soft);
-            }
-
-            .lc h2 {
-                font-family: 'Space Grotesk', sans-serif;
-                font-weight: 600;
-                font-size: clamp(20px, 2.6vw, 26px);
-                letter-spacing: -.02em;
-                color: var(--text);
-                margin: 0 0 18px;
-                padding-bottom: 14px;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .lc h3 {
-                font-family: 'Space Grotesk', sans-serif;
-                font-weight: 600;
-                font-size: 16.5px;
-                color: var(--text);
-                margin: 24px 0 10px;
-            }
-
-            .lc p {
-                font-size: 15.5px;
-                line-height: 1.75;
-                color: var(--text-mut);
-                margin: 0 0 14px;
-            }
-
-            .lc ul {
-                margin: 0 0 16px;
-                padding-left: 22px;
-            }
-
-            .lc li {
-                font-size: 15px;
-                line-height: 1.7;
-                color: var(--text-mut);
-                margin-bottom: 9px;
-            }
-
-            .lc a {
-                color: var(--accent-strong);
-                text-decoration: none;
-                border-bottom: 1px solid color-mix(
-                    in srgb,
-                    var(--accent-strong) 35%,
-                    transparent
-                );
-            }
-
-            .lc strong {
-                color: var(--text);
-                font-weight: 600;
-            }
-
-            .sec {
-                margin-bottom: 46px;
-            }
-
-            .fld {
-                width: 100%;
-                padding: 13px 14px;
-                background: var(--bg);
-                border: 1px solid var(--border);
-                border-radius: 10px;
-                font-size: 15px;
-                font-family: 'Hanken Grotesk', sans-serif;
-                color: var(--text);
-                transition: border-color .2s;
-            }
-
-            .fld:focus {
-                outline: none;
-                border-color: var(--accent);
-            }
-
-            .fld::placeholder {
-                color: var(--text-dim);
-            }
-
-            /* Formspree */
-
-            [data-fs-error] {
-                color: #d66a6a;
-                font-size: 13px;
-                line-height: 1.5;
-            }
-
-            [data-fs-error="email"] {
-                display: block;
-                margin-top: 6px;
-            }
-
-            [data-fs-field][aria-invalid="true"] {
-                border-color: #d66a6a;
-            }
-
-            [data-fs-success] {
-                display: none;
-                margin-bottom: 20px;
-                padding: 18px 20px;
-                background: rgba(92, 143, 214, 0.10);
-                border: 1px solid rgba(92, 143, 214, 0.30);
-                border-left: 3px solid var(--accent);
-                border-radius: 0 12px 12px 0;
-                color: var(--text);
-                font-size: 14.5px;
-                line-height: 1.65;
-            }
-
-            [data-fs-success][data-fs-active] {
-                display: block;
-            }
-
-            [data-fs-error=""] {
-                display: none;
-                margin-bottom: 20px;
-                padding: 14px 18px;
-                background: rgba(214, 106, 106, 0.10);
-                border: 1px solid rgba(214, 106, 106, 0.30);
-                border-left: 3px solid #d66a6a;
-                border-radius: 0 12px 12px 0;
-            }
-
-            [data-fs-error=""][data-fs-active] {
-                display: block;
-            }
-
-            button[data-fs-submit-btn]:disabled {
-                opacity: .65;
-                cursor: not-allowed;
-            }
-
-        </style>
-
-        <script>
-            (function() {
-
-                var T = {
-
-                    dark: {
-                        '--bg': '#0a0e1a',
-                        '--bg-soft': '#0e1322',
-                        '--bg-elev': '#131a2c',
-                        '--panel': 'rgba(255,255,255,0.03)',
-                        '--border': 'rgba(255,255,255,0.09)',
-                        '--border-strong': 'rgba(255,255,255,0.17)',
-                        '--text': '#eef1f7',
-                        '--text-mut': '#9aa4ba',
-                        '--text-dim': '#66708a',
-                        '--accent': '#5c8fd6',
-                        '--accent-strong': '#79a6e6',
-                        '--accent-soft': 'rgba(92,143,214,0.13)',
-                        '--shadow': '0 24px 60px -28px rgba(0,0,0,0.75)',
-                        '--grid': 'rgba(255,255,255,0.045)'
-                    },
-
-                    light: {
-                        '--bg': '#f5f6f9',
-                        '--bg-soft': '#ffffff',
-                        '--bg-elev': '#ffffff',
-                        '--panel': 'rgba(16,24,40,0.015)',
-                        '--border': 'rgba(16,24,40,0.10)',
-                        '--border-strong': 'rgba(16,24,40,0.20)',
-                        '--text': '#111726',
-                        '--text-mut': '#51607a',
-                        '--text-dim': '#8893a8',
-                        '--accent': '#2f5fa3',
-                        '--accent-strong': '#234d8a',
-                        '--accent-soft': 'rgba(47,95,163,0.07)',
-                        '--shadow': '0 20px 44px -26px rgba(16,24,40,0.32)',
-                        '--grid': 'rgba(16,24,40,0.05)'
-                    }
-
-                };
-
-                var t = localStorage.getItem('ds-theme') || 'dark';
-                var v = T[t] || T.dark;
-                var r = document.documentElement;
-
-                for (var k in v) {
-                    r.style.setProperty(k, v[k]);
-                }
-
-                r.style.colorScheme = t === 'light' ? 'light' : 'dark';
-                r.style.background = v['--bg'];
-
-            })();
-        </script>
-
-        <script src="sitenav.js"></script>
-        <script src="sitefooter.js"></script>
-
-    </helmet>
-
-
-    <div style="min-height:100vh;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif">
+    <div
+        style="
+            min-height:100vh;
+            background:var(--bg);
+            color:var(--text);
+            font-family:'Hanken Grotesk',sans-serif
+        "
+    >
 
         <site-nav active="deletion"></site-nav>
 
 
-        <!-- HERO -->
+        <!-- ======================================================
+             HERO
+        ======================================================= -->
 
-        <section style="position:relative;overflow:hidden;border-bottom:1px solid var(--border)">
+        <section
+            style="
+                position:relative;
+                overflow:hidden;
+                border-bottom:1px solid var(--border)
+            "
+        >
 
             <div
                 style="
                     position:absolute;
                     inset:0;
                     background-image:
-                        linear-gradient(var(--grid) 1px,transparent 1px),
-                        linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+                        linear-gradient(
+                            var(--grid) 1px,
+                            transparent 1px
+                        ),
+                        linear-gradient(
+                            90deg,
+                            var(--grid) 1px,
+                            transparent 1px
+                        );
                     background-size:54px 54px;
                     -webkit-mask-image:
                         radial-gradient(
@@ -274,7 +303,10 @@
                     position:relative;
                     max-width:1200px;
                     margin:0 auto;
-                    padding:clamp(52px,7vw,84px) 24px clamp(36px,5vw,52px)
+                    padding:
+                        clamp(52px,7vw,84px)
+                        24px
+                        clamp(36px,5vw,52px)
                 "
             >
 
@@ -322,7 +354,9 @@
         </section>
 
 
-        <!-- CONTENT -->
+        <!-- ======================================================
+             MAIN CONTENT
+        ======================================================= -->
 
         <div
             class="lc"
@@ -334,7 +368,9 @@
         >
 
 
-            <!-- RIGHT TO DELETE -->
+            <!-- ==================================================
+                 YOUR RIGHT TO DATA DELETION
+            =================================================== -->
 
             <div class="sec">
 
@@ -394,7 +430,9 @@
             </div>
 
 
-            <!-- DATA DELETED -->
+            <!-- ==================================================
+                 DATA TO BE DELETED
+            =================================================== -->
 
             <div class="sec">
 
@@ -436,7 +474,9 @@
             </div>
 
 
-            <!-- RETAINED DATA -->
+            <!-- ==================================================
+                 RETAINED DATA
+            =================================================== -->
 
             <div class="sec">
 
@@ -470,7 +510,9 @@
             </div>
 
 
-            <!-- TIMELINE -->
+            <!-- ==================================================
+                 DATA DELETION TIMELINE
+            =================================================== -->
 
             <div class="sec">
 
@@ -611,15 +653,16 @@
             </div>
 
 
-            <!-- FORM -->
+            <!-- ==================================================
+                 DATA DELETION FORM
+            =================================================== -->
 
             <div class="sec">
 
                 <h2>Submit Data Deletion Request</h2>
 
 
-                <!-- Formspree success message -->
-
+                <!-- Formspree success -->
                 <div data-fs-success>
                     Your data deletion request has been submitted successfully.
                     We will process your request according to the deletion
@@ -628,7 +671,6 @@
 
 
                 <!-- Formspree general error -->
-
                 <div data-fs-error></div>
 
 
@@ -671,7 +713,10 @@
                             data-fs-field
                         >
 
-                        <span data-fs-error="email"></span>
+                        <span
+                            data-fs-error="email"
+                            class="field-error"
+                        ></span>
 
                         <small
                             style="
@@ -848,7 +893,7 @@
                     </label>
 
 
-                    <!-- SUBMIT -->
+                    <!-- SUBMIT BUTTON -->
 
                     <button
                         type="submit"
@@ -864,7 +909,8 @@
                             padding:15px;
                             border-radius:12px;
                             cursor:pointer;
-                            box-shadow:0 14px 30px -12px var(--accent);
+                            box-shadow:
+                                0 14px 30px -12px var(--accent);
                             transition:transform .2s
                         "
                     >
@@ -876,7 +922,9 @@
             </div>
 
 
-            <!-- ALTERNATIVE CONTACT -->
+            <!-- ==================================================
+                 ALTERNATIVE CONTACT METHODS
+            =================================================== -->
 
             <div class="sec">
 
@@ -952,7 +1000,9 @@
             </div>
 
 
-            <!-- FAQ -->
+            <!-- ==================================================
+                 FAQ
+            =================================================== -->
 
             <div class="sec">
 
@@ -1084,7 +1134,9 @@
             </div>
 
 
-            <!-- DATA PROTECTION -->
+            <!-- ==================================================
+                 DATA PROTECTION RIGHTS
+            =================================================== -->
 
             <div class="sec">
 
@@ -1129,7 +1181,6 @@
 
             </div>
 
-
         </div>
 
 
@@ -1137,53 +1188,30 @@
 
     </div>
 
-
 </x-dc>
 
 
-<!--
-    ============================================================
-    FORMSPREE AJAX
-    ============================================================
-
-    This page uses the Formspree Vanilla JS AJAX library.
-
-    Form ID:
-    mdaqgdky
-
-    The library handles:
-    - Form submission
-    - Validation
-    - Submit button loading/disabled state
-    - Success message
-    - Form-level errors
-    - Field-level errors
--->
+<!-- ============================================================
+     FORMSPREE INITIALISATION
+============================================================= -->
 
 <script>
+    /*
+     * The Formspree AJAX library is loaded with defer.
+     *
+     * This queue records the initForm call and the Formspree
+     * library processes it when it finishes loading.
+     */
 
-    window.formspree =
-        window.formspree ||
-        function () {
-            (formspree.q = formspree.q || []).push(arguments);
-        };
+    window.formspree = window.formspree || function () {
+        (formspree.q = formspree.q || []).push(arguments);
+    };
 
-
-    window.formspree(
-        'initForm',
-        {
-            formElement: '#deletion-form',
-            formId: 'mdaqgdky'
-        }
-    );
-
+    formspree('initForm', {
+        formElement: '#deletion-form',
+        formId: 'mdaqgdky'
+    });
 </script>
-
-
-<script
-    src="https://unpkg.com/@formspree/ajax@1"
-    defer
-></script>
 
 
 </body>
