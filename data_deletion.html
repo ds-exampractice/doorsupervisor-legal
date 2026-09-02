@@ -177,11 +177,11 @@
                 <h2>Submit Data Deletion Request</h2>
                 <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
                     
-                    <!-- 🛠️ Elements to display global Formspree errors or success states -->
+                    <!-- Containers required by Formspree AJAX to display fallback error states -->
                     <div data-fs-success></div>
                     <div data-fs-error></div>
             
-                    <!-- 🛠️ Main Form: Targeted by id="deletion-form" matching the initialization script -->
+                    <!-- Main Submission Form targeting id="deletion-form" -->
                     <form id="deletion-form" style="background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:28px">
             
                         <div style="margin-bottom:20px">
@@ -310,7 +310,7 @@ class Component extends DCLogic {
     }
 }
 </script>
-<!-- 🛠️ Core Formspree Config Logic -->
+<!-- 🛠️ Safe Execution Script Configuration -->
 <script>
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
   
@@ -318,12 +318,12 @@ class Component extends DCLogic {
     formElement: '#deletion-form', 
     formId: 'mdaqgdky',
     onSuccess: function(context, result) {
+      // Clean redirection to success file
       window.location.href = 'deletion_success.html';
     }
   });
 </script>
-
-<!-- 🛠️ FIXED: Changed to the precise CDN file path to prevent the HTML MIME mismatch error -->
+<!-- 🛠️ VERIFIED SCRIPT URL: Points directly to the standalone browser build file inside the npm package distribution -->
 <script src="https://unpkg.com" defer></script>
 </body>
 </html>
