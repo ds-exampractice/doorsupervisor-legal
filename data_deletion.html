@@ -177,7 +177,9 @@
                 <h2>Submit Data Deletion Request</h2>
                 <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
                     <!-- 🛠️ Form elements updated to use specific Formspree SDK tags (data-fs-field, data-fs-submit-btn) -->
-                    <form id="deletion-form" onSubmit="{{ onSubmit }}" style="background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:28px">
+                    <!-- Replace YOUR_FORM_ID with the actual 8-character ID from your Formspree dashboard -->
+                    <form id="deletion-form" action="https://formspree.io/f/mdaqgdky" method="POST" onSubmit="{{ onSubmit }}" style="background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:28px">
+
                         <div style="margin-bottom:20px">
                             <label for="email" style="display:block;font-weight:600;font-size:14px;color:var(--text);margin-bottom:8px">Email Address *</label>
                             <input class="fld" type="email" id="email" name="email" data-fs-field required>
@@ -212,10 +214,10 @@
                         <button type="submit" id="submit-btn" data-fs-submit-btn style="width:100%;background:var(--accent);color:#fff;border:none;font-weight:600;font-size:15px;padding:15px;border-radius:12px;cursor:pointer;box-shadow:0 14px 30px -12px var(--accent);transition:transform .2s" style-hover="transform:translateY(-2px)">Submit Deletion Request</button>
                     </form>
                 </sc-if>
----
+<!---
 
 ### Section 3: Footer and App Controller Script
-```html
+```html -->
             <div class="sec">
                 <h2>Alternative Contact Methods</h2>
                 <p>If you prefer not to use the form above, you can also request data deletion by:</p>
